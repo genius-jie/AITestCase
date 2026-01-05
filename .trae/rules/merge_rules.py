@@ -11,7 +11,7 @@ def merge_rules():
         
         # 定义合并顺序
         rule_files = [
-            "identity.md",
+            "身份定义.md",
             "错题本规则.md",
             "6A工作流.md",
             "交互约定.md",
