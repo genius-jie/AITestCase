@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "合并规则文件",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "${workspaceFolder}/.trae/rules/merge_rules.py"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/.trae/rules"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [],
+      "detail": "合并所有拆分的规则文件到 project_rules.md"
+    }
+  ]
+}
