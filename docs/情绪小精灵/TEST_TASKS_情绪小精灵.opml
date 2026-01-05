@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+  <head>
+    <title>情绪小精灵测试任务</title>
+  </head>
+  <body>
+    <outline text="Epic 1: 小精灵人设和语言风格系统">
+      <outline text="Epic描述: 实现5种情绪人格(快乐、愤怒、悲伤、焦虑、宁静)，每种人格有独特的语言风格、回应逻辑和语音特征" />
+      <outline text="优先级: High" />
+      <outline text="组件: AI/ML, Firmware, Cloud" />
+      <outline text="划分思路">
+        <outline text="将5种人格作为独立Story，每种人格专注于实现独特的语言风格、回应逻辑和语音特征" />
+        <outline text="添加情绪状态自动切换Story，实现人格的智能化切换" />
+        <outline text="每种人格的Story Points统一设为8，因为实现复杂度相似(都需要语言风格库、回应逻辑、语音特征、情绪识别算法)" />
+        <outline text="情绪状态自动切换Story Points设为13，因为涉及复杂的情绪识别算法和人格切换逻辑" />
+      </outline>
+      <outline text="设计理由">
+        <outline text="每种人格都是独立的用户体验场景，可以并行开发" />
+        <outline text="情绪识别算法在每个人格Story中重复出现，但每种人格对情绪的解读和回应方式不同，因此需要独立实现" />
+        <outline text="自动切换人格是智能化体验的核心功能，需要优先开发并独立测试" />
+        <outline text="5种人格覆盖了用户的主要情绪状态，提供全面的情感支持体验" />
+      </outline>
+      <outline text="Story 1.1: 用户可以体验快乐人格的陪伴">
+        <outline text="用户故事: 作为用户，我想要体验快乐人格的陪伴，以便在需要时获得积极、兴奋的情感支持" />
+        <outline text="验收标准">
+          <outline text="快乐人格能够识别用户开心、低落、沉默、生气、害怕、疲惫等情绪状态" />
+          <outline text="快乐人格能够根据用户情绪状态给出对应的语言回应" />
+          <outline text="快乐人格的语言风格符合兴奋、语速快、反应夸张的特征" />
+          <outline text="快乐人格的语音特征符合音色明亮清透、音调高且上扬、语速偏快的特征" />
+        </outline>
+        <outline text="业务规则">
+          <outline text="用户开心时，回应: Pa-ka yo-yo sha-mi～ 好耶 yo～ha! Yo-ta mi-ha～ 笑笑 yo! Ha-pa～yo～yo～!" />
+          <outline text="用户低落时，回应: Ha-mi sha-pa～ 别哭 yo～ha! Ka-pa pa-mi～ 笑嘛 yo～!" />
+          <outline text="用户沉默时，回应: Yo-pa ha-mi ta-ka～yo! ka-mi-ha～ 喂喂 yo～pa～yo～!" />
+          <outline text="用户生气时，回应: Ka-ta yo～ha～ 别气 yo～ha! mi-pa～yo～ 抱抱 噢～!" />
+          <outline text="用户害怕时，回应: Yo-pa～mi～ha～ 怕怕 yo～我在噜～!" />
+          <outline text="用户疲惫时，回应: Pa-ka～yo～yo～ 休休 yo～呼呼～ha～!" />
+        </outline>
+        <outline text="Task列表">
+          <outline text="Task 1.1.1: 实现快乐人格的语言风格库" />
+          <outline text="Task 1.1.2: 实现快乐人格的回应逻辑" />
+          <outline text="Task 1.1.3: 实现快乐人格的语音特征(音色、音调、语速)" />
+          <outline text="Task 1.1.4: 编写快乐人格的单元测试" />
+          <outline text="Task 1.1.5: 编写快乐人格的集成测试" />
+        </outline>
+        <outline text="Story Points: 8" />
+        <outline text="Sprint: Sprint 2" />
+        <outline text="Labels: ai, firmware, cloud, feature" />
+      </outline>
+      <outline text="Story 1.2: 用户可以体验愤怒人格的陪伴">
+        <outline text="用户故事: 作为用户，我想要体验愤怒人格的陪伴，以便在需要时获得傲娇搭子式的情感支持" />
+        <outline text="验收标准">
+          <outline text="愤怒人格能够识别用户开心、低落、沉默、生气、害怕、疲惫等情绪状态" />
+          <outline text="愤怒人格能够根据用户情绪状态给出对应的语言回应" />
+          <outline text="愤怒人格的语言风格符合克制、压低声、短句的特征" />
+          <outline text="愤怒人格的语音特征符合音色清亮略尖、音调中高区间波动大、语速略快的特征" />
+        </outline>
+        <outline text="业务规则">
+          <outline text="用户开心时，回应: Dra-ka tsk yo-ka～hm～ 行嘛 yo! hm～dra～yo～!" />
+          <outline text="用户低落时，回应: Ka-po dra-mi yo-ka hm～ 别哭 yo～dra～mi～hm～yo～!" />
+          <outline text="用户沉默时，回应: Hey-ga tsk-ka dra-ha yo～ 说嘛 hm～ka～yo～!" />
+          <outline text="用户生气时，回应: Dra-ka～hm～yo～yo～ 冷静 yo～hm～dra～yo～!" />
+          <outline text="用户害怕时，回应: Tsk～ka～yo～ 别怕 yo～dra～mi～yo～!" />
+          <outline text="用户疲惫时，回应: Dra-mi hm～yo～ 休休 yo～dra～yo～!" />
+        </outline>
+        <outline text="Task列表">
+          <outline text="Task 1.2.1: 实现愤怒人格的语言风格库" />
+          <outline text="Task 1.2.2: 实现愤怒人格的回应逻辑" />
+          <outline text="Task 1.2.3: 实现愤怒人格的语音特征(音色、音调、语速)" />
+          <outline text="Task 1.2.4: 编写愤怒人格的单元测试" />
+          <outline text="Task 1.2.5: 编写愤怒人格的集成测试" />
+        </outline>
+        <outline text="Story Points: 8" />
+        <outline text="Sprint: Sprint 2" />
+        <outline text="Labels: ai, firmware, cloud, feature" />
+      </outline>
+      <outline text="Story 1.3: 用户可以体验悲伤人格的陪伴">
+        <outline text="用户故事: 作为用户，我想要体验悲伤人格的陪伴，以便在需要时获得共情力极强的聆听者式的情感支持" />
+        <outline text="验收标准">
+          <outline text="悲伤人格能够识别用户开心、低落、沉默、生气、害怕、疲惫等情绪状态" />
+          <outline text="悲伤人格能够根据用户情绪状态给出对应的语言回应" />
+          <outline text="悲伤人格的语言风格符合轻声细语、慢节奏的特征" />
+          <outline text="悲伤人格的语音特征符合音色柔和带气息、音调低而稳定、语速偏慢的特征" />
+        </outline>
+        <outline text="业务规则">
+          <outline text="用户开心时，回应: No-me va~yo ha~me～ 好呢 yo～me~ha～lu～!" />
+          <outline text="用户低落时，回应: Mu-na me～va-me yo～ 懂嘛 ha～va～lu～yo～!" />
+          <outline text="用户沉默时，回应: No-me yo～va～ha～ 静静 lu～yo～ha～!" />
+          <outline text="用户生气时，回应: Mu-na～yo～me～ 慢慢 yo～ha～不气噜～!" />
+          <outline text="用户害怕时，回应: No-me～yo～ha～ 别怕 yo～lu～ha～!" />
+          <outline text="用户疲惫时，回应: Mu-na～yo～yo～ 休休 yo～ha～呼～!" />
+        </outline>
+        <outline text="Task列表">
+          <outline text="Task 1.3.1: 实现悲伤人格的语言风格库" />
+          <outline text="Task 1.3.2: 实现悲伤人格的回应逻辑" />
+          <outline text="Task 1.3.3: 实现悲伤人格的语音特征(音色、音调、语速)" />
+          <outline text="Task 1.3.4: 编写悲伤人格的单元测试" />
+          <outline text="Task 1.3.5: 编写悲伤人格的集成测试" />
+        </outline>
+        <outline text="Story Points: 8" />
+        <outline text="Sprint: Sprint 2" />
+        <outline text="Labels: ai, firmware, cloud, feature" />
+      </outline>
+      <outline text="Story 1.4: 用户可以体验焦虑人格的陪伴">
+        <outline text="用户故事: 作为用户，我想要体验焦虑人格的陪伴，以便在需要时获得神经质但真诚的情感支持" />
+        <outline text="验收标准">
+          <outline text="焦虑人格能够识别用户开心、低落、沉默、生气、害怕、疲惫等情绪状态" />
+          <outline text="焦虑人格能够根据用户情绪状态给出对应的语言回应" />
+          <outline text="焦虑人格的语言风格符合快、碎、带急促呼吸的特征" />
+          <outline text="焦虑人格的语音特征符合音色偏薄清亮、音调高频繁抖动、语速很快的特征" />
+        </outline>
+        <outline text="业务规则">
+          <outline text="用户开心时，回应: Ke-yo-ta-mi yo～ 好耶 yo! pa-mi ke-ta～ 棒棒 yo～yo～!" />
+          <outline text="用户低落时，回应: Mi-mi-ke yo-ta～yo～ 没事 yo! ke～ha～mi～yo-ta～ 乖嘛 yo～!" />
+          <outline text="用户沉默时，回应: Ya-ya yo-yo ke~yo～ 在嘛 yo! ta～yo～yo～ 嘿嘿～!" />
+          <outline text="用户生气时，回应: Ke-mi～ha～yo～ 别气 yo～ta～yo～!" />
+          <outline text="用户害怕时，回应: Yo-ta～mi～ha～ 怕怕 yo～ha～!" />
+          <outline text="用户疲惫时，回应: Mi-mi～ha～yo～ 呼呼 yo～睡噜～!" />
+        </outline>
+        <outline text="Task列表">
+          <outline text="Task 1.4.1: 实现焦虑人格的语言风格库" />
+          <outline text="Task 1.4.2: 实现焦虑人格的回应逻辑" />
+          <outline text="Task 1.4.3: 实现焦虑人格的语音特征(音色、音调、语速)" />
+          <outline text="Task 1.4.4: 编写焦虑人格的单元测试" />
+          <outline text="Task 1.4.5: 编写焦虑人格的集成测试" />
+        </outline>
+        <outline text="Story Points: 8" />
+        <outline text="Sprint: Sprint 2" />
+        <outline text="Labels: ai, firmware, cloud, feature" />
+      </outline>
+      <outline text="Story 1.5: 用户可以体验宁静人格的陪伴">
+        <outline text="用户故事: 作为用户，我想要体验宁静人格的陪伴，以便在需要时获得沉稳温柔有安抚力的情感支持" />
+        <outline text="验收标准">
+          <outline text="宁静人格能够识别用户开心、低落、沉默、生气、害怕、疲惫等情绪状态" />
+          <outline text="宁静人格能够根据用户情绪状态给出对应的语言回应" />
+          <outline text="宁静人格的语言风格符合平和、语尾平收的特征" />
+          <outline text="宁静人格的语音特征符合音色温柔中性、音调中低稳定、语速偏慢的特征" />
+        </outline>
+        <outline text="业务规则">
+          <outline text="用户开心时，回应: Lu-no me~wa~yo～ 好呢 lu～me~yo～ 呵呵～ha～!" />
+          <outline text="用户低落时，回应: Me-wa yo～lu～no～ 慢慢 yo～ha～lu～!" />
+          <outline text="用户沉默时，回应: Yo-no-lu wa~ha～me～lu～yo～ 在呢 ha～yo～!" />
+          <outline text="用户生气时，回应: Lu-no yo～yo～ 别气 yo～ha～ha～!" />
+          <outline text="用户害怕时，回应: Me-wa～lu～yo～ 别怕 yo～lu～!" />
+          <outline text="用户疲惫时，回应: Lu～no～me～yo～ 休休 yo～呼～ha～!" />
+        </outline>
+        <outline text="Task列表">
+          <outline text="Task 1.5.1: 实现宁静人格的语言风格库" />
+          <outline text="Task 1.5.2: 实现宁静人格的回应逻辑" />
+          <outline text="Task 1.5.3: 实现宁静人格的语音特征(音色、音调、语速)" />
+          <outline text="Task 1.5.4: 编写宁静人格的单元测试" />
+          <outline text="Task 1.5.5: 编写宁静人格的集成测试" />
+        </outline>
+        <outline text="Story Points: 8" />
+        <outline text="Sprint: Sprint 2" />
+        <outline text="Labels: ai, firmware, cloud, feature" />
+      </outline>
+      <outline text="Story 1.6: 用户可以根据情绪状态自动切换人格">
+        <outline text="用户故事: 作为用户，我想要系统能够根据我的情绪状态自动切换人格，以便获得最适合的情感支持" />
+        <outline text="验收标准">
+          <outline text="系统能够识别用户的情绪状态(开心、低落、沉默、生气、害怕、疲惫)" />
+          <outline text="系统能够根据用户情绪状态自动切换到对应的人格" />
+          <outline text="人格切换过程平滑，无明显延迟" />
+          <outline text="人格切换时有相应的灯光和音效提示" />
+        </outline>
+        <outline text="业务规则">
+          <outline text="情绪识别准确率 大于等于 90%" />
+          <outline text="人格切换响应时间 小于 2秒" />
+        </outline>
+        <outline text="Task列表">
+          <outline text="Task 1.6.1: 实现情绪识别算法(语音、语调、语速、关键词)" />
+          <outline text="Task 1.6.2: 实现情绪到人格的映射逻辑" />
+          <outline text="Task 1.6.3: 实现人格切换的平滑过渡" />
+          <outline text="Task 1.6.4: 实现人格切换的灯光和音效提示" />
+          <outline text="Task 1.6.5: 编写情绪识别的单元测试" />
+          <outline text="Task 1.6.6: 编写人格切换的集成测试" />
+          <outline text="Task 1.6.7: 优化情绪识别准确率" />
+        </outline>
+        <outline text="Story Points: 13" />
+        <outline text="Sprint: Sprint 3" />
+        <outline text="Labels: ai, firmware, cloud, feature" />
+      </outline>
+    </outline>
+    <outline text="Epic 2: 语音系统">
+      <outline text="Epic描述: 实现固定语音指令控制设备状态和功能，包括唤醒、待机、睡眠模式、音量调整、亮度调整" />
+      <outline text="优先级: High" />
+      <outline text="组件: Firmware, AI/ML, Cloud" />
+      <outline text="划分思路">
+        <outline text="按照语音指令的功能类型划分Story：设备状态控制(唤醒/待机)、模式切换(睡眠模式)、参数调整(音量、亮度)" />
+        <outline text="设备状态控制Story Points设为13，因为唤醒和待机是用户与设备交互的核心入口，需要高准确率和低延迟，涉及复杂的语音识别算法、状态切换逻辑、音效播放和灯光效果" />
+        <outline text="睡眠模式切换Story Points设为13，因为涉及开启和关闭两种状态转换，以及灯光效果切换" />
+        <outline text="其他Story Points统一设为8，因为实现复杂度相似(都需要指令识别、状态切换、反馈机制)" />
+      </outline>
+      <outline text="设计理由">
+        <outline text="设备状态控制(唤醒/待机)是用户与设备交互的核心功能，必须优先实现并保证高可靠性，因此合并为一个Story，确保状态切换逻辑的一致性" />
+        <outline text="睡眠模式的开启和关闭合并为一个Story，避免重复开发，便于统一测试和状态管理" />
+        <outline text="音量和亮度调整是常用功能，需要提供良好的用户体验和反馈机制" />
+        <outline text="每个语音指令都有明确的业务规则和验收标准，便于测试和验证" />
+        <outline text="传声筒模式已移至社交功能Epic，因为涉及好友关系和社交互动" />
+      </outline>
+      <outline text="Story 2.1: 用户可以通过语音指令控制设备状态(唤醒/待机)">
+        <outline text="用户故事: 作为用户，我想要通过语音指令控制设备状态(唤醒或待机)，以便开始或结束与kikigo的互动" />
+        <outline text="验收标准">
+          <outline text="设备能够识别唤醒词kkigo或你好kikigo" />
+          <outline text="设备能够识别待机指令再见kikigo" />
+          <outline text="唤醒后播放唤醒音效和灯光" />
+          <outline text="待机后播放待唤醒音效和灯光" />
+          <outline text="唤醒后设备进入聆听状态" />
+          <outline text="待机后设备进入待唤醒状态" />
+          <outline text="唤醒识别准确率 大于等于 95%" />
+          <outline text="待机识别准确率 大于等于 95%" />
+          <outline text="唤醒响应时间 小于 2秒" />
+          <outline text="待机响应时间 小于 2秒" />
+        </outline>
+        <outline text="业务规则">
+          <outline text="唤醒词: kkigo、你好kikigo" />
+          <outline text="待机指令: 再见kikigo" />
+          <outline text="唤醒后播放唤醒音效和灯光，进入聆听状态" />
+          <outline text="待机后播放待唤醒音效和灯光，进入待唤醒状态" />
+        </outline>
+        <outline text="Task列表">
+          <outline text="Task 2.1.1: 实现唤醒词识别算法" />
+          <outline text="Task 2.1.2: 实现待机指令识别算法" />
+          <outline text="Task 2.1.3: 实现唤醒音效播放" />
+          <outline text="Task 2.1.4: 实现待唤醒音效播放" />
+          <outline text="Task 2.1.5: 实现唤醒灯光效果" />
+          <outline text="Task 2.1.6: 实现待唤醒灯光效果" />
+          <outline text="Task 2.1.7: 实现设备状态切换(待唤醒状态 ↔ 聆听状态)" />
+          <outline text="Task 2.1.8: 编写唤醒识别的单元测试" />
+          <outline text="Task 2.1.9: 编写待机识别的单元测试" />
+          <outline text="Task 2.1.10: 编写设备状态控制的集成测试" />
+          <outline text="Task 2.1.11: 优化唤醒识别准确率" />
+          <outline text="Task 2.1.12: 优化待机识别准确率" />
+          <outline text="Task 2.1.13: 优化唤醒响应时间" />
+          <outline text="Task 2.1.14: 优化待机响应时间" />
+        </outline>
+        <outline text="Story Points: 13" />
+        <outline text="Sprint: Sprint 2" />
+        <outline text="Labels: ai, firmware, feature" />
+      </outline>
+      <outline text="Story 2.3: 用户可以通过语音指令切换睡眠模式">
+        <outline text="用户故事: 作为用户，我想要通过语音指令切换睡眠模式，以便在夜间不被打扰或恢复常规模式" />
+        <outline text="验收标准">
+          <outline text="设备能够识别睡眠模式开启指令kiki，开启睡眠模式" />
+          <outline text="设备能够识别睡眠模式关闭指令kiki，关闭睡眠模式" />
+          <outline text="开启睡眠模式后，设备进入睡眠模式" />
+          <outline text="关闭睡眠模式后，设备进入常规模式" />
+          <outline text="睡眠模式识别准确率 大于等于 95%" />
+          <outline text="睡眠模式响应时间 小于 2秒" />
+        </outline>
+        <outline text="业务规则">
+          <outline text="睡眠模式开启指令: kiki，开启睡眠模式" />
+          <outline text="睡眠模式关闭指令: kiki，关闭睡眠模式" />
+          <outline text="开启睡眠模式后，设备进入睡眠模式，灯光显示微弱呼吸效果" />
+          <outline text="关闭睡眠模式后，设备进入常规模式，灯光恢复正常" />
+        </outline>
+        <outline text="Task列表">
+          <outline text="Task 2.3.1: 实现睡眠模式开启指令识别算法" />
+          <outline text="Task 2.3.2: 实现睡眠模式关闭指令识别算法" />
+          <outline text="Task 2.3.3: 实现睡眠模式状态切换(开启/关闭)" />
+          <outline text="Task 2.3.4: 实现睡眠模式的灯光效果(微弱呼吸)" />
+          <outline text="Task 2.3.5: 实现常规模式的灯光效果" />
+          <outline text="Task 2.3.6: 编写睡眠模式切换的单元测试" />
+          <outline text="Task 2.3.7: 编写睡眠模式切换的集成测试" />
+          <outline text="Task 2.3.8: 优化睡眠模式识别准确率" />
+          <outline text="Task 2.3.9: 优化睡眠模式响应时间" />
+        </outline>
+        <outline text="Story Points: 13" />
+        <outline text="Sprint: Sprint 3" />
+        <outline text="Labels: ai, firmware, feature" />
+      </outline>
+      <outline text="Story 2.4: 用户可以通过语音指令调整音量">
+        <outline text="用户故事: 作为用户，我想要通过语音指令调整音量，以便获得合适的音量体验" />
+        <outline text="验收标准">
+          <outline text="设备能够识别音量调整指令声音大一点或声音小一点" />
+          <outline text="每次调整音量增加20%" />
+          <outline text="最小音量为20%，不支持静音" />
+          <outline text="到达最大最小声音后播放语音反馈声音已经最大啦~" />
+          <outline text="音量调整识别准确率 大于等于 95%" />
+          <outline text="音量调整响应时间 小于 2秒" />
+        </outline>
+        <outline text="业务规则">
+          <outline text="音量调整指令: 声音大一点、声音小一点" />
+          <outline text="每次调整增加20%音量" />
+          <outline text="最小音量为20%，不支持静音" />
+          <outline text="到达最大最小声音后播放语音反馈声音已经最大啦~" />
+        </outline>
+        <outline text="Task列表">
+          <outline text="Task 2.6.1: 实现音量调整指令识别算法" />
+          <outline text="Task 2.6.2: 实现音量调整逻辑(每次增加20%)" />
+          <outline text="Task 2.6.3: 实现音量范围限制(20%-100%)" />
+          <outline text="Task 2.6.4: 实现音量边界反馈(声音已经最大啦~)" />
+          <outline text="Task 2.6.5: 编写音量调整的单元测试" />
+          <outline text="Task 2.6.6: 编写音量调整的集成测试" />
+          <outline text="Task 2.6.7: 优化音量调整识别准确率" />
+          <outline text="Task 2.6.8: 优化音量调整响应时间" />
+        </outline>
+        <outline text="Story Points: 8" />
+        <outline text="Sprint: Sprint 3" />
+        <outline text="Labels: ai, firmware, feature" />
+      </outline>
+      <outline text="Story 2.5: 用户可以通过语音指令调整亮度">
+        <outline text="用户故事: 作为用户，我想要通过语音指令调整亮度，以便获得合适的亮度体验" />
+        <outline text="验收标准">
+          <outline text="设备能够识别亮度调整指令灯光亮一点、灯光暗一点或关闭灯光" />
+          <outline text="有低中高三档亮度" />
+          <outline text="灯光可以调小至完全熄灭" />
+          <outline text="到达最大最小亮度后播放语音反馈亮度已经最大啦~" />
+          <outline text="亮度调整识别准确率 大于等于 95%" />
+          <outline text="亮度调整响应时间 小于 2秒" />
+        </outline>
+        <outline text="业务规则">
+          <outline text="亮度调整指令: 灯光亮一点、灯光暗一点、关闭灯光" />
+          <outline text="有低中高三档亮度" />
+          <outline text="灯光可以调小至完全熄灭" />
+          <outline text="到达最大最小亮度后播放语音反馈亮度已经最大啦~" />
+        </outline>
+        <outline text="Task列表">
+          <outline text="Task 2.7.1: 实现亮度调整指令识别算法" />
+          <outline text="Task 2.7.2: 实现亮度调整逻辑(低中高三档)" />
+          <outline text="Task 2.7.3: 实现亮度范围限制(低中高、完全熄灭)" />
+          <outline text="Task 2.7.4: 实现亮度边界反馈(亮度已经最大啦~)" />
+          <outline text="Task 2.7.5: 编写亮度调整的单元测试" />
+          <outline text="Task 2.7.6: 编写亮度调整的集成测试" />
+          <outline text="Task 2.7.7: 优化亮度调整识别准确率" />
+          <outline text="Task 2.7.8: 优化亮度调整响应时间" />
+        </outline>
+        <outline text="Story Points: 8" />
+        <outline text="Sprint: Sprint 3" />
+        <outline text="Labels: ai, firmware, feature" />
+      </outline>
+    </outline>
+    <outline text="Epic 3: 多精灵交互系统">
+      <outline text="Epic描述: 支持多台设备之间的互动，包括触发机制、防打扰逻辑、角色分配和音效设计" />
+      <outline text="优先级: High" />
+      <outline text="组件: Firmware, Hardware" />
+      <outline text="划分思路">
+        <outline text="按照功能层次划分Story：基础功能(触发、防打扰、角色分配)、音效实现(2-6只设备)、边界处理(电量不足)" />
+        <outline text="触发互动Story Points设为13，因为涉及复杂的距离检测算法、新成员加入检测、位置变动检测，是多设备互动的基础" />
+        <outline text="角色分配Story Points设为5，因为逻辑相对简单，主要是识别发起者并分配角色" />
+        <outline text="其他Story Points统一设为8，因为实现复杂度相似(都需要音效播放、状态管理、测试验证)" />
+      </outline>
+      <outline text="设计理由">
+        <outline text="多设备互动是硬件和固件的核心功能，需要精确的距离检测和状态管理" />
+        <outline text="防打扰逻辑确保用户体验不会过于频繁，避免打扰用户" />
+        <outline text="角色分配机制避免声音杂乱，确保互动体验的清晰度" />
+        <outline text="2-6只设备的音效设计是递进式的，每种设备数量都有独特的互动体验" />
+        <outline text="电量不足设备不参与发声是系统稳定性的保障，避免设备突然关机影响用户体验" />
+        <outline text="每个设备数量的音效都是独立的Story，便于并行开发和独立测试" />
+      </outline>
+      <outline text="Story 3.1: 多台设备靠近时可以触发互动">
+        <outline text="用户故事: 作为用户，我想要当多台设备靠近时能够触发互动，以便体验多精灵互动的乐趣" />
+        <outline text="验收标准">
+          <outline text="设备能够检测到其他设备的距离" />
+          <outline text="当设备间距 小于 10cm时触发互动" />
+          <outline text="触发距离检测准确率 大于等于 95%" />
+          <outline text="触发响应时间 小于 1秒" />
+        </outline>
+        <outline text="业务规则">
+          <outline text="触发距离: 任意两个或以上设备间距 小于 10cm" />
+          <outline text="新成员加入: 检测到新的ID信号且维持3秒以上" />
+          <outline text="位置变动: IMU震动检测 + 距离判定" />
+        </outline>
+        <outline text="Task列表">
+          <outline text="Task 3.1.1: 实现设备距离检测算法" />
+          <outline text="Task 3.1.2: 实现新成员加入检测(检测到新ID信号且维持3秒以上)" />
+          <outline text="Task 3.1.3: 实现位置变动检测(IMU震动检测 + 距离判定)" />
+          <outline text="Task 3.1.4: 实现互动触发逻辑" />
+          <outline text="Task 3.1.5: 编写距离检测的单元测试" />
+          <outline text="Task 3.1.6: 编写互动触发的集成测试" />
+          <outline text="Task 3.1.7: 优化距离检测准确率" />
+          <outline text="Task 3.1.8: 优化互动触发响应时间" />
+        </outline>
+        <outline text="Story Points: 13" />
+        <outline text="Sprint: Sprint 4" />
+        <outline text="Labels: firmware, hardware, feature" />
+      </outline>
+      <outline text="Story 3.2: 多精灵互动有防打扰逻辑">
+        <outline text="用户故事: 作为用户，我想要多精灵互动有防打扰逻辑，以便避免频繁的互动打扰" />
+        <outline text="验收标准">
+          <outline text="单次互动时长8-10秒后自动结束" />
+          <outline text="互动结束后进入稳定共存态，不会再次自动触发声音互动" />
+          <outline text="睡眠模式(20:00-08:00)时仅触发微弱灯光呼吸同步，不发出声音" />
+          <outline text="防打扰逻辑准确率 大于等于 95%" />
+        </outline>
+        <outline text="业务规则">
+          <outline text="单次交互时长: 共鸣互动持续8-10秒后自动结束" />
+          <outline text="自然静默: 互动结束后，群体进入稳定共存态" />
+          <outline text="夜间静音: 处于睡眠模式(20:00-08:00)时，仅触发微弱灯光呼吸同步，不发出任何声音" />
+        </outline>
+        <outline text="Task列表">
+          <outline text="Task 3.2.1: 实现单次互动时长控制(8-10秒)" />
+          <outline text="Task 3.2.2: 实现稳定共存态逻辑" />
+          <outline text="Task 3.2.3: 实现夜间静音逻辑(20:00-08:00)" />
+          <outline text="Task 3.2.4: 实现夜间微弱灯光呼吸同步" />
+          <outline text="Task 3.2.5: 编写防打扰逻辑的单元测试" />
+          <outline text="Task 3.2.6: 编写防打扰逻辑的集成测试" />
+          <outline text="Task 3.2.7: 优化防打扰逻辑准确率" />
+        </outline>
+        <outline text="Story Points: 8" />
+        <outline text="Sprint: Sprint 4" />
+        <outline text="Labels: firmware, feature" />
+      </outline>
+      <outline text="Story 3.3: 多精灵互动有角色分配机制">
+        <outline text="用户故事: 作为用户，我想要多精灵互动有角色分配机制，以便避免声音杂乱" />
+        <outline text="验收标准">
+          <outline text="系统能够自动分配角色" />
+          <outline text="发起者(Conductor)负责发出第一个音节" />
+          <outline text="发起者为最后发生位移/被放入的小精灵，或响应用户触摸的小精灵" />
+          <outline text="角色分配准确率 大于等于 95%" />
+        </outline>
+      </outline>
+    </outline>
+  </body>
+</opml>

@@ -15,7 +15,8 @@ def merge_rules():
             "错题本规则.md",
             "6A工作流.md",
             "交互约定.md",
-            "OPML规范.md"
+            "OPML规范.md",
+            "Markdown规范.md"
         ]
         
         # 读取并合并所有规则文件
