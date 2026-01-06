@@ -402,4 +402,8 @@
 - 必须包含 `ResultCollector` 以便调试。
 - 关键步骤应添加 `DurationAssertion` (响应时间断言) 和 `JSONPathAssertion` (内容断言)。
 
+### 2.4 清理规则  
+每次执行 JMeter 脚本前，必须清理上一次生成的报告和结果文件，避免旧数据干扰统计。  
+- 使用 PowerShell 命令：Remove-Item -Path "e:\AI测试用例\性能稳定测试\script\report" -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -Path "e:\AI测试用例\性能稳定测试\script\result.jtl" -Force -ErrorAction SilentlyContinue; Write-Host "清理完成"
+
 

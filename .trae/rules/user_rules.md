@@ -1,0 +1,1 @@
+C:/Users/Administrator/.trae-cn/user_rules.md

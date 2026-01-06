@@ -6,22 +6,22 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="DEVICE_ID" elementType="Argument">
             <stringProp name="Argument.name">DEVICE_ID</stringProp>
-            <stringProp name="Argument.value">32752c9a47318b6b</stringProp>
+            <stringProp name="Argument.value">00:11:22:33:44:55</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="USER_ID" elementType="Argument">
             <stringProp name="Argument.name">USER_ID</stringProp>
-            <stringProp name="Argument.value">32752c9a47318b6b</stringProp>
+            <stringProp name="Argument.value">00:11:22:33:44:55</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="SERVER_HOST" elementType="Argument">
             <stringProp name="Argument.name">SERVER_HOST</stringProp>
-            <stringProp name="Argument.value">192.168.0.142</stringProp>
+            <stringProp name="Argument.value">192.168.5.138</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="SERVER_PORT" elementType="Argument">
             <stringProp name="Argument.name">SERVER_PORT</stringProp>
-            <stringProp name="Argument.value">8260</stringProp>
+            <stringProp name="Argument.value">8060</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="AUDIO_FILE_PATH" elementType="Argument">
@@ -62,7 +62,7 @@
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="1. 建立WebSocket连接">
+        <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="1. 建立WebSocket连接" enabled="true">
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server">${SERVER_HOST}</stringProp>
           <stringProp name="port">${SERVER_PORT}</stringProp>
@@ -71,7 +71,7 @@
           <stringProp name="readTimeout">30000</stringProp>
         </eu.luminis.jmeter.wssampler.OpenWebSocketSampler>
         <hashTree/>
-        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="2. 发送hello握手消息">
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="2. 发送hello握手消息" enabled="true">
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server"></stringProp>
           <stringProp name="port">80</stringProp>
@@ -121,7 +121,7 @@
           </DurationAssertion>
           <hashTree/>
         </hashTree>
-        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="3.接收初始化">
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="3.接收初始化" enabled="true">
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server"></stringProp>
           <stringProp name="port">80</stringProp>
@@ -134,7 +134,7 @@
           <stringProp name="dataType">Text</stringProp>
         </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
         <hashTree/>
-        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="3. 接收hello响应">
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="3. 接收hello响应" enabled="true">
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server"></stringProp>
           <stringProp name="port">80</stringProp>
@@ -173,7 +173,7 @@
           </JSONPostProcessor>
           <hashTree/>
         </hashTree>
-        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="4. 发送listen start消息">
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="4. 发送listen start消息" enabled="true">
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server"></stringProp>
           <stringProp name="port">80</stringProp>
@@ -183,7 +183,7 @@
   &quot;session_id&quot;: &quot;${SESSION_ID}&quot;,
   &quot;type&quot;: &quot;listen&quot;,
   &quot;state&quot;: &quot;start&quot;,
-  &quot;mode&quot;: &quot;realtime&quot;
+  &quot;mode&quot;: &quot;auto&quot;
 }</stringProp>
           <boolProp name="createNewConnection">false</boolProp>
           <boolProp name="loadDataFromFile">false</boolProp>
@@ -242,25 +242,23 @@ vars.put(&quot;CURRENT_OFFSET&quot;, &quot;0&quot;)
 log.info(&quot;已准备好PCM音频。大小：&quot; + fileSize + &quot;，块数：&quot; + chunks)</stringProp>
         </JSR223Sampler>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="5.2 发送音频帧循环">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="5.2 发送音频帧循环" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="LoopController.loops">${CHUNK_COUNT}</stringProp>
         </LoopController>
         <hashTree>
-          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="发送PCM帧 ">
+          <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="发送PCM帧">
             <boolProp name="TLS">false</boolProp>
             <stringProp name="server"></stringProp>
             <stringProp name="port">80</stringProp>
             <stringProp name="path"></stringProp>
             <boolProp name="binaryPayload">true</boolProp>
-            <stringProp name="requestData"></stringProp>
+            <stringProp name="requestData">${FRAME_HEX}</stringProp>
             <boolProp name="createNewConnection">false</boolProp>
-            <boolProp name="loadDataFromFile">true</boolProp>
-            <stringProp name="dataFile">${OPUS_FRAME_FILE}</stringProp>
+            <boolProp name="loadDataFromFile">false</boolProp>
+            <stringProp name="dataFile"></stringProp>
             <stringProp name="connectTimeout">20000</stringProp>
             <stringProp name="payloadType">Binary</stringProp>
-            <stringProp name="TestPlan.comments">- 插件的 SingleWriteWebSocketSampler 即使设置了 binaryPayload=true ，当 requestData 是字符串时，仍然会发送 文本消息 ，而不是二进制帧。 
-- 解决方案 ：使用 loadDataFromFile=true 让插件从文件读取数据。插件会读取文件的 原始字节 并以二进制帧的形式发送。</stringProp>
           </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
           <hashTree>
             <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="读取下一帧">
@@ -271,8 +269,6 @@ log.info(&quot;已准备好PCM音频。大小：&quot; + fileSize + &quot;，块
               <stringProp name="script">import java.io.RandomAccessFile
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
-import java.nio.file.Files
-import java.nio.file.Paths
 import io.github.jaredmdobson.concentus.*
 
 String path = vars.get(&quot;PCM_FILE_PATH&quot;)
@@ -310,24 +306,22 @@ if (offset &lt; raf.length()) {
         shortBuffer = padded
     }
 
-    // 3. Encode to Opus (16kHz, 960 samples = 60ms)
+    // 3. Encode to Opus
     byte[] opusBuffer = new byte[1275] // Max payload size
     int len = encoder.encode(shortBuffer, 0, 960, opusBuffer, 0, opusBuffer.length)
     
     byte[] finalOpus = new byte[len]
     System.arraycopy(opusBuffer, 0, finalOpus, 0, len)
 
-    // 4. Write Opus data to temporary file for binary transmission
-    // This is the key fix: send actual binary data, not hex string
-    File tempOpusFile = File.createTempFile(&quot;opus_frame_&quot;, &quot;.bin&quot;)
-    tempOpusFile.deleteOnExit()
-    Files.write(tempOpusFile.toPath(), finalOpus)
-    vars.put(&quot;OPUS_FRAME_FILE&quot;, tempOpusFile.getAbsolutePath())
+    // 4. Hex Adapter for JMeter Plugin (Send Opus as Hex)
+    // ADAPTER: This plugin requires Hex string for binary payload
+    StringBuilder hex = new StringBuilder()
+    for (byte b : finalOpus) {
+        hex.append(String.format(&quot;%02x&quot;, b))
+    }
+    vars.put(&quot;FRAME_HEX&quot;, hex.toString())
 
     vars.put(&quot;CURRENT_OFFSET&quot;, String.valueOf(offset + bytesToRead))
-} else {
-    // No more data, set empty file path
-    vars.put(&quot;OPUS_FRAME_FILE&quot;, &quot;&quot;)
 }
 raf.close()</stringProp>
             </JSR223PreProcessor>
@@ -351,7 +345,7 @@ raf.close()</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="5.3 发送listen stop消息">
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="5.3 发送listen stop消息" enabled="true">
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server"></stringProp>
           <stringProp name="port">80</stringProp>
@@ -374,20 +368,20 @@ raf.close()</stringProp>
           </DurationAssertion>
           <hashTree/>
         </hashTree>
-        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="6. 接收stt识别结果">
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="6. 接收stt识别结果" enabled="true">
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server"></stringProp>
           <stringProp name="port">80</stringProp>
           <stringProp name="path"></stringProp>
           <boolProp name="binary">false</boolProp>
           <boolProp name="createNewConnection">false</boolProp>
-          <stringProp name="readTimeout">100000</stringProp>
-          <boolProp name="optional">true</boolProp>
+          <stringProp name="readTimeout">30000</stringProp>
+          <boolProp name="optional">false</boolProp>
           <stringProp name="connectTimeout">20000</stringProp>
           <stringProp name="dataType">Text</stringProp>
         </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
         <hashTree>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证stt消息类型">
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证stt消息类型" enabled="true">
             <stringProp name="JSON_PATH">$.type</stringProp>
             <stringProp name="EXPECTED_VALUE">stt</stringProp>
             <boolProp name="JSONVALIDATION">true</boolProp>
@@ -396,7 +390,7 @@ raf.close()</stringProp>
             <boolProp name="ISREGEX">false</boolProp>
           </JSONPathAssertion>
           <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证识别文本存在">
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证识别文本存在" enabled="true">
             <stringProp name="JSON_PATH">$.text</stringProp>
             <stringProp name="EXPECTED_VALUE"></stringProp>
             <boolProp name="JSONVALIDATION">false</boolProp>
@@ -404,6 +398,10 @@ raf.close()</stringProp>
             <boolProp name="INVERT">false</boolProp>
             <boolProp name="ISREGEX">false</boolProp>
           </JSONPathAssertion>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">300</stringProp>
+          </ConstantTimer>
           <hashTree/>
         </hashTree>
         <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="7. 接收TTS start消息" enabled="false">
