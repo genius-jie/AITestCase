@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+<sample t="1" it="0" lt="0" ct="0" ts="1640918542175" s="true" lb="设置全局变量" rc="200" rm="OK" tn="前置条件 1-1" dt="text" by="0" sby="0" ng="1" na="1"/>
+<sample t="2" it="0" lt="0" ct="0" ts="1640918542177" s="true" lb="testx.uyunsoft.cn" rc="200" rm="OK" tn="前置条件 1-1" dt="text" by="0" sby="0" ng="1" na="1"/>
+<httpSample t="1151" it="0" lt="1151" ct="203" ts="1640918542181" s="true" lb="用户登录" rc="200" rm="OK" tn="前置条件 1-1" dt="text" by="1031" sby="320" ng="1" na="1">
+  <java.net.URL>https://testx.uyunsoft.cn:7508/tenant/api/v1/user/login</java.net.URL>
+</httpSample>
+<httpSample t="10" it="0" lt="9" ct="0" ts="1640918543333" s="true" lb="获取apikey" rc="200" rm="OK" tn="前置条件 1-1" dt="text" by="1096" sby="228" ng="1" na="1">
+  <java.net.URL>https://testx.uyunsoft.cn:7508/tenant/serviceapi/api/v1/tenant/view?tenantId=e10adc3949ba59abbe56e057f20f88dd</java.net.URL>
+</httpSample>
+<sample t="2" it="0" lt="0" ct="0" ts="1640918543452" s="true" lb="测试准备2-变量" rc="200" rm="OK" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="0" sby="0" ng="1" na="1"/>
+<httpSample t="147" it="0" lt="147" ct="14" ts="1640918543455" s="true" lb="monitor-查询tag" rc="200" rm="OK" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="519" sby="291" ng="1" na="1">
+  <java.net.URL>https://testx.uyunsoft.cn:7508/monitor/api/v2/resources/?resourceId=61ce6c0d9bf42b45c9916e04</java.net.URL>
+</httpSample>
+<sample t="1803" it="0" lt="0" ct="0" ts="1640918543603" s="true" lb="测试准备2" rc="200" rm="Number of samples in transaction : 2, number of failing samples : 0" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="" by="1215" sby="0" ng="1" na="1">
+  <sample t="99" it="0" lt="0" ct="0" ts="1640918543689" s="true" lb="删除历史事件数据:(root@10.1.40.81:22)" rc="0" rm="OK" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="567" sby="0" ng="1" na="1"/>
+  <sample t="1548" it="0" lt="0" ct="0" ts="1640918543858" s="true" lb="删除历史指标数据:(root@10.1.40.81:22)" rc="0" rm="OK" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="648" sby="0" ng="1" na="1"/>
+</sample>
+<httpSample t="24" it="0" lt="24" ct="16" ts="1640918565423" s="true" lb="monitor-创建指标数据" rc="200" rm="" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="177" sby="560" ng="1" na="1">
+  <java.net.URL>https://testx.uyunsoft.cn:7508/store/openapi/v2/datapoints/push?apikey=2086d181b46411ebab80005056b3e852</java.net.URL>
+</httpSample>
+<httpSample t="20" it="0" lt="20" ct="14" ts="1640918585449" s="true" lb="monitor-创建指标数据" rc="200" rm="" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="177" sby="560" ng="1" na="1">
+  <java.net.URL>https://testx.uyunsoft.cn:7508/store/openapi/v2/datapoints/push?apikey=2086d181b46411ebab80005056b3e852</java.net.URL>
+</httpSample>
+<httpSample t="146" it="0" lt="146" ct="12" ts="1640918620470" s="true" lb="1、查看monitor资源圈状态" rc="200" rm="OK" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="417" sby="336" ng="1" na="1">
+  <assertionResult>
+    <name>BeanShell断言</name>
+    <failure>false</failure>
+    <error>false</error>
+    <failureMessage></failureMessage>
+  </assertionResult>
+  <java.net.URL>https://testx.uyunsoft.cn:7508/monitor/api/v2/resources/circle?hostname=monitor</java.net.URL>
+</httpSample>
+<httpSample t="377" it="0" lt="377" ct="303" ts="1640918640624" s="true" lb="monitor-创建指标数据" rc="200" rm="" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="177" sby="560" ng="1" na="1">
+  <java.net.URL>https://testx.uyunsoft.cn:7508/store/openapi/v2/datapoints/push?apikey=2086d181b46411ebab80005056b3e852</java.net.URL>
+</httpSample>
+<httpSample t="252" it="0" lt="252" ct="14" ts="1640918676003" s="true" lb="1、查看monitor资源圈状态" rc="200" rm="OK" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="414" sby="336" ng="1" na="1">
+  <assertionResult>
+    <name>BeanShell断言</name>
+    <failure>false</failure>
+    <error>false</error>
+    <failureMessage></failureMessage>
+  </assertionResult>
+  <java.net.URL>https://testx.uyunsoft.cn:7508/monitor/api/v2/resources/circle?hostname=monitor</java.net.URL>
+</httpSample>
+<httpSample t="33" it="0" lt="33" ct="19" ts="1640918696259" s="true" lb="monitor-创建指标数据" rc="200" rm="" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="177" sby="560" ng="1" na="1">
+  <java.net.URL>https://testx.uyunsoft.cn:7508/store/openapi/v2/datapoints/push?apikey=2086d181b46411ebab80005056b3e852</java.net.URL>
+</httpSample>
+<httpSample t="256" it="0" lt="256" ct="25" ts="1640918731293" s="true" lb="1、查看monitor资源圈状态" rc="200" rm="OK" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="416" sby="336" ng="1" na="1">
+  <assertionResult>
+    <name>BeanShell断言</name>
+    <failure>false</failure>
+    <error>false</error>
+    <failureMessage></failureMessage>
+  </assertionResult>
+  <java.net.URL>https://testx.uyunsoft.cn:7508/monitor/api/v2/resources/circle?hostname=monitor</java.net.URL>
+</httpSample>
+<httpSample t="20" it="0" lt="20" ct="11" ts="1640918751554" s="true" lb="monitor-创建指标数据" rc="200" rm="" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="177" sby="560" ng="1" na="1">
+  <java.net.URL>https://testx.uyunsoft.cn:7508/store/openapi/v2/datapoints/push?apikey=2086d181b46411ebab80005056b3e852</java.net.URL>
+</httpSample>
+<httpSample t="226" it="0" lt="226" ct="24" ts="1640918786573" s="true" lb="1、查看monitor资源圈状态" rc="200" rm="OK" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="416" sby="336" ng="1" na="1">
+  <assertionResult>
+    <name>BeanShell断言</name>
+    <failure>false</failure>
+    <error>false</error>
+    <failureMessage></failureMessage>
+  </assertionResult>
+  <java.net.URL>https://testx.uyunsoft.cn:7508/monitor/api/v2/resources/circle?hostname=monitor</java.net.URL>
+</httpSample>
+<httpSample t="27" it="0" lt="27" ct="12" ts="1640918806803" s="true" lb="monitor-创建指标数据" rc="200" rm="" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="177" sby="560" ng="1" na="1">
+  <java.net.URL>https://testx.uyunsoft.cn:7508/store/openapi/v2/datapoints/push?apikey=2086d181b46411ebab80005056b3e852</java.net.URL>
+</httpSample>
+<httpSample t="504" it="0" lt="504" ct="33" ts="1640918841831" s="true" lb="1、查看monitor资源圈状态" rc="200" rm="OK" tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="415" sby="336" ng="1" na="1">
+  <assertionResult>
+    <name>BeanShell断言</name>
+    <failure>false</failure>
+    <error>false</error>
+    <failureMessage></failureMessage>
+  </assertionResult>
+  <java.net.URL>https://testx.uyunsoft.cn:7508/monitor/api/v2/resources/circle?hostname=monitor</java.net.URL>
+</httpSample>
+<sample t="0" it="0" lt="0" ct="0" ts="0" s="false" lb="直接查询ES:(root@10.1.40.70:22)" rc="Connection Failed" rm="Failed to connect to server: SSH_MSG_DISCONNECT: 2 Too many authentication failures " tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="0" sby="0" ng="1" na="1"/>
+<sample t="0" it="0" lt="0" ct="0" ts="0" s="false" lb="直接查询ES:(root@10.1.40.70:22)" rc="Connection Failed" rm="Failed to connect to server: SSH_MSG_DISCONNECT: 2 Too many authentication failures " tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="0" sby="0" ng="1" na="1"/>
+<sample t="0" it="0" lt="0" ct="0" ts="0" s="false" lb="直接查询ES:(root@10.1.40.70:22)" rc="Connection Failed" rm="Failed to connect to server: SSH_MSG_DISCONNECT: 2 Too many authentication failures " tn="1、数据流测试正例√资源圈指标，状态，标签，事件，事件台 1-1" dt="text" by="0" sby="0" ng="1" na="1"/>
+
+</testResults>

@@ -86,14 +86,14 @@
    - 业务规则
    - 验收标准
    - 边界条件
-2. 创建 `docs/任务名/REQUIREMENT_ANALYSIS_任务名.md`，记录：
+2. 创建 `AI测试分析交付物/任务名/1_REQUIREMENT_ANALYSIS_任务名.md`，记录：
    - 原始需求（用户原话）
    - 提取的功能点列表
    - 业务规则明细
    - 验收标准
    - 疑问清单（需要用户确认的点）
 3. 优先根据需求文档做假设，不确定时主动中断询问
-4. 最后生成 `docs/任务名/VALIDATED_REQUIREMENTS_任务名.md`，包含双方确认后的需求和验收标准
+4. 最后生成 `AI测试分析交付物/任务名/1_VALIDATED_REQUIREMENTS_任务名.md`，包含双方确认后的需求和验收标准
 
 ### 必须达标：
 - 需求清晰无歧义
@@ -104,7 +104,7 @@
 **目标：** 设计测试策略和架构，确定测试范围和方法
 
 ### 要做的事：
-基于上一阶段的验证需求文档，设计测试架构，输出 `docs/任务名/TEST_ARCHITECTURE_任务名.md`，包括：
+基于上一阶段的验证需求文档，设计测试架构，输出 `AI测试分析交付物/任务名/2_TEST_ARCHITECTURE_任务名.md`，包括：
 
 - 测试策略（黑盒/白盒/灰盒）
 - 测试范围（功能/非功能/接口）
@@ -121,7 +121,7 @@
 **目标：** 拆分模块和功能，为每个功能点设计测试
 
 ### 要做的事：
-基于测试架构文档，生成 `docs/任务名/TEST_TASKS_任务名.md`，执行：
+基于测试架构文档，生成 `AI测试分析交付物/任务名/3_TEST_TASKS_任务名.md`，执行：
 
 1. 模块拆分：将系统拆分为可独立测试的模块
 2. 功能拆分：将每个模块拆分为具体功能点
@@ -190,10 +190,10 @@
 
 ### 要做的事：
 1. 进入本阶段前，**全盘扫描并识别**用户在上阶段（Approve）之后对以下交付物的任何手动修改：
-   - `docs/任务名/REQUIREMENT_ANALYSIS_任务名.md`
-   - `docs/任务名/VALIDATED_REQUIREMENTS_任务名.md`
-   - `docs/任务名/TEST_ARCHITECTURE_任务名.md`
-   - `docs/任务名/TEST_TASKS_任务名.md`
+   - `AI测试分析交付物/任务名/1_REQUIREMENT_ANALYSIS_任务名.md`
+   - `AI测试分析交付物/任务名/1_VALIDATED_REQUIREMENTS_任务名.md`
+   - `AI测试分析交付物/任务名/2_TEST_ARCHITECTURE_任务名.md`
+   - `AI测试分析交付物/任务名/3_TEST_TASKS_任务名.md`
    - 功能点与测试维度映射关系
    - 测试任务依赖图（mermaid）
    若发现更新，**以最新内容为准**重新加载测试任务与维度，确保后续生成完全基于最新方案。
@@ -207,7 +207,7 @@
    - 特殊字符正确转义
    - 层级结构清晰
    - 可直接导入XMind
-4. 每完成一个功能点的测试用例生成，在 `docs/任务名/TEST_CASE_PROGRESS_任务名.md` 中记录进度
+4. 每完成一个功能点的测试用例生成，在 `AI测试分析交付物/任务名/4_TEST_CASE_PROGRESS_任务名.md` 中记录进度
 5. 遇到问题立刻暂停，记录问题详情并询问
 
 ### 测试用例规范：
@@ -226,7 +226,7 @@
    - 所有测试维度已覆盖
    - 测试用例符合规范
    - OPML文件可正常导入XMind
-2. 生成最终测试用例报告 `docs/任务名/FINAL_TEST_CASES_任务名.md`
+2. 生成最终测试用例报告 `AI测试分析交付物/任务名/5_FINAL_TEST_CASES_任务名.md`
 3. 生成测试用例交付物：
    - OPML格式的测试用例脑图
    - 测试用例文档
@@ -293,7 +293,7 @@
 ```
 
 
-# Markdown生成规范
+# XMind导入文档层级规范
 
 ## 核心原则
 
@@ -362,4 +362,44 @@
 3. **错误**：标题级别使用混乱
    - **后果**：XMind导入后层级结构不清晰
    - **修正**：按照文档的实际层级结构使用合适的标题级别
+
+# JMeter 脚本与插件规范
+
+## 1. 插件兼容性原则
+
+### 1.1 插件识别与匹配
+在编写或修改 JMX 脚本时，必须首先确认目标环境安装的插件版本。
+- **Maciej Zaleski 插件** (`kg.apc.jmeter.samplers`): 早期常用，功能基础。
+- **Peter Doornbosch 插件** (`eu.luminis.jmeter.wssampler`): 功能更完善，支持复用连接、读写分离等。
+
+**规则**：
+- 严禁混用不同插件家族的组件，除非经过严格验证。
+- 必须根据用户环境（如报错信息 `CannotResolveClassException`）切换正确的插件实现。
+
+### 1.2 WebSocket 插件映射表
+
+| 功能 | Maciej Zaleski (`kg.apc`) | Peter Doornbosch (`eu.luminis`) |
+| :--- | :--- | :--- |
+| **建立连接** | `WebSocketOpenSampler` | `OpenWebSocketSampler` |
+| **发送消息** | `WebSocketSampler` (带 Payload) | `SingleWriteWebSocketSampler` |
+| **接收消息** | `WebSocketSampler` (无 Payload) | `SingleReadWebSocketSampler` |
+| **关闭连接** | `WebSocketCloseSampler` | `CloseWebSocketSampler` |
+| **Ping/Pong** | `WebSocketPingSampler` | `PingPongSampler` |
+
+## 2. JMX 脚本生成规范
+
+### 2.1 连接管理
+- **复用连接**：在 Peter Doornbosch 插件中，后续读写操作必须设置 `createNewConnection=false`，确保使用由 `OpenWebSocketSampler` 建立的会话。
+- **超时设置**：明确区分 `connectTimeout` (连接超时) 和 `readTimeout` (读取超时)，与其业务场景匹配。
+
+### 2.2 数据读写
+- **二进制 vs 文本**：明确区分 `binaryPayload` 属性。
+    - JSON/Text 消息：`binaryPayload=false`
+    - 音频/二进制流：`binaryPayload=true`
+- **读写分离**：不要试图在一个 Sampler 中同时完成复杂的"发-收"逻辑，建议拆分为 "Single Write" + "Single Read" 以便更好控制断言和调试。
+
+### 2.3 异常处理
+- 必须包含 `ResultCollector` 以便调试。
+- 关键步骤应添加 `DurationAssertion` (响应时间断言) 和 `JSONPathAssertion` (内容断言)。
+
 

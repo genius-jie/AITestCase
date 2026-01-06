@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="WebSocket完整对话流程测试">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="DEVICE_ID" elementType="Argument">
+            <stringProp name="Argument.name">DEVICE_ID</stringProp>
+            <stringProp name="Argument.value">00:11:22:33:44:55</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="USER_ID" elementType="Argument">
+            <stringProp name="Argument.name">USER_ID</stringProp>
+            <stringProp name="Argument.value">00:11:22:33:44:55</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="SERVER_HOST" elementType="Argument">
+            <stringProp name="Argument.name">SERVER_HOST</stringProp>
+            <stringProp name="Argument.value">118.196.28.154</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="SERVER_PORT" elementType="Argument">
+            <stringProp name="Argument.name">SERVER_PORT</stringProp>
+            <stringProp name="Argument.value">8460</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="AUDIO_FILE_PATH" elementType="Argument">
+            <stringProp name="Argument.name">AUDIO_FILE_PATH</stringProp>
+            <stringProp name="Argument.value">C:\Users\Administrator\Downloads\你好啊.mp3</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WebSocket对话线程组">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers"/>
+        </HeaderManager>
+        <hashTree/>
+        <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="1. 建立WebSocket连接" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server">${SERVER_HOST}</stringProp>
+          <stringProp name="port">${SERVER_PORT}</stringProp>
+          <stringProp name="path">/?device_id=${DEVICE_ID}&amp;user_id=${USER_ID}</stringProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="readTimeout">30000</stringProp>
+        </eu.luminis.jmeter.wssampler.OpenWebSocketSampler>
+        <hashTree/>
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="2. 发送hello握手消息" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="binaryPayload">false</boolProp>
+          <stringProp name="requestData">{
+  &quot;type&quot;: &quot;hello&quot;,
+  &quot;version&quot;: 1,
+  &quot;features&quot;: {
+    &quot;mcp&quot;: true
+  },
+  &quot;transport&quot;: &quot;websocket&quot;,
+  &quot;audio_params&quot;: {
+    &quot;format&quot;: &quot;opus&quot;,
+    &quot;sample_rate&quot;: 16000,
+    &quot;channels&quot;: 1,
+    &quot;frame_duration&quot;: 60
+  },
+  &quot;device_id&quot;: &quot;${DEVICE_ID}&quot;,
+  &quot;device_name&quot;: &quot;JMeter测试设备&quot;,
+  &quot;user_id&quot;: &quot;${USER_ID}&quot;,
+  &quot;trace_id&quot;: &quot;jmeter_test_${__time(,)}&quot;,
+  &quot;device_mac&quot;: &quot;${DEVICE_ID}&quot;,
+  &quot;client_id&quot;: &quot;${DEVICE_ID}&quot;,
+  &quot;client_ip&quot;: &quot;127.0.0.1&quot;,
+  &quot;client_info&quot;: {
+    &quot;os_type&quot;: &quot;Android&quot;,
+    &quot;os_version&quot;: &quot;14&quot;,
+    &quot;app_version&quot;: &quot;1.0.0&quot;,
+    &quot;network_type&quot;: &quot;wifi&quot;,
+    &quot;network_provider&quot;: &quot;TEST&quot;,
+    &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+    &quot;country_code&quot;: &quot;CN&quot;,
+    &quot;battery_level&quot;: 100,
+    &quot;is_charging&quot;: true
+  }
+}</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <boolProp name="loadDataFromFile">false</boolProp>
+          <stringProp name="dataFile"></stringProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="payloadType">Text</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+        <hashTree>
+          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="响应时间断言" enabled="true">
+            <stringProp name="DurationAssertion.duration">5000</stringProp>
+          </DurationAssertion>
+          <hashTree/>
+        </hashTree>
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="3.接收初始化" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="binary">false</boolProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">5000</stringProp>
+          <boolProp name="optional">false</boolProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree/>
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="3. 接收hello响应" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="binary">false</boolProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">10000</stringProp>
+          <boolProp name="optional">false</boolProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证hello响应类型" enabled="false">
+            <stringProp name="JSON_PATH">$.type</stringProp>
+            <stringProp name="EXPECTED_VALUE">hello</stringProp>
+            <boolProp name="JSONVALIDATION">true</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">false</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证session_id存在" enabled="false">
+            <stringProp name="JSON_PATH">$.session_id</stringProp>
+            <stringProp name="EXPECTED_VALUE"></stringProp>
+            <boolProp name="JSONVALIDATION">false</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">false</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="提取session_id" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">SESSION_ID</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.session_id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="4. 发送listen start消息" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="binaryPayload">false</boolProp>
+          <stringProp name="requestData">{
+  &quot;session_id&quot;: &quot;${SESSION_ID}&quot;,
+  &quot;type&quot;: &quot;listen&quot;,
+  &quot;state&quot;: &quot;start&quot;,
+  &quot;mode&quot;: &quot;auto&quot;
+}</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <boolProp name="loadDataFromFile">false</boolProp>
+          <stringProp name="dataFile"></stringProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="payloadType">Text</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+        <hashTree>
+          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="响应时间断言" enabled="true">
+            <stringProp name="DurationAssertion.duration">2000</stringProp>
+          </DurationAssertion>
+          <hashTree/>
+        </hashTree>
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="5. 发送二进制音频数据" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="binaryPayload">true</boolProp>
+          <stringProp name="requestData"></stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <boolProp name="loadDataFromFile">true</boolProp>
+          <stringProp name="dataFile">${OPUS_AUDIO_FILE}</stringProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="payloadType">Binary</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+        <hashTree>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="MP3转Opus转换脚本" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">import java.nio.file.Files
+import java.nio.file.Paths
+
+def audioPath = vars.get(&quot;AUDIO_FILE_PATH&quot;)
+def audioFile = new File(audioPath)
+
+if (!audioFile.exists()) {
+    log.error(&quot;音频文件不存在: &quot; + audioPath)
+    return
+}
+
+log.info(&quot;开始处理音频文件: &quot; + audioPath + &quot;, 文件大小: &quot; + audioFile.length() + &quot; 字节&quot;)
+
+try {
+    def tempPcmFile = File.createTempFile(&quot;temp_pcm_&quot;, &quot;.raw&quot;)
+    def tempOpusFile = File.createTempFile(&quot;temp_opus_&quot;, &quot;.opus&quot;)
+    
+    tempPcmFile.deleteOnExit()
+    tempOpusFile.deleteOnExit()
+    
+    def ffmpegPath = &quot;ffmpeg&quot;
+    
+    def processBuilder1 = new ProcessBuilder(ffmpegPath, &quot;-y&quot;, &quot;-i&quot;, audioPath, &quot;-f&quot;, &quot;s16le&quot;, &quot;-ar&quot;, &quot;16000&quot;, &quot;-ac&quot;, &quot;1&quot;, tempPcmFile.getAbsolutePath())
+    processBuilder1.redirectErrorStream(true)
+    def process1 = processBuilder1.start()
+    
+    def output1 = new StringBuilder()
+    process1.inputStream.eachLine { line -&gt;
+        output1.append(line).append(&quot;\n&quot;)
+        log.info(&quot;FFmpeg (MP3转PCM): &quot; + line)
+    }
+    
+    def exitCode1 = process1.waitFor()
+    if (exitCode1 != 0) {
+        log.error(&quot;FFmpeg MP3转PCM失败，退出码: &quot; + exitCode1)
+        log.error(&quot;输出: &quot; + output1.toString())
+        return
+    }
+    
+    log.info(&quot;PCM文件大小: &quot; + tempPcmFile.length() + &quot; 字节&quot;)
+    
+    def processBuilder2 = new ProcessBuilder(ffmpegPath, &quot;-y&quot;, &quot;-f&quot;, &quot;s16le&quot;, &quot;-ar&quot;, &quot;16000&quot;, &quot;-ac&quot;, &quot;1&quot;, &quot;-i&quot;, tempPcmFile.getAbsolutePath(), &quot;-c:a&quot;, &quot;libopus&quot;, &quot;-b:a&quot;, &quot;64k&quot;, &quot;-frame_duration&quot;, &quot;60&quot;, &quot;-application&quot;, &quot;voip&quot;, tempOpusFile.getAbsolutePath())
+    processBuilder2.redirectErrorStream(true)
+    def process2 = processBuilder2.start()
+    
+    def output2 = new StringBuilder()
+    process2.inputStream.eachLine { line -&gt;
+        output2.append(line).append(&quot;\n&quot;)
+        log.info(&quot;FFmpeg (PCM转Opus): &quot; + line)
+    }
+    
+    def exitCode2 = process2.waitFor()
+    if (exitCode2 != 0) {
+        log.error(&quot;FFmpeg PCM转Opus失败，退出码: &quot; + exitCode2)
+        log.error(&quot;输出: &quot; + output2.toString())
+        return
+    }
+    
+    log.info(&quot;Opus文件大小: &quot; + tempOpusFile.length() + &quot; 字节&quot;)
+    
+    def opusBytes = Files.readAllBytes(Paths.get(tempOpusFile.getAbsolutePath()))
+    
+    def opusTempFile = File.createTempFile(&quot;opus_audio_&quot;, &quot;.opus&quot;)
+    opusTempFile.deleteOnExit()
+    Files.write(Paths.get(opusTempFile.getAbsolutePath()), opusBytes)
+    
+    vars.put(&quot;OPUS_AUDIO_FILE&quot;, opusTempFile.getAbsolutePath())
+    
+    log.info(&quot;音频转换成功！最终Opus数据大小: &quot; + opusBytes.length + &quot; 字节&quot;)
+    log.info(&quot;Opus数据已保存到临时文件: &quot; + opusTempFile.getAbsolutePath())
+    
+    tempPcmFile.delete()
+    tempOpusFile.delete()
+    
+} catch (Exception e) {
+    log.error(&quot;音频转换过程中发生错误: &quot; + e.getMessage(), e)
+}</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="响应时间断言" enabled="true">
+            <stringProp name="DurationAssertion.duration">30000</stringProp>
+          </DurationAssertion>
+          <hashTree/>
+        </hashTree>
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="6. 接收stt识别结果" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="binary">false</boolProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">30000</stringProp>
+          <boolProp name="optional">false</boolProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证stt消息类型" enabled="true">
+            <stringProp name="JSON_PATH">$.type</stringProp>
+            <stringProp name="EXPECTED_VALUE">stt</stringProp>
+            <boolProp name="JSONVALIDATION">true</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">false</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证识别文本存在" enabled="true">
+            <stringProp name="JSON_PATH">$.text</stringProp>
+            <stringProp name="EXPECTED_VALUE"></stringProp>
+            <boolProp name="JSONVALIDATION">false</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">false</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">300</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="7. 接收TTS start消息" enabled="false">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="binary">false</boolProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">10000</stringProp>
+          <boolProp name="optional">false</boolProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证TTS start消息" enabled="true">
+            <stringProp name="JSON_PATH">$.type</stringProp>
+            <stringProp name="EXPECTED_VALUE">tts</stringProp>
+            <boolProp name="JSONVALIDATION">true</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">false</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证TTS start状态" enabled="true">
+            <stringProp name="JSON_PATH">$.state</stringProp>
+            <stringProp name="EXPECTED_VALUE">start</stringProp>
+            <boolProp name="JSONVALIDATION">true</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">false</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+        </hashTree>
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="8. 接收TTS sentence_start消息" enabled="false">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="binary">false</boolProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">5000</stringProp>
+          <boolProp name="optional">false</boolProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证sentence_start状态" enabled="true">
+            <stringProp name="JSON_PATH">$.state</stringProp>
+            <stringProp name="EXPECTED_VALUE">sentence_start</stringProp>
+            <boolProp name="JSONVALIDATION">true</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">false</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+        </hashTree>
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="9. 接收TTS音频数据" enabled="false">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="binary">false</boolProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">30000</stringProp>
+          <boolProp name="optional">false</boolProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree/>
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="10. 接收TTS sentence_end消息" enabled="false">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="binary">false</boolProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">5000</stringProp>
+          <boolProp name="optional">false</boolProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证sentence_end状态" enabled="true">
+            <stringProp name="JSON_PATH">$.state</stringProp>
+            <stringProp name="EXPECTED_VALUE">sentence_end</stringProp>
+            <boolProp name="JSONVALIDATION">true</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">false</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+        </hashTree>
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="11. 接收TTS stop消息" enabled="false">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="binary">false</boolProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">5000</stringProp>
+          <boolProp name="optional">false</boolProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证TTS stop状态" enabled="true">
+            <stringProp name="JSON_PATH">$.state</stringProp>
+            <stringProp name="EXPECTED_VALUE">stop</stringProp>
+            <boolProp name="JSONVALIDATION">true</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">false</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="验证完成原因" enabled="true">
+            <stringProp name="JSON_PATH">$.reason</stringProp>
+            <stringProp name="EXPECTED_VALUE">complete</stringProp>
+            <boolProp name="JSONVALIDATION">true</boolProp>
+            <boolProp name="EXPECT_NULL">false</boolProp>
+            <boolProp name="INVERT">false</boolProp>
+            <boolProp name="ISREGEX">false</boolProp>
+          </JSONPathAssertion>
+          <hashTree/>
+        </hashTree>
+        <eu.luminis.jmeter.wssampler.CloseWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.CloseWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.CloseWebSocketSampler" testname="12. 关闭WebSocket连接" enabled="false">
+          <stringProp name="statusCode">1000</stringProp>
+          <stringProp name="readTimeout">5000</stringProp>
+        </eu.luminis.jmeter.wssampler.CloseWebSocketSampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="查看结果树">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>true</responseData>
+              <samplerData>true</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

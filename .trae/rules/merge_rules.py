@@ -16,7 +16,8 @@ def merge_rules():
             "6A工作流.md",
             "交互约定.md",
             "OPML规范.md",
-            "Markdown规范.md"
+            "Markdown规范.md",
+            "jmeter_plugin_rules.md"
         ]
         
         # 读取并合并所有规则文件

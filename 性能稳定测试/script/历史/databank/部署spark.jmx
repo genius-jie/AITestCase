@@ -1,0 +1,1368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">content-type</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Cache-Control</stringProp>
+            <stringProp name="Header.value">no-cache</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="前置条件" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </SetupThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="设置全局变量" enabled="true">
+          <stringProp name="BeanShellSampler.query">String url=&quot;${__P(request.url)}&quot;;
+vars.put(&quot;url&quot;,url);
+vars.put(&quot;url&quot;,&quot;10.1.56.159&quot;);</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果环境是10.1.56.159" enabled="true">
+          <stringProp name="IfController.condition">${__jexl3(vars.get(&quot;url&quot;) == &quot;10.1.56.159&quot; )}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="10.1.56.159" enabled="true">
+            <stringProp name="BeanShellSampler.query">import java.math.BigInteger;
+import java.util.Calendar;
+import java.util.Date;
+
+////调试用
+${__setProperty(omp.url,10.1.56.159,)};
+${__setProperty(omp.protocol,http,)};
+${__setProperty(omp.port,7500,)};
+
+${__setProperty(tenant.url,10.1.56.159,)};
+${__setProperty(tenant.protocol,http,)};
+${__setProperty(tenant.port,80,)};
+${__setProperty(esIp,&quot;10.1.56.161&quot;,)};
+
+${__setProperty(zkIp,&quot;10.1.56.159&quot;,)};
+${__setProperty(mysqlIp,&quot;10.1.56.159&quot;,)};
+${__setProperty(mongoIp,&quot;10.1.56.161&quot;,)};
+${__setProperty(password,&quot;Admin@123&quot;,)};
+${__setProperty(kafkaIp,10.1.56.161,)};
+${__setProperty(kafka_opt,&quot;opt&quot;,)};
+${__setProperty(kafka_password,Uyun_123,)};
+${__setProperty(mysql_password,&quot;Uyun_123&quot;,)};
+${__setProperty(spark_password,&quot;Uyun_123&quot;,)};
+${__setProperty(ifdisconf,false,)};
+String url=&quot;${__P(request.url)}&quot;;
+System.out.println(url);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果环境是10.1.56.163" enabled="true">
+          <stringProp name="IfController.condition">${__jexl3(vars.get(&quot;url&quot;) == &quot;10.1.56.163&quot; )}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="10.1.56.163" enabled="true">
+            <stringProp name="BeanShellSampler.query">import java.math.BigInteger;
+import java.util.Calendar;
+import java.util.Date;
+
+////调试用
+${__setProperty(omp.url,10.1.56.163,)};
+${__setProperty(omp.protocol,http,)};
+${__setProperty(omp.port,7500,)};
+
+${__setProperty(tenant.url,10.1.62.16,)};
+${__setProperty(tenant.protocol,http,)};
+${__setProperty(tenant.port,80,)};
+${__setProperty(esIp,&quot;10.1.56.163&quot;,)};
+${__setProperty(hots_num,6,)};
+String url=&quot;${__P(request.url)}&quot;;
+System.out.println(url);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果环境是10.1.61.101" enabled="true">
+          <stringProp name="IfController.condition">${__jexl3(vars.get(&quot;url&quot;) == &quot;10.1.61.101&quot; )}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="10.1.61.101" enabled="true">
+            <stringProp name="BeanShellSampler.query">import java.math.BigInteger;
+import java.util.Calendar;
+import java.util.Date;
+
+////调试用
+${__setProperty(omp.url,10.1.61.101,)};
+${__setProperty(omp.protocol,http,)};
+${__setProperty(omp.port,7500,)};
+
+${__setProperty(tenant.url,10.1.61.101,)};
+${__setProperty(tenant.protocol,http,)};
+${__setProperty(tenant.port,80,)};
+${__setProperty(esIp,&quot;10.1.62.136&quot;,)};
+${__setProperty(mysqlIp,&quot;10.1.61.101&quot;,)};
+${__setProperty(mongoIp,&quot;10.1.61.149&quot;,)};
+${__setProperty(ifdisconf,false,)};
+${__setProperty(mongoIp,&quot;10.1.40.70&quot;,)};
+${__setProperty(password,&quot;Admin@123&quot;,)};
+${__setProperty(spark_password,&quot;broada123&quot;,)};
+String url=&quot;${__P(request.url)}&quot;;
+System.out.println(url);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果环境是10.1.60.234" enabled="true">
+          <stringProp name="IfController.condition">${__jexl3(vars.get(&quot;url&quot;) == &quot;10.1.60.234&quot; )}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="10.1.60.234" enabled="true">
+            <stringProp name="BeanShellSampler.query">import java.math.BigInteger;
+import java.util.Calendar;
+import java.util.Date;
+
+////调试用
+${__setProperty(omp.url,10.1.60.234,)};
+${__setProperty(omp.protocol,http,)};
+${__setProperty(omp.port,7500,)};
+
+${__setProperty(tenant.url,10.1.60.234,)};
+${__setProperty(tenant.protocol,http,)};
+${__setProperty(tenant.port,80,)};
+${__setProperty(esIp,&quot;10.1.60.234&quot;,)};
+${__setProperty(mysqlIp,&quot;10.1.60.234&quot;,)};
+${__setProperty(mongoIp,&quot;10.1.60.234&quot;,)};
+${__setProperty(ifdisconf,false,)};
+String url=&quot;${__P(request.url)}&quot;;
+System.out.println(url);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果环境是10.1.40.81" enabled="true">
+          <stringProp name="IfController.condition">${__jexl3(vars.get(&quot;url&quot;) == &quot;10.1.40.81&quot; )}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="10.1.40.81" enabled="true">
+            <stringProp name="BeanShellSampler.query">import java.math.BigInteger;
+import java.util.Calendar;
+import java.util.Date;
+
+////调试用
+${__setProperty(omp.url,10.1.40.81,)};
+${__setProperty(omp.protocol,http,)};
+${__setProperty(omp.port,7500,)};
+
+${__setProperty(tenant.url,10.1.40.81,)};
+${__setProperty(tenant.protocol,http,)};
+${__setProperty(tenant.port,7508,)};
+${__setProperty(esIp,&quot;10.1.40.89&quot;,)};
+${__setProperty(mysqlIp,&quot;10.1.40.81&quot;,)};
+${__setProperty(mongoIp,&quot;10.1.40.81&quot;,)};
+${__setProperty(ifdisconf,false,)};
+String url=&quot;${__P(request.url)}&quot;;
+System.out.println(url);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果环境是10.1.40.70" enabled="true">
+          <stringProp name="IfController.condition">${__jexl3(vars.get(&quot;url&quot;) == &quot;10.1.40.70&quot; )}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="10.1.40.70" enabled="true">
+            <stringProp name="BeanShellSampler.query">import java.math.BigInteger;
+import java.util.Calendar;
+import java.util.Date;
+
+////调试用
+${__setProperty(omp.url,10.1.40.70,)};
+${__setProperty(omp.protocol,https,)};
+${__setProperty(omp.port,7500,)};
+
+${__setProperty(tenant.url,10.1.40.70,)};
+${__setProperty(tenant.protocol,https,)};
+${__setProperty(tenant.port,7508,)};
+${__setProperty(esIp,&quot;10.1.40.75&quot;,)};
+${__setProperty(mysqlIp,&quot;10.1.40.67&quot;,)};
+${__setProperty(mongoIp,&quot;10.1.40.70&quot;,)};
+${__setProperty(password,&quot;VUdxcWZPdEUvTFZ3VlJ3MUFGQVFwN0tDSlE1allpcmVHeDEzMk4yMERUeUdHblNuY1pQNGpFVjBCZ294MEcyUkFxbDB0SEoxQTJ1aVVEcjBmRk4veEl4RFczckN1NVFiTGpJTGRlNGY5THR4Q2RkMUxhSG8rY0t4M0JlajgvaHJsMG1xMzFVUzUzS1Y5S1VIZ1NFdDhPMWJtMkovMmNsN3gwWndXZVRZb0t3PQ==&quot;,)};
+${__setProperty(ifdisconf,false,)};
+String url=&quot;${__P(request.url)}&quot;;
+System.out.println(url);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果环境是10.1.61.117" enabled="true">
+          <stringProp name="IfController.condition">${__jexl3(vars.get(&quot;url&quot;) == &quot;10.1.61.117&quot; )}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="10.1.61.117" enabled="true">
+            <stringProp name="BeanShellSampler.query">import java.math.BigInteger;
+import java.util.Calendar;
+import java.util.Date;
+
+////调试用
+${__setProperty(omp.url,10.1.61.117,)};
+${__setProperty(omp.protocol,http,)};
+${__setProperty(omp.port,7500,)};
+
+${__setProperty(tenant.url,10.1.50.105,)};
+${__setProperty(tenant.protocol,http,)};
+${__setProperty(tenant.port,80,)};
+${__setProperty(esIp,&quot;10.1.56.65&quot;,)};
+${__setProperty(mysqlIp,&quot;10.1.61.11&quot;,)};
+${__setProperty(mongoIp,&quot;10.1.53.20&quot;,)};
+${__setProperty(password,&quot;Admin@123&quot;,)};
+${__setProperty(spark_password,&quot;4SKVCz2g12&quot;,)};
+${__setProperty(ifdisconf,false,)};
+${__setProperty(zkIp,&quot;10.1.50.105&quot;,)};
+${__setProperty(kafkaIp,10.1.60.109,)};
+${__setProperty(kafka_opt,&quot;opt&quot;,)};
+${__setProperty(kafka_password,4SKVCz2g12,)};
+${__setProperty(mysql_password,&quot;4SKVCz2g12&quot;,)};
+String url=&quot;${__P(request.url)}&quot;;
+System.out.println(url);</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果环境是testx" enabled="true">
+          <stringProp name="IfController.condition">${__jexl3(vars.get(&quot;url&quot;) == &quot;testx&quot; )}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="testx" enabled="true">
+            <stringProp name="BeanShellSampler.query">import java.math.BigInteger;
+import java.util.Calendar;
+import java.util.Date;
+
+////调试用
+${__setProperty(omp.url,10.1.40.93,)};
+${__setProperty(omp.protocol,http,)};
+${__setProperty(omp.port,7500,)};
+
+${__setProperty(tenant.url,10.1.40.81,)};
+${__setProperty(tenant.protocol,https,)};
+${__setProperty(tenant.port,7508,)};
+${__setProperty(zkIp,&quot;10.1.40.27&quot;,)};
+${__setProperty(esIp,&quot;10.1.40.89&quot;,)};
+${__setProperty(mysqlIp,&quot;10.1.40.81&quot;,)};
+${__setProperty(mongoIp,&quot;10.1.40.81&quot;,)};
+${__setProperty(password,&quot;Admin@123&quot;,)};
+${__setProperty(kafkaIp,10.1.40.86,)};
+${__setProperty(kafka_password,qazwsx@123!,)};
+${__setProperty(mysql_password,&quot;qazwsx@123!&quot;,)};
+${__setProperty(spark_password,&quot;4SKVCz2g12&quot;,)};
+${__setProperty(ifdisconf,false,)};
+${__setProperty(kafka_opt,&quot;app&quot;,)};
+String url=&quot;${__P(request.url)}&quot;;
+System.out.println(url);
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果环境是10.1.56.233" enabled="true">
+          <stringProp name="IfController.condition">${__jexl3(vars.get(&quot;url&quot;) == &quot;10.1.56.233&quot; )}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="10.1.56.233" enabled="true">
+            <stringProp name="BeanShellSampler.query">import java.math.BigInteger;
+import java.util.Calendar;
+import java.util.Date;
+
+////调试用
+${__setProperty(omp.url,10.1.56.233,)};
+${__setProperty(omp.protocol,http,)};
+${__setProperty(omp.port,7500,)};
+
+${__setProperty(tenant.url,10.1.56.233,)};
+${__setProperty(tenant.protocol,http,)};
+${__setProperty(tenant.port,80,)};
+	
+${__setProperty(esIp,&quot;10.1.56.235&quot;,)};
+${__setProperty(mysqlIp,&quot;10.1.56.233&quot;,)};
+${__setProperty(mongoIp,&quot;10.1.56.233&quot;,)};
+${__setProperty(password,&quot;Admin@123!&quot;,)};
+
+${__setProperty(mysql_password,&quot;qazwsx@123!&quot;,)};
+${__setProperty(spark_password,&quot;qazwsx@123!&quot;,)};
+${__setProperty(ifdisconf,false,)};
+String url=&quot;${__P(request.url)}&quot;;
+System.out.println(url);
+</stringProp>
+            <stringProp name="BeanShellSampler.filename"></stringProp>
+            <stringProp name="BeanShellSampler.parameters"></stringProp>
+            <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+          </BeanShellSampler>
+          <hashTree/>
+        </hashTree>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="测试准备3-默认IP" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${__P(tenant.url)}</stringProp>
+          <stringProp name="HTTPSampler.port">${__P(tenant.port)}</stringProp>
+          <stringProp name="HTTPSampler.protocol">${__P(tenant.protocol)}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="用户登录" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{	&quot;email&quot;:&quot;admin&quot;,&#xd;
+	&quot;passwd&quot;:${__P(password,)},&#xd;
+	&quot;tenantId&quot;: &quot;e10adc3949ba59abbe56e057f20f88dd&quot;,&#xd;
+	&quot;tenantStrategy&quot;: &quot;2&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/tenant/api/v1/user/login</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="正则表达式提取器" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">token</stringProp>
+            <stringProp name="RegexExtractor.regex">&quot;token&quot;:&quot;(.*?)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number">0</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell 后置处理程序" enabled="true">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">${__setProperty(token,${token},)};
+//${__setProperty(timestamp,${timestamp},)}
+//String t=&quot;${__time()}&quot;;
+//vars.put(&quot;timestamp&quot;,t);
+//log.error(${token}+&quot;&quot;);
+
+
+
+</stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="获取apikey" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/tenant/serviceapi/api/v1/tenant/view?tenantId=e10adc3949ba59abbe56e057f20f88dd</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON提取器" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">apikey</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$..apiKeys[0].key</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">e10adc3949ba59abbe56e057f20f88dd</stringProp>
+            <stringProp name="Scope.variable"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell 后置处理程序" enabled="true">
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="script">${__setProperty(apikey,&quot;${apikey}&quot;,)};</stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <org.apache.jmeter.protocol.ssh.sampler.SSHCommandSampler guiclass="TestBeanGUI" testclass="org.apache.jmeter.protocol.ssh.sampler.SSHCommandSampler" testname="kafka主机java声明初始化" enabled="true">
+          <stringProp name="command">javapath=`ps -ef |grep java|head -1|awk &apos;{print $8}&apos;`&amp;&amp;ln -fs $javapath /usr/local/bin/java</stringProp>
+          <intProp name="connectionTimeout">50000</intProp>
+          <stringProp name="hostname">${__P(kafkaIp,)}</stringProp>
+          <stringProp name="passphrase"></stringProp>
+          <stringProp name="password">${__P(kafka_password,)}</stringProp>
+          <intProp name="port">22</intProp>
+          <boolProp name="printStdErr">true</boolProp>
+          <stringProp name="sshkeyfile"></stringProp>
+          <boolProp name="useReturnCode">true</boolProp>
+          <stringProp name="username">root</stringProp>
+          <stringProp name="TestPlan.comments">如果找不到java，就在 /usr/local/bin 目录下执行下ln -fs  /opt/jdk/bin/java java</stringProp>
+        </org.apache.jmeter.protocol.ssh.sampler.SSHCommandSampler>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="databank自动化测试" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="测试准备2-变量" enabled="true">
+          <stringProp name="BeanShellSampler.query">vars.put(&quot;esIp&quot;,${__P(esIp,)});
+vars.put(&quot;apikey&quot;,${__P(apikey,)});
+vars.put(&quot;mysqlIp&quot;,${__P(mysqlIp,)});
+vars.put(&quot;mongoIp&quot;,${__P(mongoIp,)});
+vars.put(&quot;spark_password&quot;,${__P(spark_password,)});
+vars.put(&quot;zkIp&quot;,${__P(zkIp,)});
+vars.put(&quot;mysql_password&quot;,${__P(mysql_password,)});
+vars.put(&quot;kafkaIp&quot;,&quot;${__P(kafkaIp,)}&quot;);
+vars.put(&quot;kafka_opt&quot;,${__P(kafka_opt,)});
+vars.put(&quot;kafka_password&quot;,&quot;${__P(kafka_password,)}&quot;);
+String topic_time = &quot;${__time()}&quot;;
+String topic = &quot;zlj_datasync_test_&quot;+topic_time;
+vars.put(&quot;topic&quot;,topic);
+${__setProperty(kafka_topic,topic,)};
+//vars.put(&quot;model_names_1&quot;,&quot;databank_hadoop&quot;);
+vars.put(&quot;model_names_1&quot;,&quot;databank_spark&quot;);
+//手动设置部署机器
+//vars.put(&quot;databank_spark_ip_1&quot;,&quot;10.1.56.161&quot;);
+//vars.put(&quot;databank_spark_ip_2&quot;,&quot;10.1.56.162&quot;);
+//vars.put(&quot;databank_spark_ip_3&quot;,&quot;10.1.56.164&quot;);
+//vars.put(&quot;databank_spark_ip_matchNr&quot;,&quot;3&quot;);</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="0.重新部署-完成" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+          <stringProp name="TestPlan.comments">删除mysql数据库的数据，删除disconf上databank相关数据，</stringProp>
+        </TransactionController>
+        <hashTree>
+          <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="测试准备3-默认IP" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${__P(omp.url)}</stringProp>
+            <stringProp name="HTTPSampler.port">${__P(omp.port)}</stringProp>
+            <stringProp name="HTTPSampler.protocol">${__P(omp.protocol)}</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </ConfigTestElement>
+          <hashTree/>
+          <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="测试准备1-请求头" enabled="true">
+            <collectionProp name="CookieManager.cookies">
+              <elementProp name="token" elementType="Cookie" testname="token">
+                <stringProp name="Cookie.value">${__P(token,)}</stringProp>
+                <stringProp name="Cookie.domain">${__P(omp.url,)}</stringProp>
+                <stringProp name="Cookie.path"></stringProp>
+                <boolProp name="Cookie.secure">false</boolProp>
+                <longProp name="Cookie.expires">0</longProp>
+                <boolProp name="Cookie.path_specified">true</boolProp>
+                <boolProp name="Cookie.domain_specified">true</boolProp>
+              </elementProp>
+            </collectionProp>
+            <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          </CookieManager>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="用户登录" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{	&quot;username&quot;:&quot;admin&quot;,&#xd;
+	&quot;passwd&quot;:&quot;Tm9zNTc1Jg==&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/omp/api/v1/user/login</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="OMP查询服务id--用于卸载" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/omp/api/v1/pkgs/query?pageSize=300</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON提取器" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">platform_mongodb_pkgid;platform_kafka_pkgid;platform_elasticsearch_pkgid;databank_hadoop_pkgid;databank_spark_pkgid;databank_flume_pkgid;databank_core_pkgid;databank_manager_pkgid;databank_web_pkgid;databank_deploy_pkgid;databank_solution_pkgid;databank_metricbeat_pkgid;databank_data_map_pkgid;databank_scheduler_pkgid;alert_pkgid;monitor_pkgid;msphere_server_pkgid;msphere_engine_pkgid;msphere_beats_pkgid;platform_store_metric_pkgid;</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..pkgs[?(@.pkgName==&quot;platform-mongodb&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;platform-kafka&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;platform-elasticsearch&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;databank-hadoop&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;databank-spark&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;databank-flume&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;databank-core&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;databank-manager&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;databank-web&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;databank-deploy&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;databank-solution&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;databank-metricbeat&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;databank-data-map&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;databank-scheduler&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;alert-front&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;monitor-nginx&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;msphere-server&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;msphere-engine&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;msphere-beats&quot;)].pkgId;$..pkgs[?(@.pkgName==&quot;platform-store-metric&quot;)].pkgId;</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;-1;</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="遍历重装" enabled="true">
+            <stringProp name="ForeachController.inputVal">model_names</stringProp>
+            <stringProp name="ForeachController.returnVal">model_name</stringProp>
+            <boolProp name="ForeachController.useSeparator">true</boolProp>
+            <stringProp name="ForeachController.startIndex">0</stringProp>
+            <stringProp name="ForeachController.endIndex">14</stringProp>
+          </ForeachController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="查询得到安装的ip,主机hostid，并卸载模块" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果手动设置，就按照手动的玩" enabled="true">
+                <stringProp name="IfController.condition">${__groovy(vars.get(&quot;${model_name}_ip_1&quot;) != null )}</stringProp>
+                <boolProp name="IfController.evaluateAll">false</boolProp>
+                <boolProp name="IfController.useExpression">true</boolProp>
+              </IfController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="查询${model_name}安装的主机" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+                    <collectionProp name="Arguments.arguments"/>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/omp/api/v1/installed_pkgs/query?pageIndex=1&amp;pageSize=10&amp;keyWord=${model_name}</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON提取器" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">${model_name}_pkgId_total</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$..pkgId</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                    <stringProp name="TestPlan.comments">卸载用</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">000</stringProp>
+                    <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON提取器" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">${model_name}_hostId</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$..hostId</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+                    <stringProp name="TestPlan.comments">卸载用</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">000</stringProp>
+                    <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                </hashTree>
+                <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="循环卸载模块" enabled="true">
+                  <boolProp name="LoopController.continue_forever">true</boolProp>
+                  <stringProp name="LoopController.loops">${__V(${model_name}_hostId_matchNr)}</stringProp>
+                </LoopController>
+                <hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="卸载${model_name}" enabled="true">
+                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">{&quot;pkgId&quot;:&quot;${__V(${model_name}_pkgId_total_${__counter(,)})}&quot;,&quot;hostIds&quot;:[&quot;${__V(${model_name}_hostId_${__counter(,)})}&quot;],&quot;forceDelete&quot;:false}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+                    <stringProp name="HTTPSampler.path">/omp/api/v1/pkgs/uninstall?16254${__Random(100000000,900000000,)}.07966733${__Random(100000000,900000000,)}</stringProp>
+                    <stringProp name="HTTPSampler.method">POST</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout">60000</stringProp>
+                    <stringProp name="HTTPSampler.response_timeout">60000</stringProp>
+                    <stringProp name="TestPlan.comments">最多查询出十条数据</stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree/>
+                </hashTree>
+                <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="循环查询主机hostid" enabled="true">
+                  <boolProp name="LoopController.continue_forever">true</boolProp>
+                  <stringProp name="LoopController.loops">${__V(${model_name}_ip_matchNr)}</stringProp>
+                </LoopController>
+                <hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="查询主机" enabled="true">
+                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">{&quot;pageIndex&quot;:1,&quot;pageSize&quot;:10,&quot;keyword&quot;:&quot;${__V(${model_name}_ip_${__counter(,)})}&quot;}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                    <stringProp name="HTTPSampler.path">/omp/api/v1/hosts/list</stringProp>
+                    <stringProp name="HTTPSampler.method">POST</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree>
+                    <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON提取器" enabled="true">
+                      <stringProp name="JSONPostProcessor.referenceNames">databank_spark_hostId_${__counter(,)}</stringProp>
+                      <stringProp name="JSONPostProcessor.jsonPathExprs">$..hostId</stringProp>
+                      <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                      <stringProp name="JSONPostProcessor.defaultValues">000</stringProp>
+                    </JSONPostProcessor>
+                    <hashTree/>
+                  </hashTree>
+                </hashTree>
+                <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="设置安装主机hostid" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">String databank_spark_hostId_ALL=&quot;&quot;;
+int num=Integer.parseInt(&quot;${__V(${model_name}_ip_matchNr)}&quot;);
+for(int i=1;i&lt;=num;i++){
+	${model_name}_hostId_ALL+=vars.get(&quot;${model_name}_hostId_&quot;+i)+&quot;,&quot;;
+}
+${model_name}_hostId_ALL=${model_name}_hostId_ALL.substring(0,${model_name}_hostId_ALL.length()-1);
+vars.put(&quot;${model_name}_hostId_ALL&quot;,${model_name}_hostId_ALL);
+vars.put(&quot;${model_name}_hostId_matchNr&quot;,&quot;${__V(${model_name}_ip_matchNr)}&quot;);</stringProp>
+                </JSR223Sampler>
+                <hashTree/>
+              </hashTree>
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果没有手动设置，就按照卸载的玩" enabled="true">
+                <stringProp name="IfController.condition">${__groovy(vars.get(&quot;${model_name}_ip_1&quot;) == null )}</stringProp>
+                <boolProp name="IfController.evaluateAll">false</boolProp>
+                <boolProp name="IfController.useExpression">true</boolProp>
+              </IfController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="查询${model_name}安装的主机" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+                    <collectionProp name="Arguments.arguments"/>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/omp/api/v1/installed_pkgs/query?pageIndex=1&amp;pageSize=10&amp;keyWord=${model_name}</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON提取器" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">${model_name}_pkgId_total</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$..pkgId</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+                    <stringProp name="TestPlan.comments">卸载用</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">000</stringProp>
+                    <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON提取器" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">${model_name}_ip</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$..ip</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+                    <stringProp name="TestPlan.comments">卸载用</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">000</stringProp>
+                    <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON提取器" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">${model_name}_hostId</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$..hostId</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+                    <stringProp name="TestPlan.comments">卸载用</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">000</stringProp>
+                    <boolProp name="JSONPostProcessor.compute_concat">true</boolProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                </hashTree>
+                <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="循环卸载模块" enabled="false">
+                  <boolProp name="LoopController.continue_forever">true</boolProp>
+                  <stringProp name="LoopController.loops">${__V(${model_name}_hostId_matchNr)}</stringProp>
+                </LoopController>
+                <hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="卸载${model_name}" enabled="true">
+                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">{&quot;pkgId&quot;:&quot;${__V(${model_name}_pkgId_total_${__counter(,)})}&quot;,&quot;hostIds&quot;:[&quot;${__V(${model_name}_hostId_${__counter(,)})}&quot;],&quot;forceDelete&quot;:false}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+                    <stringProp name="HTTPSampler.path">/omp/api/v1/pkgs/uninstall?16254${__Random(100000000,900000000,)}.07966733${__Random(100000000,900000000,)}</stringProp>
+                    <stringProp name="HTTPSampler.method">POST</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout">60000</stringProp>
+                    <stringProp name="HTTPSampler.response_timeout">60000</stringProp>
+                    <stringProp name="TestPlan.comments">最多查询出十条数据</stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="查询${model_name}的依赖groupId" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+              <stringProp name="HTTPSampler.path">/omp/api/v1/pkgs/dependent_pkgs/query?pkgId=${__V(${model_name}_pkgid)}</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="TestPlan.comments">最多查询出十条数据</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON提取器" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">groupId</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$..moduleGroups..groupId</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">000</stringProp>
+                <stringProp name="TestPlan.comments">重装调用</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON提取器" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">moduleName</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$..moduleGroups..moduleName</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">000</stringProp>
+                <stringProp name="TestPlan.comments">重装调用</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="是spark√" enabled="true">
+              <stringProp name="IfController.condition">&quot;${model_name}&quot;==&quot;databank_spark&quot;</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+            </IfController>
+            <hashTree>
+              <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="安装spark" enabled="false">
+                <boolProp name="TransactionController.includeTimers">false</boolProp>
+                <boolProp name="TransactionController.parent">false</boolProp>
+              </TransactionController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="组装参数moduleRequest" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                    <collectionProp name="Arguments.arguments"/>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/omp/api/v1/pkgs/dependent_pkgs/query?pkgId=${__V(${model_name}_pkgid)}</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="TestPlan.comments">必须卸载后安装</stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell 后置处理程序" enabled="true">
+                    <boolProp name="resetInterpreter">false</boolProp>
+                    <stringProp name="parameters"></stringProp>
+                    <stringProp name="filename"></stringProp>
+                    <stringProp name="script">import org.json.*;
+String response_data = prev.getResponseDataAsString();
+JSONObject  dataObject = new JSONArray (response_data).getJSONObject(0);
+
+JSONArray   modules_array = dataObject.getJSONArray(&quot;modules&quot;);
+int len = modules_array.length();
+String request_body=&quot;[&quot;;
+String ss=&quot;&quot;;
+for(int i = 1;i &lt;=len;i++){
+	JSONObject jsonTemp = (JSONObject)modules_array.getJSONObject(i-1); 
+	String hostId_name=jsonTemp.getJSONArray(&quot;hostIds&quot;).toString().equals(&quot;[]&quot;)?&quot;[\&quot;&quot;+&quot;${__V(${model_name}_hostId_ALL)}&quot;+&quot;\&quot;]&quot;:jsonTemp.getJSONArray(&quot;hostIds&quot;).toString();
+//		String hostId_name=jsonTemp.getJSONArray(&quot;hostIds&quot;).toString().equals(&quot;[]&quot;)?&quot;[\&quot;&quot;+&quot;f2f60fb6e15d4f698b53f70628724d16&quot;+&quot;\&quot;]&quot;:jsonTemp.getJSONArray(&quot;hostIds&quot;).toString();
+	String pkgId_name=jsonTemp.get(&quot;pkgId&quot;);
+	log.error(hostId_name);
+	log.error(pkgId_name);
+	String moduleRequest=jsonTemp.getJSONObject(&quot;moduleRequest&quot;).toString();
+	request_body+=&quot;{ \&quot;pkgId\&quot;: \&quot;&quot;+pkgId_name+&quot;\&quot;, \&quot;hostIds\&quot;: &quot;+hostId_name+&quot; , \&quot;display\&quot;: false, \&quot;order\&quot;: &quot;+String.valueOf(i-1)+&quot;, \&quot;moduleRequest\&quot;: &quot;+moduleRequest+&quot; },&quot;;
+	if(i ==len){
+		JSONObject  dataObject2 = new JSONArray (response_data).getJSONObject(1);
+		JSONArray   modules_array2 = dataObject2.getJSONArray(&quot;modules&quot;);
+		//hadoop专用
+		JSONObject jsonTemp2 = (JSONObject)modules_array2.getJSONObject(0);
+		moduleRequest=jsonTemp2.getJSONObject(&quot;moduleRequest&quot;).toString();
+		String ${model_name}_pkgId_name=jsonTemp2.get(&quot;pkgId&quot;).toString();
+		String ${model_name}_hostIds_name=jsonTemp2.getJSONArray(&quot;hostIds&quot;).toString();
+		request_body+=&quot;{ \&quot;pkgId\&quot;: \&quot;&quot;+${model_name}_pkgId_name+&quot;\&quot;, \&quot;hostIds\&quot;: &quot;+${model_name}_hostIds_name+&quot; , \&quot;display\&quot;: false, \&quot;order\&quot;: &quot;+String.valueOf(i)+&quot;, \&quot;moduleRequest\&quot;: &quot;+moduleRequest+&quot; },&quot;;
+		//spark专用
+		moduleRequest=&quot;{\&quot;resIds\&quot;: [], \&quot;resType\&quot;: \&quot;HOST\&quot;}&quot;;
+		JSONObject jsonTemp3 = (JSONObject)modules_array2.getJSONObject(1); 
+		String ${model_name}_pkgId_name=jsonTemp3.get(&quot;pkgId&quot;).toString();
+		
+		//这个用于安装的时候传入
+		String opts_array=jsonTemp3.getJSONArray(&quot;opts&quot;).toString();
+		vars.put(&quot;opts_array&quot;,opts_array);
+		//groupId也是从返回值中获取传递给重装
+		String groupId=jsonTemp3.getJSONArray(&quot;groups&quot;).getJSONObject(0).getString(&quot;groupId&quot;);
+		vars.put(&quot;groupId&quot;,groupId);
+		
+		String ${model_name}_hostId_name=&quot;[\&quot;&quot;+&quot;${__V(${model_name}_hostId_1)}&quot;+&quot;\&quot;]&quot;;
+		vars.put(&quot;${model_name}_hostId_name&quot;,${model_name}_hostId_name);
+		log.error(&quot;aaaaaaaaaaaaaaa&quot;+${model_name}_hostId_name);
+		request_body+=&quot;{ \&quot;pkgId\&quot;: \&quot;&quot;+${model_name}_pkgId_name+&quot;\&quot;, \&quot;hostIds\&quot;: &quot;+${model_name}_hostId_name+&quot; , \&quot;display\&quot;: true, \&quot;order\&quot;: &quot;+String.valueOf(i+1)+&quot;, \&quot;moduleRequest\&quot;: &quot;+moduleRequest+&quot; }]&quot;;
+	}
+}
+//log.error(request_body+&quot;]&quot;);
+//if(request_body.substring(request_body.length()-1).equals(&quot;,&quot;)){
+//	request_body=request_body.substring(0,request_body.length()-1)+&quot;]&quot;;
+//}
+vars.put(&quot;request_body&quot;,request_body);
+
+
+
+</stringProp>
+                  </BeanShellPostProcessor>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="部署前插入任务" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">${request_body}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">omp/api/v1/tasks/insert</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON提取器" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">taskId</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$.taskId</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">000</stringProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="重装${model_name}" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">{&quot;taskId&quot;:&quot;${taskId}&quot;,&quot;deployGroups&quot;:[{&quot;groupRefs&quot;:[${groupRefs}],&quot;modules&quot;:[{&quot;groupId&quot;:&quot;${groupId}&quot;,&quot;pkgId&quot;:&quot;${__V(${model_name}_pkgid)}&quot;,&quot;hostIds&quot;:${__V(${model_name}_hostId_name)},&quot;display&quot;:true,&quot;order&quot;:7,&quot;opts&quot;:${opts_array},&quot;moduleRequest&quot;:{&quot;resIds&quot;:[],&quot;resType&quot;:&quot;HOST&quot;}}]}]}&#xd;
+</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+                  <stringProp name="HTTPSampler.path">/omp/api/v1/modules/deploy</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  <stringProp name="TestPlan.comments">delete FROM HOST_PKG where BASEDIR =&apos;/opt/mongodb&apos;</stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell 预处理程序" enabled="true">
+                    <boolProp name="resetInterpreter">false</boolProp>
+                    <stringProp name="parameters"></stringProp>
+                    <stringProp name="filename"></stringProp>
+                    <stringProp name="script">String groupRefs=&quot;&quot;;
+for(int i=1;i&lt;=${groupId_matchNr};i++){
+	groupRefs+=&quot;{\&quot;product\&quot;:\&quot;Platform\&quot;,\&quot;groupId\&quot;:\&quot;&quot;+vars.get(&quot;groupId_&quot;+i)+&quot;\&quot;,\&quot;refModule\&quot;:\&quot;&quot;+vars.get(&quot;moduleName_&quot;+i)+&quot;\&quot;},&quot;;
+}
+groupRefs=groupRefs.substring(0,groupRefs.length()-1);
+vars.put(&quot;groupRefs&quot;,groupRefs);
+log.error(groupRefs);</stringProp>
+                  </BeanShellPreProcessor>
+                  <hashTree/>
+                </hashTree>
+                <IfController guiclass="IfControllerPanel" testclass="IfController" testname="如果spark集群" enabled="true">
+                  <stringProp name="IfController.condition">${__V(${model_name}_hostId_matchNr)}&gt;1</stringProp>
+                  <boolProp name="IfController.evaluateAll">false</boolProp>
+                </IfController>
+                <hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="组装参数moduleRequest" enabled="true">
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                      <collectionProp name="Arguments.arguments"/>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                    <stringProp name="HTTPSampler.path">/omp/api/v1/pkgs/dependent_pkgs/query?pkgId=${__V(${model_name}_pkgid)}</stringProp>
+                    <stringProp name="HTTPSampler.method">GET</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                    <stringProp name="TestPlan.comments">必须卸载后安装</stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree>
+                    <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell 后置处理程序" enabled="true">
+                      <boolProp name="resetInterpreter">false</boolProp>
+                      <stringProp name="parameters"></stringProp>
+                      <stringProp name="filename"></stringProp>
+                      <stringProp name="script">import org.json.*;
+String response_data = prev.getResponseDataAsString();
+JSONObject  dataObject = new JSONArray (response_data).getJSONObject(0);
+
+JSONArray   modules_array = dataObject.getJSONArray(&quot;modules&quot;);
+int len = modules_array.length();
+String request_body=&quot;[&quot;;
+String ss=&quot;&quot;;
+for(int i = 1;i &lt;=len;i++){
+	JSONObject jsonTemp = (JSONObject)modules_array.getJSONObject(i-1); 
+	String hostId_name=jsonTemp.getJSONArray(&quot;hostIds&quot;).toString().equals(&quot;[]&quot;)?&quot;[\&quot;&quot;+&quot;${__V(${model_name}_hostId_ALL)}&quot;+&quot;\&quot;]&quot;:jsonTemp.getJSONArray(&quot;hostIds&quot;).toString();
+//		String hostId_name=jsonTemp.getJSONArray(&quot;hostIds&quot;).toString().equals(&quot;[]&quot;)?&quot;[\&quot;&quot;+&quot;f2f60fb6e15d4f698b53f70628724d16&quot;+&quot;\&quot;]&quot;:jsonTemp.getJSONArray(&quot;hostIds&quot;).toString();
+	String pkgId_name=jsonTemp.get(&quot;pkgId&quot;);
+	log.error(hostId_name);
+	log.error(pkgId_name);
+	String moduleRequest=jsonTemp.getJSONObject(&quot;moduleRequest&quot;).toString();
+	request_body+=&quot;{ \&quot;pkgId\&quot;: \&quot;&quot;+pkgId_name+&quot;\&quot;, \&quot;hostIds\&quot;: &quot;+hostId_name+&quot; , \&quot;display\&quot;: false, \&quot;order\&quot;: &quot;+String.valueOf(i-1)+&quot;, \&quot;moduleRequest\&quot;: &quot;+moduleRequest+&quot; },&quot;;
+	if(i ==len){
+		JSONObject  dataObject2 = new JSONArray (response_data).getJSONObject(1);
+		JSONArray   modules_array2 = dataObject2.getJSONArray(&quot;modules&quot;);
+		//hadoop专用
+		JSONObject jsonTemp2 = (JSONObject)modules_array2.getJSONObject(0);
+		moduleRequest=jsonTemp2.getJSONObject(&quot;moduleRequest&quot;).toString();
+		String ${model_name}_pkgId_name=jsonTemp2.get(&quot;pkgId&quot;).toString();
+		String ${model_name}_hostIds_name=jsonTemp2.getJSONArray(&quot;hostIds&quot;).toString();
+		request_body+=&quot;{ \&quot;pkgId\&quot;: \&quot;&quot;+${model_name}_pkgId_name+&quot;\&quot;, \&quot;hostIds\&quot;: &quot;+${model_name}_hostIds_name+&quot; , \&quot;display\&quot;: false, \&quot;order\&quot;: &quot;+String.valueOf(i)+&quot;, \&quot;moduleRequest\&quot;: &quot;+moduleRequest+&quot; },&quot;;
+		//spark专用
+		moduleRequest=&quot;{\&quot;resIds\&quot;: [], \&quot;resType\&quot;: \&quot;HOST\&quot;}&quot;;
+		JSONObject jsonTemp3 = (JSONObject)modules_array2.getJSONObject(1); 
+		String ${model_name}_pkgId_name=jsonTemp3.get(&quot;pkgId&quot;).toString();
+		
+		//这个用于安装的时候传入
+		String opts_array=jsonTemp3.getJSONArray(&quot;opts&quot;).toString().replace(&quot;\&quot;val\&quot;:\&quot;No\&quot;&quot;,&quot;\&quot;val\&quot;:\&quot;yes\&quot;&quot;);
+		vars.put(&quot;opts_array&quot;,opts_array);
+		//groupId也是从返回值中获取传递给重装
+		String groupId=jsonTemp3.getJSONArray(&quot;groups&quot;).getJSONObject(0).getString(&quot;groupId&quot;);
+		vars.put(&quot;groupId&quot;,groupId);
+		String[] ${model_name}_hostIds=&quot;${__V(${model_name}_hostId_ALL)}&quot;.split(&quot;,&quot;);
+		String ${model_name}_hostId_name=&quot;[&quot;;
+		// int leng=${__V(${model_name}_hostId_matchNr)};
+		for(int j = 1; j &lt; ${model_name}_hostIds.length; j++){
+			if(j==${model_name}_hostIds.length-1){
+				${model_name}_hostId_name+=&quot;\&quot;&quot;+${model_name}_hostIds[j]+&quot;\&quot;]&quot;;
+				break;
+			}
+			${model_name}_hostId_name+=&quot;\&quot;&quot;+${model_name}_hostIds[j]+&quot;\&quot;,&quot;;
+		}
+		vars.put(&quot;${model_name}_hostId_name&quot;,${model_name}_hostId_name);
+		request_body+=&quot;{ \&quot;pkgId\&quot;: \&quot;&quot;+${model_name}_pkgId_name+&quot;\&quot;, \&quot;hostIds\&quot;: &quot;+${model_name}_hostId_name+&quot; , \&quot;display\&quot;: true, \&quot;order\&quot;: &quot;+String.valueOf(i+1)+&quot;, \&quot;moduleRequest\&quot;: &quot;+moduleRequest+&quot; }]&quot;;
+	}
+}
+//log.error(request_body+&quot;]&quot;);
+//if(request_body.substring(request_body.length()-1).equals(&quot;,&quot;)){
+//	request_body=request_body.substring(0,request_body.length()-1)+&quot;]&quot;;
+//}
+vars.put(&quot;request_body&quot;,request_body);</stringProp>
+                    </BeanShellPostProcessor>
+                    <hashTree/>
+                    <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+                      <stringProp name="ConstantTimer.delay">60000</stringProp>
+                    </ConstantTimer>
+                    <hashTree/>
+                  </hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="部署前插入任务" enabled="true">
+                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">${request_body}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                    <stringProp name="HTTPSampler.path">omp/api/v1/tasks/insert</stringProp>
+                    <stringProp name="HTTPSampler.method">POST</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree>
+                    <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON提取器" enabled="true">
+                      <stringProp name="JSONPostProcessor.referenceNames">taskId</stringProp>
+                      <stringProp name="JSONPostProcessor.jsonPathExprs">$.taskId</stringProp>
+                      <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                      <stringProp name="JSONPostProcessor.defaultValues">000</stringProp>
+                    </JSONPostProcessor>
+                    <hashTree/>
+                    <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="false">
+                      <stringProp name="ConstantTimer.delay">150000</stringProp>
+                    </ConstantTimer>
+                    <hashTree/>
+                  </hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="重装${model_name}" enabled="true">
+                    <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">{&quot;taskId&quot;:&quot;${taskId}&quot;,&quot;deployGroups&quot;:[{&quot;groupRefs&quot;:[${groupRefs}],&quot;modules&quot;:[{&quot;groupId&quot;:&quot;${groupId}&quot;,&quot;pkgId&quot;:&quot;${__V(${model_name}_pkgid)}&quot;,&quot;hostIds&quot;:${__V(${model_name}_hostId_name)},&quot;display&quot;:true,&quot;order&quot;:7,&quot;opts&quot;:${opts_array},&quot;moduleRequest&quot;:{&quot;resIds&quot;:[],&quot;resType&quot;:&quot;HOST&quot;}}]}]}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+                    <stringProp name="HTTPSampler.path">/omp/api/v1/modules/deploy</stringProp>
+                    <stringProp name="HTTPSampler.method">POST</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                    <stringProp name="TestPlan.comments">delete FROM HOST_PKG where BASEDIR =&apos;/opt/mongodb&apos;</stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree>
+                    <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell 预处理程序" enabled="true">
+                      <boolProp name="resetInterpreter">false</boolProp>
+                      <stringProp name="parameters"></stringProp>
+                      <stringProp name="filename"></stringProp>
+                      <stringProp name="script">String groupRefs=&quot;&quot;;
+for(int i=1;i&lt;=${groupId_matchNr};i++){
+	groupRefs+=&quot;{\&quot;product\&quot;:\&quot;Platform\&quot;,\&quot;groupId\&quot;:\&quot;&quot;+vars.get(&quot;groupId_&quot;+i)+&quot;\&quot;,\&quot;refModule\&quot;:\&quot;&quot;+vars.get(&quot;moduleName_&quot;+i)+&quot;\&quot;},&quot;;
+}
+groupRefs=groupRefs.substring(0,groupRefs.length()-1);
+vars.put(&quot;groupRefs&quot;,groupRefs);
+log.error(groupRefs);
+</stringProp>
+                    </BeanShellPreProcessor>
+                    <hashTree/>
+                  </hashTree>
+                </hashTree>
+              </hashTree>
+              <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="修改spark配置" enabled="true">
+                <boolProp name="LoopController.continue_forever">true</boolProp>
+                <stringProp name="LoopController.loops">${__V(${model_name}_ip_matchNr)}</stringProp>
+              </LoopController>
+              <hashTree>
+                <org.apache.jmeter.protocol.ssh.sampler.SSHCommandSampler guiclass="TestBeanGUI" testclass="org.apache.jmeter.protocol.ssh.sampler.SSHCommandSampler" testname="修改spark配置" enabled="true">
+                  <stringProp name="command"> expect  /home/zlj/change_spark.sh root ${__V(${model_name}_ip_${__counter(,)})} ${spark_password}</stringProp>
+                  <intProp name="connectionTimeout">50000</intProp>
+                  <stringProp name="hostname">10.1.62.12</stringProp>
+                  <stringProp name="passphrase"></stringProp>
+                  <stringProp name="password">broada123</stringProp>
+                  <intProp name="port">22</intProp>
+                  <boolProp name="printStdErr">true</boolProp>
+                  <stringProp name="sshkeyfile"></stringProp>
+                  <boolProp name="useReturnCode">true</boolProp>
+                  <stringProp name="username">root</stringProp>
+                </org.apache.jmeter.protocol.ssh.sampler.SSHCommandSampler>
+                <hashTree/>
+                <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="固定定时器" enabled="true">
+                  <stringProp name="ConstantTimer.delay">10000</stringProp>
+                </ConstantTimer>
+                <hashTree/>
+              </hashTree>
+              <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="重启所有spark_local" enabled="true">
+                <boolProp name="LoopController.continue_forever">true</boolProp>
+                <stringProp name="LoopController.loops">${__V(${model_name}_hostId_matchNr)}</stringProp>
+              </LoopController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="关闭spark" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="pkgId" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">${__V(${model_name}_pkgId_total_${__counter(,)})}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">pkgId</stringProp>
+                      </elementProp>
+                      <elementProp name="hostId" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">${__V(${model_name}_hostId_${__counter(,)})}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">hostId</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/omp/api/v1/pkgs/stop</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="开启spark" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="pkgId" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">${__V(${model_name}_pkgId_total_${__counter(,)})}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">pkgId</stringProp>
+                      </elementProp>
+                      <elementProp name="hostId" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">${__V(${model_name}_hostId_${__counter(,)})}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">hostId</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/omp/api/v1/pkgs/start</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="调试取样器" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>true</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
