@@ -17,7 +17,8 @@ def merge_rules():
             "交互约定.md",
             "OPML规范.md",
             "Markdown规范.md",
-            "jmeter_plugin_rules.md"
+            "jmeter_plugin_rules.md",
+            "文件修改规则.md"  # 新增：文件修改规则
         ]
         
         # 读取并合并所有规则文件
