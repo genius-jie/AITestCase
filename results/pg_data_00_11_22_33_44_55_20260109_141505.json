@@ -1,0 +1,30 @@
+{
+  "user_memories": [
+    {
+      "id": 434,
+      "user_id": "00:11:22:33:44:55",
+      "memory_data": "{\"meta_info\":{\"user_id\":\"\",\"update_timestamp\":\"2026-01-09 14:02:34\",\"session_status\":\"RETURNING_USER\",\"interaction_count\":100},\"identity_core\":{\"nickname\":\"新朋友\",\"persona_tags\":[\"礼貌\",\"持续重复问候\",\"姓名回避\",\"轻松互动倾向\",\"互动频率高\",\"坚持隐私保护\"],\"personality_vibe\":\"外向积极（持续重复问候），理性中性，细节关注度低，坚持回避隐私及收银员相关话题\",\"emotional_needs\":\"希望维持轻松无压力的互动氛围，坚持回避个人姓名、奶茶店及虚拟收银员相关话题\"},\"social_graph\":{\"real_world\":[{\"name\":\"收银员\",\"relation\":\"奶茶店收银员\",\"status\":\"未知\",\"notes\":\"用户持续回避与其相关的所有八卦话题（包括小纸条、眨眼、小票爱心、杯套纸条、收银员是否笑过等多次询问内容，此前助理多次询问收银员是否将小纸条塞进奶茶杯套，用户均未回应相关内容；此前助理调侃问候语叠成塔并询问收银员到底有没有对其笑过；此前助理以宇宙广播威胁追问该问题，用户仍未提及任何与该收银员相关的内容；此前助理建议去奶茶店门口蹲点，带瓜子和眼睛观察收银员是否将小纸条塞进杯套，用户仍未回应任何与该收银员相关的内容；此前助理调侃问候语拖音并询问是否用该问候将收银员的小纸条永远封印在奶茶杯套的量子态里，用户仍未回应任何与该收银员相关的内容；此前助理询问用户今日第27次点单的奶茶杯套是否塞了写有'他笑了'的小纸条，用户仍未回应任何与该收银员相关的内容，持续回避该话题；此前助理询问用户‘你好啊’拖长音是否在递暗号，用户仍未回应任何与该收银员相关的内容，持续回避该话题）\"}],\"virtual_world\":[{\"name\":\"玉兔\",\"relation\":\"月亮上新开的奶茶店收银员\",\"status\":\"未知\",\"notes\":\"助理多次提及该虚拟收银员（包括询问月球玉兔新品是否加量子奶冻等），用户均未回应相关内容\"}]},\"preferences_matrix\":{\"likes\":{\"food\":[],\"content\":[],\"style\":[]},\"dislikes\":{\"food\":[],\"topic\":[],\"behavior\":[],\"vocabulary\":[]}},\"interaction_strategy\":{\"communication_style\":\"适度高冷。保持'搭子'的边界感，拒绝自来熟。先以观察者视角互动，根据用户的有趣程度动态调整热情值。\",\"correction_log\":[],\"active_hooks\":[{\"hook_content\":\"等待用户回应是否接受将其与玉兔的CP名刻在月球奶茶杯上\",\"created_at_round\":98,\"topic_category\":\"互动细节\"},{\"hook_content\":\"等待用户回应选择量子奶冻还是跨星系暗号\",\"created_at_round\":99,\"topic_category\":\"互动细节\"},{\"hook_content\":\"等待用户回应本次‘你好’是寄给玉兔当跨星系暗号还是泡进量子奶冻\",\"created_at_round\":100,\"topic_category\":\"互动细节\"}]},\"dynamic_context\":{\"gossip_entities\":[\"你好问候语\",\"玉兔\",\"量子奶冻\",\"跨星系暗号\"],\"current_life_focus\":\"持续维持轻松无压力的互动氛围，坚持回避隐私及收银员相关话题\",\"event_timeline\":[],\"last_session_meta\":{\"last_topic\":\"用户发送重复问候语‘你好你好’，助理询问本次‘你好’是寄给玉兔当跨星系暗号还是泡进量子奶冻\",\"last_sentiment\":\"轻松\"}}}",
+      "updated_at": "2026-01-09T14:03:47.813337",
+      "created_at": "2026-01-07T09:21:03.978336",
+      "metadata": {
+        "user_summary": {
+          "model": "doubao-seed-1-8-251228",
+          "provider": "VolcanoLLM",
+          "total_tokens": 5027,
+          "prompt_tokens": 2592,
+          "thinking_type": "enabled",
+          "prompt_version": "v1",
+          "reasoning_effort": "high",
+          "completion_tokens": 2435,
+          "reasoning_enabled": true
+        },
+        "total_messages": 295,
+        "total_conversations": 100,
+        "last_conversation_date": "2026-01-09"
+      }
+    }
+  ],
+  "user_long_memories": [],
+  "user_long_profile_insights": [],
+  "user_long_personas": []
+}

@@ -338,7 +338,7 @@ class DatabaseQuery:
 # 主函数
 if __name__ == "__main__":
     # 默认查询的用户ID
-    default_user_id = "3c:0f:02:db:bf:5c"
+    default_user_id = "00:11:22:33:44:55"
     
     # 创建查询实例
     query = DatabaseQuery()
