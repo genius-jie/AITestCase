@@ -1,0 +1,9 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1767929635362,503,5.1 音频预处理（全局执行一次）,200,未找到音频文件: 你好.m4a,音频预处理 1-1,text,false,,0,0,1,1,null,0,0,0
+1767929635937,205,1. 建立WebSocket连接,101,Switching Protocols,WebSocket对话线程组 1-1,,true,,129,293,1,1,null,0,0,205
+1767929636143,1,2. 发送hello握手消息,200,OK,WebSocket对话线程组 1-1,,true,,0,751,1,1,null,0,0,0
+1767929636144,1,3.接收初始化,200,OK,WebSocket对话线程组 1-1,text,true,,175,0,1,1,null,0,0,0
+1767929636145,99,3. 接收hello响应,200,OK,WebSocket对话线程组 1-1,text,true,,251,0,1,1,null,0,0,0
+1767929636258,0,4. 发送listen start消息,200,OK,WebSocket对话线程组 1-1,,true,,0,110,1,1,null,0,0,0
+1767929636261,0,5.3 发送listen stop消息,200,OK,WebSocket对话线程组 1-1,,true,,0,91,1,1,null,0,0,0
+1767929639273,41,10. 关闭WebSocket连接,1000,Connection closed.,WebSocket对话线程组 1-1,text,true,,4,31,1,1,null,0,0,0

@@ -1,0 +1,30 @@
+# 性能测试报告目录
+性能稳定测试/script/report/
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 日志文件
+*.log
+logs/
+
+# IDE 配置
+.vscode/
+.idea/
+
+# 临时文件
+*.tmp
+*.bak
+*.swp
+*~
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 输出文件
+output.md
+output.raw
+test_audio.wav
