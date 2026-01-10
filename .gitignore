@@ -37,3 +37,4 @@ test_audio.wav
 **/report/
 logs/
 
+.env.example
