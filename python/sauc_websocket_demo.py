@@ -49,9 +49,11 @@ class CompressionType:
 class Config:
     def __init__(self):
         # 填入控制台获取的app id和access token
+        # 环境变量名：SAUC_APP_KEY
+        # 环境变量名：SAUC_ACCESS_KEY
         self.auth = {
-            "app_key": "xxxxxxx",
-            "access_key": "xxxxxxxxxxxx"
+            "app_key": os.environ.get("SAUC_APP_KEY", "YOUR_SAUC_APP_KEY"),
+            "access_key": os.environ.get("SAUC_ACCESS_KEY", "YOUR_SAUC_ACCESS_KEY")
         }
 
     @property

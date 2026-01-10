@@ -17,18 +17,28 @@ import argparse
 class Config:
     """数据库配置信息"""
     # Redis配置
-    REDIS_HOST = "redis-shzles67xmx2vg9oz.redis.volces.com"
-    REDIS_PORT = 6379
-    REDIS_USERNAME = "zhanglijie"
-    REDIS_PASSWORD = "patchx_dev_redis%$$1"
-    REDIS_DB = 0
+    # 环境变量名：REDIS_HOST
+    REDIS_HOST = os.environ.get("REDIS_HOST", "redis-shzles67xmx2vg9oz.redis.volces.com")
+    # 环境变量名：REDIS_PORT
+    REDIS_PORT = int(os.environ.get("REDIS_PORT", "6379"))
+    # 环境变量名：REDIS_USERNAME
+    REDIS_USERNAME = os.environ.get("REDIS_USERNAME", "zhanglijie")
+    # 环境变量名：REDIS_PASSWORD
+    REDIS_PASSWORD = os.environ.get("REDIS_PASSWORD", "YOUR_REDIS_PASSWORD")
+    # 环境变量名：REDIS_DB
+    REDIS_DB = int(os.environ.get("REDIS_DB", "0"))
     
     # PostgreSQL配置
-    PG_HOST = "postgres-460bae9aa91b-public.rds-pg.volces.com"
-    PG_PORT = 5432
-    PG_USER = "zhanglijie"
-    PG_PASSWORD = "MdXMPkaAwsJavi8q"
-    PG_DATABASE = "patchx_emomo"
+    # 环境变量名：PG_HOST
+    PG_HOST = os.environ.get("PG_HOST", "postgres-460bae9aa91b-public.rds-pg.volces.com")
+    # 环境变量名：PG_PORT
+    PG_PORT = int(os.environ.get("PG_PORT", "5432"))
+    # 环境变量名：PG_USER
+    PG_USER = os.environ.get("PG_USER", "zhanglijie")
+    # 环境变量名：PG_PASSWORD
+    PG_PASSWORD = os.environ.get("PG_PASSWORD", "YOUR_PG_PASSWORD")
+    # 环境变量名：PG_DATABASE
+    PG_DATABASE = os.environ.get("PG_DATABASE", "patchx_emomo")
 
 # 数据库查询类
 class DatabaseQuery:
