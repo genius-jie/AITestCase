@@ -36,3 +36,6 @@ SC021,句首停顿+开心语气,今天天气真好,800,句首,false,,normal,,nor
 SC022,句首停顿+杂音,今天天气真好,1000,句首,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
 SC023,句中停顿+杂音,今天天气真好,1000,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
 SC024,句尾停顿+杂音,今天天气真好,1000,句尾,false,,normal,,normal,,normal,false,true,false,active+silence,P1,WAV,16000,1,16
+
+# 用户自定义测试用例
+SC025,愤怒停顿+杂音,我草，怎么这都不懂,800,句中,true,medium,+10%,+5%,loud,,angry,false,true,true,active+silence+active,P0,WAV,16000,1,16
