@@ -53,7 +53,6 @@ AITestCase/
 ├── .trae/
 │   └── rules/
 │       ├── project_rules.md      # 主规则文件（Trae读取）
-│       ├── merge_rules.py        # 规则合并脚本
 │       ├── README.md             # 规则文件说明
 │       ├── 身份定义.md           # AI助手身份定义
 │       ├── 错题本规则.md         # 错题本自动调用规则
@@ -90,7 +89,7 @@ AITestCase/
 
    # 方式2：命令行执行
    cd .trae/rules
-   python merge_rules.py
+   python ../../python/utils/merge_rules.py
    ```
 
 3. **Trae自动读取更新**
@@ -169,7 +168,7 @@ AITestCase/
 
 ```bash
 cd .trae/rules
-python merge_rules.py
+python ../../python/utils/merge_rules.py
 ```
 
 功能：

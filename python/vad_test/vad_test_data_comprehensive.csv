@@ -1,0 +1,38 @@
+scenario_id,scenario_name,text,break_time_ms,pause_position,add_post_process_breath,breath_strength,prosody_rate,prosody_pitch,prosody_volume,emphasis_words,style,expected_silence,expected_speech,expected_post_process_breath,vad_expected_result,priority,audio_format,sample_rate,channels,bit_depth
+# 正常场景测试用例
+SC001,正常无停顿,今天天气真好,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC002,句中自然停顿,今天天气真好,500,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P0,WAV,16000,1,16
+SC003,背景杂音效果,今天天气真好，大家都很开心，在加班中,,normal,true,medium,normal,,normal,,normal,false,true,true,active+silence,P1,WAV,16000,1,16
+
+# 异常场景测试用例
+SC004,快速语音,今天天气真好,,normal,false,,fast,,normal,,excited,false,true,false,active,P1,WAV,16000,1,16
+SC005,慢速语音,今天天气真好,,normal,false,,slow,,normal,,gentle,false,true,false,active,P1,WAV,16000,1,16
+SC006,高音量语音,今天天气真好,,normal,false,,normal,,loud,,angry,false,true,false,active,P1,WAV,16000,1,16
+SC007,低音量语音,今天天气真好,,normal,false,,normal,,soft,,sad,false,true,false,active,P1,WAV,16000,1,16
+
+# 边界场景测试用例
+SC008,极短停顿,今天天气真好,100,句中,false,,normal,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC009,极长停顿,今天天气真好,5000,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P2,WAV,16000,1,16
+SC010,单字语音,是,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC011,长句语音,这是一个非常长的句子，用于测试VAD在处理长文本语音时的表现，包含多个词语和停顿,,normal,false,,normal,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+
+# 不同停顿位置测试用例
+SC012,句首停顿,今天天气真好,1000,句首,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC013,句中停顿,今天天气真好,1000,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC014,句尾停顿,今天天气真好,1000,句尾,false,,normal,,normal,,normal,false,true,false,active+silence,P1,WAV,16000,1,16
+
+# 不同语气风格测试用例
+SC015,开心语气测试,太棒了！我们终于成功了！,,normal,false,,normal,,normal,,cheerful,false,true,false,active,P0,WAV,16000,1,16
+SC016,悲伤语气测试,我很难过，我们失去了一个重要的机会。,,normal,false,,normal,,normal,,sad,false,true,false,active,P0,WAV,16000,1,16
+SC017,生气语气测试,我非常生气，这种情况绝对不能再发生！,,normal,false,,normal,,normal,,angry,false,true,false,active,P0,WAV,16000,1,16
+
+# 复合场景测试用例
+SC018,停顿+杂音效果,今天天气真好,1500,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC019,背景杂音+快速,今天天气真好,,normal,true,medium,fast,,normal,,excited,false,true,true,active,P1,WAV,16000,1,16
+SC020,慢速+低音量,今天天气真好,,normal,false,,slow,,soft,,gentle,false,true,false,active,P1,WAV,16000,1,16
+SC021,句首停顿+开心语气,今天天气真好,800,句首,false,,normal,,normal,,cheerful,false,true,false,active+silence+active,P1,WAV,16000,1,16
+
+# 新增停顿+杂音专用测试用例
+SC022,句首停顿+杂音,今天天气真好,1000,句首,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC023,句中停顿+杂音,今天天气真好,1000,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC024,句尾停顿+杂音,今天天气真好,1000,句尾,false,,normal,,normal,,normal,false,true,false,active+silence,P1,WAV,16000,1,16

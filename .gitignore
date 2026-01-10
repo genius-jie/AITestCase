@@ -28,3 +28,6 @@ Thumbs.db
 output.md
 output.raw
 test_audio.wav
+
+# 接口测试报告目录
+接口测试/report/

@@ -1,0 +1,154 @@
+{
+  "sprite:history:raw:00:11:22:33:44:55": [
+    {
+      "content": "你好你好",
+      "role": "user",
+      "ts": 1767937770
+    },
+    {
+      "content": "(8) [gossipy rapid_fire] 今天这声“你好”打算泡哪个宇宙的奶茶？！... [excited] 量子奶冻还是跨星系暗号，快选！",
+      "role": "assistant",
+      "ts": 1767937773
+    },
+    {
+      "content": "你好你好",
+      "role": "user",
+      "ts": 1767938538
+    },
+    {
+      "content": "(8) [playful rapid_fire] 这次的“你好”是打算寄给玉兔当跨星系暗号，还是直接泡进量子奶冻里？！",
+      "role": "assistant",
+      "ts": 1767938542
+    },
+    {
+      "content": "聊一下NBA",
+      "role": "user",
+      "ts": 1767940654
+    },
+    {
+      "content": "(8) [gossipy rapid_fire] 勇士昨天刚输给爵士，库里又伤了？！... [excited] 你押谁进总决赛？！",
+      "role": "assistant",
+      "ts": 1767940664
+    },
+    {
+      "content": "聊一下NBA",
+      "role": "user",
+      "ts": 1767940679
+    },
+    {
+      "content": "(8) [gossipy rapid_fire] 湖人昨天刚把勇士按在地上摩擦！... [excited] 詹姆斯末节狂砍15分，这老头是装了永动机吗？！",
+      "role": "assistant",
+      "ts": 1767940688
+    },
+    {
+      "content": "哎，最近NBA季后赛太刺激了，昨天那场绝杀球你看了没？我都激动得从沙发上跳起来了！",
+      "role": "user",
+      "ts": 1767940892
+    },
+    {
+      "content": "(8) [excited rapid_fire] **哪场**绝杀？！是不是库里带伤上场那个？！... [gossipy leans_in] 快说快说，你押的哪边赢？！",
+      "role": "assistant",
+      "ts": 1767940897
+    },
+    {
+      "content": "卧槽，你说的是詹姆斯那个压哨三分吗？我也看了！手都捏出汗了，球进的那一瞬间我直接吼出来了，我妈还以为出啥事了😂",
+      "role": "user",
+      "ts": 1767940905
+    },
+    {
+      "content": "(8) [shocked gasps] **老詹**都多少岁了还玩压哨？！... [excited squeals] 这状态也太逆天了吧！你妈没被你吓晕过去吧？！",
+      "role": "assistant",
+      "ts": 1767940910
+    }
+  ],
+  "sprite:session:summary:00:11:22:33:44:55": {
+    "has_pending": "0",
+    "trigger_type": "turn_count",
+    "pending_content": "多位对话者反复以“你好”或“你好啊”开启交流，引发对方对重复问候的戏谑回应。助手们以宇宙回声、黑洞、帕奇星系等幻想元素表达厌倦，并多次提议跳过寒暄，聚焦于一个虚构情节：收银员是否在奶茶杯套中塞入小纸条。随着用户将问候升级为“你好啊”，助手转而表现出好奇与期待，猜测其是否预示新剧情开启，但仍围绕奶茶店、收银员和隐藏情书等主题展开 playful 互动，整体情绪轻松幽默。",
+    "status": "completed",
+    "message_count": "51",
+    "generated_at": "1767877792",
+    "summary_index": "50",
+    "content": "多位对话者反复以“你好”或“你好啊”开启交流，引发对方对重复问候的戏谑回应。助手们以宇宙回声、黑洞、帕奇星系等幻想元素表达厌倦，并多次提议跳过寒暄，聚焦于一个虚构情节：收银员是否在奶茶杯套中塞入小纸条。随着用户将问候升级为“你好啊”，助手转而表现出好奇与期待，猜测其是否预示新剧情开启，但仍围绕奶茶店、收银员和隐藏情书等主题展开 playful 互动，整体情绪轻松幽默。",
+    "pending_index": "50"
+  },
+  "sprite:user:memory:00:11:22:33:44:55": {
+    "meta_info": {
+      "user_id": "",
+      "update_timestamp": "2026-01-09 14:40:01",
+      "session_status": "RETURNING_USER",
+      "interaction_count": 102
+    },
+    "identity_core": {
+      "nickname": "新朋友",
+      "persona_tags": [
+        "礼貌",
+        "轻松互动倾向",
+        "坚持隐私保护",
+        "NBA关注者",
+        "互动频率高",
+        "姓名回避"
+      ],
+      "personality_vibe": "外向积极，理性中性，细节关注度低，坚持隐私回避，主动发起体育话题",
+      "emotional_needs": "希望维持轻松无压力的互动氛围，当前期待作为聊球搭子交流NBA话题"
+    },
+    "social_graph": {
+      "real_world": [
+        {
+          "name": "收银员",
+          "relation": "奶茶店收银员",
+          "status": "未知",
+          "notes": "用户持续回避与其相关的所有八卦话题（包括小纸条、眨眼、小票爱心、杯套纸条、收银员是否笑过等多次询问内容，此前助理多次询问收银员是否将小纸条塞进奶茶杯套，用户均未回应相关内容；此前助理调侃问候语叠成塔并询问收银员到底有没有对其笑过；此前助理以宇宙广播威胁追问该问题，用户仍未提及任何与该收银员相关的内容；此前助理建议去奶茶店门口蹲点，带瓜子和眼睛观察收银员是否将小纸条塞进杯套，用户仍未回应任何与该收银员相关的内容；此前助理调侃问候语拖音并询问是否用该问候将收银员的小纸条永远封印在奶茶杯套的量子态里，用户仍未回应任何与该收银员相关的内容；此前助理询问用户今日第27次点单的奶茶杯套是否塞了写有'他笑了'的小纸条，用户仍未回应任何与该收银员相关的内容，持续回避该话题；此前助理询问用户‘你好啊’拖长音是否在递暗号，用户仍未回应任何与该收银员相关的内容，持续回避该话题）"
+        }
+      ],
+      "virtual_world": [
+        {
+          "name": "玉兔",
+          "relation": "月亮上新开的奶茶店收银员",
+          "status": "未知",
+          "notes": "助理多次提及该虚拟收银员（包括询问月球玉兔新品是否加量子奶冻等），用户均未回应相关内容"
+        }
+      ]
+    },
+    "preferences_matrix": {
+      "likes": {
+        "food": [],
+        "content": [
+          "NBA赛事讨论"
+        ],
+        "style": []
+      },
+      "dislikes": {
+        "food": [],
+        "topic": [],
+        "behavior": [],
+        "vocabulary": []
+      }
+    },
+    "interaction_strategy": {
+      "communication_style": "适度高冷。保持'搭子'的边界感，拒绝自来熟。先以观察者视角互动，根据用户的有趣程度动态调整热情值。",
+      "correction_log": [],
+      "active_hooks": [
+        {
+          "hook_content": "等待用户分享对湖人击败勇士、詹姆斯末节狂砍15分赛事内容的看法",
+          "created_at_round": 102,
+          "topic_category": "体育赛事"
+        }
+      ]
+    },
+    "dynamic_context": {
+      "gossip_entities": [
+        "NBA赛事",
+        "勇士队",
+        "湖人队",
+        "詹姆斯"
+      ],
+      "current_life_focus": "维持轻松无压力的互动氛围，当前聚焦NBA赛事话题的交流讨论",
+      "event_timeline": [],
+      "last_session_meta": {
+        "last_topic": "用户发起NBA话题交流，助理分享湖人击败勇士、詹姆斯末节狂砍15分的赛事情况",
+        "last_sentiment": "兴奋、轻松"
+      }
+    }
+  }
+}
