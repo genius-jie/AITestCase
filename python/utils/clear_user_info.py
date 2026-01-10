@@ -12,6 +12,10 @@ from typing import Dict, List, Any
 from datetime import datetime
 import os
 import argparse
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
 
 # 配置类
 class Config:

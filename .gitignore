@@ -29,5 +29,11 @@ output.md
 output.raw
 test_audio.wav
 
-# 接口测试报告目录
-接口测试/report/
+# 环境变量配置文件（包含敏感信息）
+.env
+
+# 测试结果和日志
+*/results/
+**/report/
+logs/
+

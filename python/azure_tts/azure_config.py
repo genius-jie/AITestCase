@@ -2,6 +2,10 @@
 # 请根据实际情况填写以下配置，或通过环境变量设置
 
 import os
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
 
 # Azure TTS API密钥
 # 环境变量名：AZURE_SPEECH_KEY
