@@ -1,0 +1,34 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1768118872750,136,有效输入-正常对话,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",737,365,1,1,http://183.147.142.103:8004/predict,135,0,23
+1768118873438,149,有效输入-负面情绪,200,OK,线程组 1-1,text,true,,743,356,1,1,http://183.147.142.103:8004/predict,149,0,0
+1768118873603,87,有效输入-开心情绪,200,OK,线程组 1-1,text,true,,739,359,1,1,http://183.147.142.103:8004/predict,86,0,0
+1768118873697,94,有效输入-生气情绪,200,OK,线程组 1-1,text,false,"Emotion mismatch. Expected: 生气, Actual: 愤怒",744,359,1,1,http://183.147.142.103:8004/predict,94,0,0
+1768118873796,97,有效输入-悲伤情绪,200,OK,线程组 1-1,text,true,,741,356,1,1,http://183.147.142.103:8004/predict,97,0,0
+1768118873897,98,有效输入-中性情绪,200,OK,线程组 1-1,text,false,"Emotion mismatch. Expected: 中性, Actual: 关切",743,353,1,1,http://183.147.142.103:8004/predict,98,0,0
+1768118874001,97,有效输入-记忆写入意图（Bug：应返回MEMORY_WRITE）,200,OK,线程组 1-1,text,false,"Emotion mismatch. Expected: 中性, Actual: 平淡",732,368,1,1,http://183.147.142.103:8004/predict,97,0,0
+1768118874099,101,有效输入-推荐意图（Bug：应返回RECOMMEND）,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",737,362,1,1,http://183.147.142.103:8004/predict,101,0,0
+1768118874202,100,有效输入-搜索意图（Bug：应返回SEARCH）,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",734,365,1,1,http://183.147.142.103:8004/predict,100,0,0
+1768118874304,101,有效输入-视觉意图（Bug：应返回VISION）,200,OK,线程组 1-1,text,false,"Emotion mismatch. Expected: 中性, Actual: 平淡",735,362,1,1,http://183.147.142.103:8004/predict,101,0,0
+1768118874409,62,有效输入-情绪+意图组合（Bug：应返回RECOMMEND）,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",742,389,1,1,http://183.147.142.103:8004/predict,62,0,0
+1768118874475,61,有效输入-情绪+记忆组合（Bug：应返回MEMORY_WRITE）,200,OK,线程组 1-1,text,false,"Emotion mismatch. Expected: 生气, Actual: 关切",743,368,1,1,http://183.147.142.103:8004/predict,61,0,0
+1768118874539,60,有效输入-情绪+搜索组合（Bug：应返回SEARCH）,200,OK,线程组 1-1,text,true,,743,392,1,1,http://183.147.142.103:8004/predict,60,0,0
+1768118874601,91,有效输入-情绪+视觉组合（Bug：应返回VISION）,200,OK,线程组 1-1,text,true,,743,386,1,1,http://183.147.142.103:8004/predict,91,0,0
+1768118874696,131,有效输入-中性情绪,200,OK,线程组 1-1,text,false,"Emotion mismatch. Expected: 中性, Actual: 平淡",732,377,1,1,http://183.147.142.103:8004/predict,131,0,0
+1768118874828,94,边界值-置信度下限,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",736,356,1,1,http://183.147.142.103:8004/predict,94,0,0
+1768118874923,62,边界值-置信度上限,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",736,356,1,1,http://183.147.142.103:8004/predict,62,0,0
+1768118874985,60,边界值-置信度中间值,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",736,356,1,1,http://183.147.142.103:8004/predict,60,0,0
+1768118875047,65,边界值-置信度接近下限,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",736,357,1,1,http://183.147.142.103:8004/predict,65,0,0
+1768118875115,78,边界值-置信度接近上限,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",733,357,1,1,http://183.147.142.103:8004/predict,78,0,0
+1768118875194,23,无效输入-history为空数组,400,Bad Request,线程组 1-1,text,true,,160,319,1,1,http://183.147.142.103:8004/predict,23,0,0
+1768118875218,66,边界值-history文本为空字符串,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",731,344,1,1,http://183.147.142.103:8004/predict,66,0,0
+1768118875285,85,边界值-history文本为单字符,200,OK,线程组 1-1,text,false,"Emotion mismatch. Expected: 中性, Actual: 平淡",730,345,1,1,http://183.147.142.103:8004/predict,85,0,0
+1768118875370,65,有效输入-多轮对话,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",731,566,1,1,http://183.147.142.103:8004/predict,65,0,0
+1768118875436,10,无效输入-history参数缺失,422,Unprocessable Entity,线程组 1-1,text,true,,269,317,1,1,http://183.147.142.103:8004/predict,10,0,0
+1768118875447,63,边界值-asr_emotion为空字符串,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",732,350,1,1,http://183.147.142.103:8004/predict,62,0,0
+1768118875511,17,边界值-asr_emotion_confidence缺失,422,Unprocessable Entity,线程组 1-1,text,true,,270,353,1,1,http://183.147.142.103:8004/predict,17,0,0
+1768118875529,20,边界值-history中role无效,400,Bad Request,线程组 1-1,text,true,,162,364,1,1,http://183.147.142.103:8004/predict,20,0,0
+1768118875549,76,有效输入-情绪与意图不匹配（Bug：应返回SEARCH）,200,OK,线程组 1-1,text,false,"Emotion mismatch. Expected: 生气, Actual: 悲伤",744,392,1,1,http://183.147.142.103:8004/predict,76,0,0
+1768118875629,69,有效输入-情绪与意图匹配（Bug：应返回MEMORY_WRITE）,200,OK,线程组 1-1,text,true,,739,386,1,1,http://183.147.142.103:8004/predict,69,0,0
+1768118875699,73,有效输入-情绪与意图不匹配（Bug：应返回RECOMMEND）,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",741,395,1,1,http://183.147.142.103:8004/predict,73,0,0
+1768118875777,60,有效输入-情绪与意图匹配（Bug：应返回VISION）,200,OK,线程组 1-1,text,true,,741,407,1,1,http://183.147.142.103:8004/predict,60,0,0
+1768118875838,60,有效输入-情绪与意图匹配,200,OK,线程组 1-1,text,false,"Label mismatch. Expected: CHAT, Actual: SEARCH",745,392,1,1,http://183.147.142.103:8004/predict,60,0,0

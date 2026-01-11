@@ -13,7 +13,7 @@ def merge_rules():
         rule_files = [
             "身份定义.md",
             "错题本规则.md",
-            "6A工作流.md",
+            "工作流规则.md",
             "交互约定.md",
             "Markdown规范.md",
             "文件修改规则.md"  # 新增：文件修改规则
