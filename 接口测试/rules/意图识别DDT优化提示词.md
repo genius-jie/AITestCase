@@ -349,21 +349,33 @@ test_user_048|session_048|...|MEMORY|...|正向-CHAT意图-记忆写入-平淡
 ## 2. 失败模式分析
 
 ### 2.1 HTTP状态码错误 (2/10)
-- test_user_001: 预期200, 实际400
-- test_user_050: 预期200, 实际400
 **处理**: ❌ 禁止调整，标记为bug
 
+**失败用例示例**（前10个）:
+| 序号 | 用例标签 | 输入内容 | 失败原因 | 响应码 |
+|------|---------|---------|---------|--------|
+| 1 | 反向-空历史记录-平淡 |  | HTTP状态码与预期不符，预期：200 | 400 |
+| 2 | 反向-空历史记录-开心 |  | HTTP状态码与预期不符，预期：200 | 400 |
+
 ### 2.2 意图标签错误 (5/10)
-- test_user_042: 预期CHAT, 实际VISION ✅ 可调整
-- test_user_043: 预期SEARCH, 实际VISION ✅ 可调整
-- test_user_048: 预期CHAT, 实际MEMORY ✅ 可调整
-- test_user_049: 预期CHAT, 实际MEMORY ✅ 可调整
-- test_user_050: 预期SEARCH, 实际RECOMMEND ❌ 禁止调整
+**处理**: 根据场景判断是否可调整
+
+**失败用例示例**（前10个）:
+| 序号 | 用例标签 | 输入内容 | 失败原因 | 响应码 |
+|------|---------|---------|---------|--------|
+| 1 | 正向-SEARCH意图-电影推荐-平淡 | 推荐一部好看的电影 | Label mismatch. Expected: SEARCH, Actual: RECOMMEND | 200 |
+| 2 | 正向-SEARCH意图-餐厅搜索-平淡 | 找一家好吃的火锅店 | Label mismatch. Expected: SEARCH, Actual: RECOMMEND | 200 |
+| 3 | 正向-CHAT意图-周末计划-开心 | 周末打算去爬山 | Label mismatch. Expected: CHAT, Actual: RECOMMEND | 200 |
 
 ### 2.3 情绪识别错误 (3/10)
-- test_user_002: 预期愤怒, 实际厌烦 ✅ 可调整（语义相近）
-- test_user_003: 预期厌恶, 实际愤怒 ✅ 可调整（语义相近）
-- test_user_006: 预期疑问, 实际关切 ✅ 可调整（语义相近）
+**处理**: 评估语义相近性
+
+**失败用例示例**（前10个）:
+| 序号 | 用例标签 | 输入内容 | 失败原因 | 响应码 |
+|------|---------|---------|---------|--------|
+| 1 | 正向-SEARCH意图-天气查询-平淡 | 今天天气怎么样 | Emotion mismatch. Expected: 平淡, Actual: 疑问 | 200 |
+| 2 | 正向-MEMORY意图-记忆查询-关切 | 你记得我上次跟你说过什么吗 | Emotion mismatch. Expected: 关切, Actual: 疑问 | 200 |
+| 3 | 正向-厌恶情绪-表达讨厌-厌恶 | 真讨厌 | Emotion mismatch. Expected: 厌恶, Actual: 愤怒 | 200 |
 
 ## 3. 调整操作记录
 

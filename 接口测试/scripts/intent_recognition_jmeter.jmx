@@ -5,15 +5,28 @@
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments">
-          <elementProp name="base_url" elementType="Argument">
-            <stringProp name="Argument.name">base_url</stringProp>
-            <stringProp name="Argument.value">http://118.196.28.154:8005</stringProp>
+          <elementProp name="dev_ip" elementType="Argument">
+            <stringProp name="Argument.name">dev_ip</stringProp>
+            <stringProp name="Argument.value">183.147.142.103</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="dev_port" elementType="Argument">
+            <stringProp name="Argument.name">dev_port</stringProp>
+            <stringProp name="Argument.value">8004</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="test_ip" elementType="Argument">
+            <stringProp name="Argument.name">test_ip</stringProp>
+            <stringProp name="Argument.value">118.196.28.154</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="test_port" elementType="Argument">
+            <stringProp name="Argument.name">test_port</stringProp>
+            <stringProp name="Argument.value">8005</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="线程组">
@@ -27,7 +40,45 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV数据文件设置">
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="环境变量初始化">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import org.apache.jmeter.threads.JMeterContextService
+
+// 获取命令行传入的环境参数，默认为 dev
+String env = vars.get(&quot;env&quot;)?:&quot;test&quot;
+
+// 根据环境动态设置 server_ip 和 server_port
+String serverIp
+String serverPort
+
+switch(env) {
+    case &quot;dev&quot;:
+        serverIp = vars.get(&quot;dev_ip&quot;)
+        serverPort = vars.get(&quot;dev_port&quot;)
+        break
+    case &quot;test&quot;:
+        serverIp = vars.get(&quot;test_ip&quot;)
+        serverPort = vars.get(&quot;test_port&quot;)
+        break
+    case &quot;prod&quot;:
+        serverIp = vars.get(&quot;prod_ip&quot;)
+        serverPort = vars.get(&quot;prod_port&quot;)
+        break
+    default:
+        serverIp = vars.get(&quot;dev_ip&quot;)
+        serverPort = vars.get(&quot;dev_port&quot;)
+        break
+}
+
+// 设置变量供后续使用
+vars.put(&quot;server_ip&quot;, serverIp)
+vars.put(&quot;server_port&quot;, serverPort)</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV数据文件设置" enabled="true">
           <stringProp name="delimiter">|</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">E:\AI测试用例\接口测试\data\intent_recognition_test_data_v2.csv</stringProp>
@@ -48,37 +99,9 @@
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="提取text字段" enabled="true">
-          <stringProp name="scriptLanguage">groovy</stringProp>
-          <stringProp name="script">import groovy.json.JsonSlurper
-
-try {
-    String historyJson = vars.get(&quot;history&quot;)
-    def history = new JsonSlurper().parseText(historyJson)
-    
-    String text = &quot;&quot;
-    if (history &amp;&amp; history.size() &gt; 0) {
-        def lastMessage = history.last()
-        if (lastMessage.role == &quot;user&quot;) {
-            text = lastMessage.text
-        }
-    }
-    
-    vars.put(&quot;text&quot;, text)
-    
-} catch (Exception e) {
-    log.error(&quot;Error extracting text from history: &quot; + e.getMessage())
-    vars.put(&quot;text&quot;, &quot;&quot;)
-}
-</stringProp>
-          <stringProp name="parameters"></stringProp>
-          <stringProp name="filename"></stringProp>
-          <stringProp name="cacheKey">false</stringProp>
-        </JSR223PreProcessor>
-        <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${description}" enabled="true">
-          <stringProp name="HTTPSampler.domain">118.196.28.154</stringProp>
-          <stringProp name="HTTPSampler.port">8005</stringProp>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${description}">
+          <stringProp name="HTTPSampler.domain">${server_ip}</stringProp>
+          <stringProp name="HTTPSampler.port">${server_port}</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
           <stringProp name="HTTPSampler.path">/predict</stringProp>
@@ -90,7 +113,7 @@ try {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;user_id&quot;:&quot;${user_id}&quot;,&quot;session_id&quot;:&quot;${session_id}&quot;,&quot;text&quot;:&quot;${text}&quot;,&quot;history&quot;:${history},&quot;asr_emotion&quot;:&quot;${asr_emotion}&quot;,&quot;asr_emotion_confidence&quot;:${asr_emotion_confidence}}</stringProp>
+                <stringProp name="Argument.value">{&quot;user_id&quot;:&quot;${user_id}&quot;,&quot;session_id&quot;:&quot;${session_id}&quot;,&quot;history&quot;:${history},&quot;asr_emotion&quot;:&quot;${asr_emotion}&quot;,&quot;asr_emotion_confidence&quot;:${asr_emotion_confidence}}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -124,6 +147,7 @@ if (expectedStatus.equals(&quot;200&quot;)) {
         
         String expectedLabel = vars.get(&quot;expected_label&quot;)
         String expectedEmotion = vars.get(&quot;expected_emotion&quot;)
+        String description = vars.get(&quot;description&quot;)
         
         // 1. 校验 Label (Intent)
         // 实际响应中没有 modality 字段，直接校验 label
@@ -184,7 +208,44 @@ if (expectedStatus.equals(&quot;200&quot;)) {
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">E:\AI测试用例\接口测试\reports\intent_recognition_final_results_with_emotion.jtl</stringProp>
+        <stringProp name="filename">E:\AI测试用例\接口测试\reports\intent_recognition_results.jtl</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
     </hashTree>

@@ -119,7 +119,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON响应断言-验证result字段">
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON响应断言-验证result字段" enabled="true">
             <stringProp name="JSON_PATH">$.result</stringProp>
             <stringProp name="EXPECTED_VALUE">${result}</stringProp>
             <boolProp name="JSONVALIDATION">true</boolProp>
@@ -128,7 +128,7 @@
             <boolProp name="ISREGEX">false</boolProp>
           </JSONPathAssertion>
           <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON响应断言-验证confidence字段">
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON响应断言-验证confidence字段" enabled="true">
             <stringProp name="JSON_PATH">$.confidence</stringProp>
             <stringProp name="EXPECTED_VALUE"></stringProp>
             <boolProp name="JSONVALIDATION">false</boolProp>
@@ -183,7 +183,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON响应断言-验证result字段">
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON响应断言-验证result字段" enabled="true">
             <stringProp name="JSON_PATH">$.result</stringProp>
             <stringProp name="EXPECTED_VALUE">${result}</stringProp>
             <boolProp name="JSONVALIDATION">true</boolProp>
@@ -192,7 +192,7 @@
             <boolProp name="ISREGEX">false</boolProp>
           </JSONPathAssertion>
           <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON响应断言-验证confidence字段">
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON响应断言-验证confidence字段" enabled="true">
             <stringProp name="JSON_PATH">$.confidence</stringProp>
             <stringProp name="EXPECTED_VALUE"></stringProp>
             <boolProp name="JSONVALIDATION">false</boolProp>
@@ -224,7 +224,7 @@
           </DurationAssertion>
           <hashTree/>
         </hashTree>
-        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="汇总报告">
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="汇总报告" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
@@ -261,7 +261,7 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="查看结果树">
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="查看结果树" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>

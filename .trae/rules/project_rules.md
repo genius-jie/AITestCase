@@ -107,7 +107,8 @@ Write(
 | 2026-01-11 | JMeter | 422 Unprocessable Entity (JSON格式错误) | CSV 中的 JSON 字段包含反斜杠转义 (`{\"key\"...`)，导致 JMeter 构造的请求体非法。 | 1. 清洗 CSV，移除反斜杠，使用标准 CSV 转义 (`"{""key""...}"`)。2. JMeter 开启 `quotedData=true`。3. 确保 `ignoreFirstLine=true`。 |
 | 2026-01-11 | JMeter | JSON decode error | CSV 数据中的 JSON 字段被错误地进行了 CSV 转义（双引号包裹且内部双引号转义），导致 JMeter 解析失败。 | 1. 使用 `|` 作为 CSV 分隔符。2. 确保 JSON 字段不使用引号包裹，也不转义内部双引号。3. 更新 DDT 智能体提示词，强制执行此规则。 |
 | 2026-01-11 | JMeter | 断言逻辑缺陷与CSV数据枚举值不匹配 | 1. 脚本未正确处理 `modality=VISION` 的情况（无 intent）。2. CSV 中的情绪标签与接口定义不一致。 | 1. 清洗数据，统一枚举值。2. 重构 JSR223 断言，实现基于 `modality` 的分层校验。 |
-| 2026-01-11 | Process | 修复脚本后未自动验证 | SOP 中缺少强制的回归验证步骤，导致修改后的脚本可能仍存在问题。 | 更新 JMeter 和 DDT 智能体提示词，增加"修复后强制验证"规则，强制要求修改后必须运行脚本验证。 |
+| 2026-01-12 | Process | 修复脚本后未自动验证 | SOP 中缺少强制的回归验证步骤，导致修改后的脚本可能仍存在问题。 | 更新 JMeter 和 DDT 智能体提示词，增加"修复后强制验证"规则，强制要求修改后必须运行脚本验证。 |
+| 2026-01-12 | JMeter | Windows上使用错误的JMeter启动文件 | 在 Windows PowerShell 中使用 `jmeter.cmd` 启动 JMeter，但 Windows 上正确的启动文件是 `jmeter.bat`。 | 在 Windows 上使用 `jmeter.bat` 启动 JMeter，而不是 `jmeter.cmd`。Linux/macOS 使用 `jmeter.sh`。 |
 
 
 # 6A工作流生成测试用例

@@ -6,6 +6,8 @@ import csv
 from collections import defaultdict, Counter
 import json
 from datetime import datetime
+import argparse
+import os
 
 def load_test_data(csv_file):
     """加载测试数据，建立索引"""
@@ -36,16 +38,37 @@ def analyze_jtl_file(jtl_file, test_data):
         'total': 0,
         'success': 0,
         'failed': 0,
+        'url': '',
+        'port': '',
         'by_intent': defaultdict(lambda: {'total': 0, 'success': 0, 'failed': 0, 'failures': []}),
         'by_emotion': defaultdict(lambda: {'total': 0, 'success': 0, 'failed': 0, 'failures': []}),
         'failure_types': defaultdict(list),
-        'failed_cases': []
+        'failed_cases': [],
+        'response_times': [],
+        'success_response_times': [],
+        'failed_response_times': []
     }
     
     with open(jtl_file, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
+            # 提取URL和端口信息（从第一条记录中获取）
+            if not results['url'] and 'URL' in row:
+                url = row['URL']
+                results['url'] = url
+                # 从URL中提取端口号
+                if ':' in url:
+                    try:
+                        port = url.split(':')[-1].split('/')[0]
+                        results['port'] = port
+                    except:
+                        pass
+            
             results['total'] += 1
+            
+            # 收集响应时间
+            response_time = int(row.get('elapsed', 0))
+            results['response_times'].append(response_time)
             
             # 提取意图和情绪信息
             label = row['label']
@@ -98,10 +121,12 @@ def analyze_jtl_file(jtl_file, test_data):
                 results['success'] += 1
                 results['by_intent'][intent]['success'] += 1
                 results['by_emotion'][expected_emotion]['success'] += 1
+                results['success_response_times'].append(response_time)
             else:
                 results['failed'] += 1
                 results['by_intent'][intent]['failed'] += 1
                 results['by_emotion'][expected_emotion]['failed'] += 1
+                results['failed_response_times'].append(response_time)
                 
                 # 记录失败原因
                 failure_message = row.get('failureMessage', '')
@@ -143,16 +168,98 @@ def analyze_jtl_file(jtl_file, test_data):
     
     return results
 
+def calculate_response_time_stats(response_times):
+    """计算响应时间统计指标"""
+    if not response_times:
+        return {
+            'min': 0,
+            'max': 0,
+            'avg': 0,
+            'p50': 0,
+            'p90': 0,
+            'p95': 0,
+            'p99': 0
+        }
+    
+    sorted_times = sorted(response_times)
+    n = len(sorted_times)
+    
+    def percentile(p):
+        """计算百分位数"""
+        index = int(n * p / 100)
+        if index >= n:
+            index = n - 1
+        return sorted_times[index]
+    
+    return {
+        'min': min(response_times),
+        'max': max(response_times),
+        'avg': sum(response_times) / n,
+        'p50': percentile(50),
+        'p90': percentile(90),
+        'p95': percentile(95),
+        'p99': percentile(99)
+    }
+
 def generate_report(results, output_file, test_data):
     """生成详细报告"""
     report = []
     report.append("# 意图识别接口测试结果分析报告")
     report.append(f"\n**测试时间**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    
+    # 添加URL和端口信息
+    if results['url']:
+        report.append(f"**测试URL**: {results['url']}")
+    if results['port']:
+        report.append(f"**测试端口**: {results['port']}")
+    
     report.append(f"**测试用例总数**: {results['total']}")
     report.append(f"**成功用例数**: {results['success']}")
     report.append(f"**失败用例数**: {results['failed']}")
     report.append(f"**通过率**: {results['success']/results['total']*100:.2f}%")
     report.append(f"**失败率**: {results['failed']/results['total']*100:.2f}%")
+    
+    # 响应时间统计
+    report.append("\n## 响应时间统计")
+    
+    # 总体响应时间统计
+    overall_stats = calculate_response_time_stats(results['response_times'])
+    report.append("\n### 总体响应时间")
+    report.append("| 指标 | 数值 |")
+    report.append("|------|------|")
+    report.append(f"| 最小值 | {overall_stats['min']} ms |")
+    report.append(f"| 最大值 | {overall_stats['max']} ms |")
+    report.append(f"| 平均值 | {overall_stats['avg']:.2f} ms |")
+    report.append(f"| 中位数 (P50) | {overall_stats['p50']} ms |")
+    report.append(f"| 90分位 (P90) | {overall_stats['p90']} ms |")
+    report.append(f"| 95分位 (P95) | {overall_stats['p95']} ms |")
+    report.append(f"| 99分位 (P99) | {overall_stats['p99']} ms |")
+    
+    # 成功用例响应时间统计
+    success_stats = calculate_response_time_stats(results['success_response_times'])
+    report.append("\n### 成功用例响应时间")
+    report.append("| 指标 | 数值 |")
+    report.append("|------|------|")
+    report.append(f"| 最小值 | {success_stats['min']} ms |")
+    report.append(f"| 最大值 | {success_stats['max']} ms |")
+    report.append(f"| 平均值 | {success_stats['avg']:.2f} ms |")
+    report.append(f"| 中位数 (P50) | {success_stats['p50']} ms |")
+    report.append(f"| 90分位 (P90) | {success_stats['p90']} ms |")
+    report.append(f"| 95分位 (P95) | {success_stats['p95']} ms |")
+    report.append(f"| 99分位 (P99) | {success_stats['p99']} ms |")
+    
+    # 失败用例响应时间统计
+    failed_stats = calculate_response_time_stats(results['failed_response_times'])
+    report.append("\n### 失败用例响应时间")
+    report.append("| 指标 | 数值 |")
+    report.append("|------|------|")
+    report.append(f"| 最小值 | {failed_stats['min']} ms |")
+    report.append(f"| 最大值 | {failed_stats['max']} ms |")
+    report.append(f"| 平均值 | {failed_stats['avg']:.2f} ms |")
+    report.append(f"| 中位数 (P50) | {failed_stats['p50']} ms |")
+    report.append(f"| 90分位 (P90) | {failed_stats['p90']} ms |")
+    report.append(f"| 95分位 (P95) | {failed_stats['p95']} ms |")
+    report.append(f"| 99分位 (P99) | {failed_stats['p99']} ms |")
     
     # 按意图分类统计
     report.append("\n## 一、按意图分类统计")
@@ -323,9 +430,22 @@ def generate_report(results, output_file, test_data):
     return '\n'.join(report)
 
 if __name__ == '__main__':
-    jtl_file = r'e:\AI测试用例\接口测试\reports\intent_recognition_test_results_20260112_170614.jtl'
-    test_data_file = r'e:\AI测试用例\接口测试\data\intent_recognition_test_data_v2.csv'
-    output_file = r'e:\AI测试用例\接口测试\reports\test_report_20260112.md'
+    parser = argparse.ArgumentParser(description='分析意图识别测试结果，生成详细报告')
+    parser.add_argument('--jtl-file', type=str, help='JTL结果文件路径')
+    parser.add_argument('--data-file', type=str, help='测试数据CSV文件路径')
+    parser.add_argument('--output', type=str, help='输出报告文件路径')
+    
+    args = parser.parse_args()
+    
+    # 如果没有提供命令行参数，使用默认值
+    jtl_file = args.jtl_file if args.jtl_file else r'e:\AI测试用例\接口测试\reports\intent_recognition_test_results_20260112_170614.jtl'
+    test_data_file = args.data_file if args.data_file else r'e:\AI测试用例\接口测试\data\intent_recognition_test_data_v2.csv'
+    output_file = args.output if args.output else r'e:\AI测试用例\接口测试\reports\test_report_20260112.md'
+    
+    # 转换为绝对路径
+    jtl_file = os.path.abspath(jtl_file)
+    test_data_file = os.path.abspath(test_data_file)
+    output_file = os.path.abspath(output_file)
     
     print("正在加载测试数据...")
     test_data = load_test_data(test_data_file)
