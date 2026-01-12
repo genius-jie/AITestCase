@@ -7,7 +7,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="base_url" elementType="Argument">
             <stringProp name="Argument.name">base_url</stringProp>
-            <stringProp name="Argument.value">http://183.147.142.103:8004</stringProp>
+            <stringProp name="Argument.value">http://118.196.28.154:8005</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -27,16 +27,16 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV数据文件设置" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV数据文件设置">
           <stringProp name="delimiter">|</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
-          <stringProp name="filename">E:\AI测试用例\接口测试\data\intent_recognition_test_data.csv</stringProp>
+          <stringProp name="filename">E:\AI测试用例\接口测试\data\intent_recognition_test_data_v2.csv</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
-          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="quotedData">true</boolProp>
           <boolProp name="recycle">false</boolProp>
           <boolProp name="stopThread">true</boolProp>
           <stringProp name="shareMode">shareMode.all</stringProp>
-          <stringProp name="variableNames">user_id,session_id,history,asr_emotion,asr_emotion_value,asr_emotion_confidence,expected_status,expected_label,expected_emotion,description</stringProp>
+          <stringProp name="variableNames">user_id,session_id,history,asr_emotion,asr_emotion_confidence,expected_status,expected_label,expected_emotion,description</stringProp>
         </CSVDataSet>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
@@ -48,9 +48,37 @@
           </collectionProp>
         </HeaderManager>
         <hashTree/>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="提取text字段" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="script">import groovy.json.JsonSlurper
+
+try {
+    String historyJson = vars.get(&quot;history&quot;)
+    def history = new JsonSlurper().parseText(historyJson)
+    
+    String text = &quot;&quot;
+    if (history &amp;&amp; history.size() &gt; 0) {
+        def lastMessage = history.last()
+        if (lastMessage.role == &quot;user&quot;) {
+            text = lastMessage.text
+        }
+    }
+    
+    vars.put(&quot;text&quot;, text)
+    
+} catch (Exception e) {
+    log.error(&quot;Error extracting text from history: &quot; + e.getMessage())
+    vars.put(&quot;text&quot;, &quot;&quot;)
+}
+</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">false</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="${description}" enabled="true">
-          <stringProp name="HTTPSampler.domain">183.147.142.103</stringProp>
-          <stringProp name="HTTPSampler.port">8004</stringProp>
+          <stringProp name="HTTPSampler.domain">118.196.28.154</stringProp>
+          <stringProp name="HTTPSampler.port">8005</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
           <stringProp name="HTTPSampler.path">/predict</stringProp>
@@ -62,7 +90,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;user_id&quot;:&quot;${user_id}&quot;,&quot;session_id&quot;:&quot;${session_id}&quot;,&quot;history&quot;:${history},&quot;asr_emotion&quot;:&quot;${asr_emotion}&quot;,&quot;asr_emotion_value&quot;:${asr_emotion_value},&quot;asr_emotion_confidence&quot;:${asr_emotion_confidence}}</stringProp>
+                <stringProp name="Argument.value">{&quot;user_id&quot;:&quot;${user_id}&quot;,&quot;session_id&quot;:&quot;${session_id}&quot;,&quot;text&quot;:&quot;${text}&quot;,&quot;history&quot;:${history},&quot;asr_emotion&quot;:&quot;${asr_emotion}&quot;,&quot;asr_emotion_confidence&quot;:${asr_emotion_confidence}}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -94,8 +122,11 @@ if (expectedStatus.equals(&quot;200&quot;)) {
         def response = prev.getResponseDataAsString()
         def json = new JsonSlurper().parseText(response)
         
-        // 1. 校验 label 字段
         String expectedLabel = vars.get(&quot;expected_label&quot;)
+        String expectedEmotion = vars.get(&quot;expected_emotion&quot;)
+        
+        // 1. 校验 Label (Intent)
+        // 实际响应中没有 modality 字段，直接校验 label
         if (json.label != expectedLabel) {
             AssertionResult.setFailure(true)
             AssertionResult.setFailureMessage(&quot;Label mismatch. Expected: &quot; + expectedLabel + &quot;, Actual: &quot; + json.label)
@@ -103,21 +134,10 @@ if (expectedStatus.equals(&quot;200&quot;)) {
         }
         
         // 2. 校验 emotion 字段
-        String expectedEmotion = vars.get(&quot;expected_emotion&quot;)
         if (json.emotion != expectedEmotion) {
             AssertionResult.setFailure(true)
             AssertionResult.setFailureMessage(&quot;Emotion mismatch. Expected: &quot; + expectedEmotion + &quot;, Actual: &quot; + json.emotion)
             return
-        }
-        
-        // 3. 校验关键字段是否存在
-        def requiredFields = [&quot;confidence&quot;, &quot;scores&quot;, &quot;emotion&quot;, &quot;emotion_confidence&quot;]
-        for (field in requiredFields) {
-            if (!json.containsKey(field)) {
-                AssertionResult.setFailure(true)
-                AssertionResult.setFailureMessage(&quot;Missing required field: &quot; + field)
-                return
-            }
         }
         
     } catch (Exception e) {

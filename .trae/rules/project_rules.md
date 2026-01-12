@@ -34,7 +34,7 @@
 
 ### 1. 问题诊断阶段
 当用户报告问题或需要分析文件时：
-1. **首先读取错题本**：`e:\AI测试用例\.trae\rules\错题本.md`
+1. **首先读取错题本**：`e:\AI测试用例\.trae\rules\错题本规则.md`（查看"历史错误记录"章节）
 2. **搜索相关历史问题**：
    - 检查是否有相同或类似的问题
    - 查找相关的技术栈分类（如 Mermaid、VS Code、Markdown 等）
@@ -67,12 +67,47 @@
 - 用户要求优化代码或文档
 - 遇到重复性技术问题
 
+## 工具使用规范
+
+### Write 工具必填参数
+**重要：** Write 工具必须包含 `file_path` 参数！
+
+**错误示例：**
+```python
+Write(content="文件内容")
+```
+
+**正确示例：**
+```python
+Write(
+    file_path="e:\\AI测试用例\\接口测试\\data\\test.csv",
+    content="文件内容"
+)
+```
+
+**注意事项：**
+- `file_path` 必须使用完整的绝对路径
+- 路径分隔符必须使用反斜杠 `\`（Windows路径规范）
+- 在JSON字符串中需要对反斜杠进行转义：`"e:\\AI测试用例\\file.txt"`
+- 如果是编辑现有文件，必须先使用 Read 工具读取文件内容
+
 ## 优势
 
 - ⚡ 快速定位问题（基于历史经验）
 - 🎯 避免重复踩坑
 - 📈 持续积累知识
 - 🔄 形成知识闭环
+
+## 历史错误记录
+
+| 日期 | 模块 | 错误描述 | 根因分析 | 修正方案 |
+| :--- | :--- | :--- | :--- | :--- |
+| 2026-01-12 | JMeter | CSV文件格式错误导致只读取18条数据 | CSV文件第20行（索引19）的role字段缺少一个引号：`"role":"user"` 应该是 `"role":"user"`，导致CSV解析器无法正确解析该行及后续行。 | 修复CSV文件中的引号格式错误，确保所有JSON字段的双引号都正确闭合。 |
+| 2026-01-12 | JMeter | JTL文件中没有记录响应数据 | ResultCollector配置中缺少响应数据保存配置（responseData和samplerData）。 | 在ResultCollector的saveConfig中添加responseData和samplerData配置，确保完整记录测试结果。 |
+| 2026-01-11 | JMeter | 422 Unprocessable Entity (JSON格式错误) | CSV 中的 JSON 字段包含反斜杠转义 (`{\"key\"...`)，导致 JMeter 构造的请求体非法。 | 1. 清洗 CSV，移除反斜杠，使用标准 CSV 转义 (`"{""key""...}"`)。2. JMeter 开启 `quotedData=true`。3. 确保 `ignoreFirstLine=true`。 |
+| 2026-01-11 | JMeter | JSON decode error | CSV 数据中的 JSON 字段被错误地进行了 CSV 转义（双引号包裹且内部双引号转义），导致 JMeter 解析失败。 | 1. 使用 `|` 作为 CSV 分隔符。2. 确保 JSON 字段不使用引号包裹，也不转义内部双引号。3. 更新 DDT 智能体提示词，强制执行此规则。 |
+| 2026-01-11 | JMeter | 断言逻辑缺陷与CSV数据枚举值不匹配 | 1. 脚本未正确处理 `modality=VISION` 的情况（无 intent）。2. CSV 中的情绪标签与接口定义不一致。 | 1. 清洗数据，统一枚举值。2. 重构 JSR223 断言，实现基于 `modality` 的分层校验。 |
+| 2026-01-11 | Process | 修复脚本后未自动验证 | SOP 中缺少强制的回归验证步骤，导致修改后的脚本可能仍存在问题。 | 更新 JMeter 和 DDT 智能体提示词，增加"修复后强制验证"规则，强制要求修改后必须运行脚本验证。 |
 
 
 # 6A工作流生成测试用例
@@ -591,6 +626,37 @@ graph TD
 仅在以下情况允许临时存放：
 - 脚本开发过程中的临时调试文件（需在测试完成后清理）
 - 用户明确要求的特殊测试场景
+
+#### 5.1.5 JMeter 环境配置
+为确保 JMeter 脚本执行的稳定性和一致性，必须使用以下固定环境配置：
+
+**环境配置信息**：
+- **JMeter安装路径**：`D:\apache-jmeter-5.6.3\bin`
+- **JMeter版本**：5.6.3
+- **GUI模式执行命令**：`D:\apache-jmeter-5.6.3\bin\jmeter.bat`
+- **命令行模式执行命令**：`D:\apache-jmeter-5.6.3\bin\jmeter.cmd`
+
+**重要规则**：
+- **严禁**每次执行前检查JMeter路径或安装状态，直接使用上述固定路径执行命令
+- **必须**使用完整的JMeter路径，不要使用相对路径或环境变量
+- **必须**在PowerShell中使用 `&` 符号调用带参数的命令：`& "D:\apache-jmeter-5.6.3\bin\jmeter.cmd" -n -t "script.jmx"`
+- **必须**在执行前确保 `reports` 目录存在且为空，避免历史结果干扰
+
+**执行命令模板**：
+```powershell
+# 非GUI模式执行（推荐用于自动化测试）
+& "D:\apache-jmeter-5.6.3\bin\jmeter.cmd" -n -t "e:\AI测试用例\接口测试\scripts\script.jmx" -l "e:\AI测试用例\接口测试\reports\results.jtl" -e -o "e:\AI测试用例\接口测试\reports\html_report"
+
+# GUI模式执行（用于脚本调试）
+& "D:\apache-jmeter-5.6.3\bin\jmeter.bat" -t "e:\AI测试用例\接口测试\scripts\script.jmx"
+```
+
+**参数说明**：
+- `-n`: 非GUI模式
+- `-t`: 指定JMX脚本文件（必须使用完整路径）
+- `-l`: 指定结果日志文件（保存到reports目录）
+- `-e`: 生成测试报告
+- `-o`: 指定报告输出目录（保存到reports目录）
 
 ## 6. 强制执行
 
