@@ -60,18 +60,50 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="环境变量初始化" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import org.apache.jmeter.threads.JMeterContextService
+
+String env = vars.get(&quot;env&quot;)
+
+String currentHost
+String currentPort
+
+switch(env) {
+    case &quot;dev&quot;:
+        currentHost = vars.get(&quot;DEV_HOST&quot;)
+        currentPort = vars.get(&quot;DEV_PORT&quot;)
+        break
+    case &quot;test&quot;:
+        currentHost = vars.get(&quot;TEST_HOST&quot;)
+        currentPort = vars.get(&quot;TEST_PORT&quot;)
+        break
+    case &quot;prod&quot;:
+        currentHost = vars.get(&quot;PROD_HOST&quot;)
+        currentPort = vars.get(&quot;PROD_PORT&quot;)
+        break
+    case &quot;recommend&quot;:
+        currentHost = vars.get(&quot;RECOMMEND_HOST&quot;)
+        currentPort = vars.get(&quot;RECOMMEND_PORT&quot;)
+        break
+    default:
+        currentHost = vars.get(&quot;RECOMMEND_HOST&quot;)
+        currentPort = vars.get(&quot;RECOMMEND_PORT&quot;)
+        break
+}
+
+vars.put(&quot;CURRENT_HOST&quot;, currentHost)
+vars.put(&quot;CURRENT_PORT&quot;, currentPort)
+
+log.info(&quot;当前环境: &quot; + env + &quot;, Host: &quot; + currentHost + &quot;, Port: &quot; + currentPort)
+</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
         <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
           <collectionProp name="Arguments.arguments">
-            <elementProp name="CURRENT_HOST" elementType="Argument">
-              <stringProp name="Argument.name">CURRENT_HOST</stringProp>
-              <stringProp name="Argument.value">${RECOMMEND_HOST}</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="CURRENT_PORT" elementType="Argument">
-              <stringProp name="Argument.name">CURRENT_PORT</stringProp>
-              <stringProp name="Argument.value">${RECOMMEND_PORT}</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
           </collectionProp>
         </Arguments>
         <hashTree/>

@@ -10,14 +10,34 @@
             <stringProp name="Argument.value">1</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="SERVER_HOST" elementType="Argument">
-            <stringProp name="Argument.name">SERVER_HOST</stringProp>
-            <stringProp name="Argument.value">121.43.112.101</stringProp>
+          <elementProp name="DEV_HOST" elementType="Argument">
+            <stringProp name="Argument.name">DEV_HOST</stringProp>
+            <stringProp name="Argument.value">14.103.222.77</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="SERVER_PORT" elementType="Argument">
-            <stringProp name="Argument.name">SERVER_PORT</stringProp>
-            <stringProp name="Argument.value">8020</stringProp>
+          <elementProp name="DEV_PORT" elementType="Argument">
+            <stringProp name="Argument.name">DEV_PORT</stringProp>
+            <stringProp name="Argument.value">8060</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="TEST_HOST" elementType="Argument">
+            <stringProp name="Argument.name">TEST_HOST</stringProp>
+            <stringProp name="Argument.value">118.196.28.154</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="TEST_PORT" elementType="Argument">
+            <stringProp name="Argument.name">TEST_PORT</stringProp>
+            <stringProp name="Argument.value">8060</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="PROD_HOST" elementType="Argument">
+            <stringProp name="Argument.name">PROD_HOST</stringProp>
+            <stringProp name="Argument.value">118.196.28.154</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="PROD_PORT" elementType="Argument">
+            <stringProp name="Argument.name">PROD_PORT</stringProp>
+            <stringProp name="Argument.value">8460</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="AUDIO_FILE_PATH" elementType="Argument">
@@ -27,7 +47,7 @@
           </elementProp>
           <elementProp name="Run_Time" elementType="Argument">
             <stringProp name="Argument.name">Run_Time</stringProp>
-            <stringProp name="Argument.value">101</stringProp>
+            <stringProp name="Argument.value">10</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -35,7 +55,45 @@
       <stringProp name="TestPlan.user_define_classpath">D:\apache-jmeter-5.6.3\lib\concentus-1.0.2.jar</stringProp>
     </TestPlan>
     <hashTree>
-      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="音频预处理" enabled="false">
+      <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="环境变量初始化">
+        <stringProp name="scriptLanguage">groovy</stringProp>
+        <stringProp name="parameters"></stringProp>
+        <stringProp name="filename"></stringProp>
+        <stringProp name="cacheKey">true</stringProp>
+        <stringProp name="script">import org.apache.jmeter.threads.JMeterContextService
+
+String env = vars.get(&quot;env&quot;)?:&quot;dev&quot;
+
+String serverHost
+String serverPort
+
+switch(env) {
+    case &quot;dev&quot;:
+        serverHost = vars.get(&quot;DEV_HOST&quot;)
+        serverPort = vars.get(&quot;DEV_PORT&quot;)
+        break
+    case &quot;test&quot;:
+        serverHost = vars.get(&quot;TEST_HOST&quot;)
+        serverPort = vars.get(&quot;TEST_PORT&quot;)
+        break
+    case &quot;prod&quot;:
+        serverHost = vars.get(&quot;PROD_HOST&quot;)
+        serverPort = vars.get(&quot;PROD_PORT&quot;)
+        break
+    default:
+        serverHost = vars.get(&quot;DEV_HOST&quot;)
+        serverPort = vars.get(&quot;DEV_PORT&quot;)
+        break
+}
+
+vars.put(&quot;SERVER_HOST&quot;, serverHost)
+vars.put(&quot;SERVER_PORT&quot;, serverPort)
+
+log.info(&quot;当前环境: &quot; + env + &quot;, Host: &quot; + serverHost + &quot;, Port: &quot; + serverPort)
+</stringProp>
+      </JSR223PreProcessor>
+      <hashTree/>
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="音频预处理">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -46,7 +104,7 @@
         </elementProp>
       </SetupThreadGroup>
       <hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="5.1 音频预处理（全局执行一次）" enabled="true">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="5.1 音频预处理（全局执行一次）">
           <stringProp name="scriptLanguage">groovy</stringProp>
           <stringProp name="parameters"></stringProp>
           <stringProp name="filename"></stringProp>
@@ -97,7 +155,7 @@ log.info(&quot;==================================================&quot;)</string
         </JSR223Sampler>
         <hashTree/>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group" enabled="false">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="1554691910">
             <stringProp name="1070312230">${CONCURRENT_USERS}</stringProp>
@@ -114,7 +172,7 @@ log.info(&quot;==================================================&quot;)</string
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
       </kg.apc.jmeter.threads.UltimateThreadGroup>
       <hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="声明变量" enabled="true">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="声明变量">
           <stringProp name="scriptLanguage">groovy</stringProp>
           <stringProp name="parameters"></stringProp>
           <stringProp name="filename"></stringProp>
@@ -291,7 +349,7 @@ log.info(&quot;线程 &quot; + ctx.getThreadNum() + &quot; 已初始化，PCM文
           </JSONPostProcessor>
           <hashTree/>
         </hashTree>
-        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="4. 发送listen start消息" enabled="true">
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="4. 发送listen start消息">
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server"></stringProp>
           <stringProp name="port">80</stringProp>
@@ -315,7 +373,7 @@ log.info(&quot;线程 &quot; + ctx.getThreadNum() + &quot; 已初始化，PCM文
           </DurationAssertion>
           <hashTree/>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="5.2 发送音频帧循环" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="5.2 发送音频帧循环">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">true</boolProp>
         </TransactionController>
@@ -811,7 +869,7 @@ log.info(&quot;==================================================&quot;)</string
         </JSR223Sampler>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="梁茂传声筒">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="梁茂传声筒" enabled="false">
         <stringProp name="TestPlan.comments">${CONCURRENT_USERS}</stringProp>
         <stringProp name="ThreadGroup.num_threads">${CONCURRENT_USERS}</stringProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
@@ -823,7 +881,7 @@ log.info(&quot;==================================================&quot;)</string
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="声明变量">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="声明变量" enabled="true">
           <stringProp name="scriptLanguage">groovy</stringProp>
           <stringProp name="parameters"></stringProp>
           <stringProp name="filename"></stringProp>
@@ -860,7 +918,7 @@ log.info(&quot;DEVICE_ID=&quot; + deviceId + &quot;, USER_ID=&quot; + userId)
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="1. 建立WebSocket连接">
+        <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="1. 建立WebSocket连接" enabled="true">
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server">${SERVER_HOST}</stringProp>
           <stringProp name="port">${SERVER_PORT}</stringProp>
@@ -898,7 +956,7 @@ log.info(&quot;线程 &quot; + ctx.getThreadNum() + &quot; 已初始化，PCM文
           </JSR223PreProcessor>
           <hashTree/>
         </hashTree>
-        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="2. 发送hello握手消息">
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="2. 发送hello握手消息" enabled="true">
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server"></stringProp>
           <stringProp name="port">80</stringProp>
@@ -930,7 +988,7 @@ log.info(&quot;线程 &quot; + ctx.getThreadNum() + &quot; 已初始化，PCM文
           </DurationAssertion>
           <hashTree/>
         </hashTree>
-        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="3.接收初始化">
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="3.接收初始化" enabled="true">
           <boolProp name="TLS">false</boolProp>
           <stringProp name="server"></stringProp>
           <stringProp name="port">80</stringProp>
@@ -1477,7 +1535,7 @@ props.remove(threadOffsetKey)</stringProp>
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
