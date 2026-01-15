@@ -1,0 +1,22 @@
+username,password,captcha_id,captcha_code
+# 正例场景
+admin,admin,72,25
+test_user,test_pass,73,26
+user1,pass1,74,27
+# 反例场景 - 登录失败
+invalid_user,invalid_pass,77,30
+admin,wrong_pass,78,31
+admin,admin,79,99
+# 反例场景 - 文件上传失败
+admin,admin,80,32
+# 反例场景 - 创建包失败
+admin,admin,81,33
+admin,admin,82,34
+admin,admin,83,35
+# 边界例场景 - 版本冲突
+admin,admin,84,36
+admin,admin,85,37
+admin,admin,86,38
+# 鲁棒性例场景
+admin,admin,87,39
+admin,admin,88,40

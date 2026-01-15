@@ -1,0 +1,98 @@
+scenario_id,scenario_name,text,break_time_ms,pause_position,add_post_process_breath,breath_strength,prosody_rate,prosody_pitch,prosody_volume,emphasis_words,style,expected_silence,expected_speech,expected_post_process_breath,vad_expected_result,priority,audio_format,sample_rate,channels,bit_depth
+# 新增50条多样化测试用例 - 2026-01-14
+
+# 正常场景测试用例
+SC101,日常问候,早上好，今天感觉怎么样？,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC102,工作交流,我们下午三点开会讨论项目进展,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC103,学习场景,这道数学题的解法很巧妙,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC104,生活分享,昨天我去了一家很棒的餐厅,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC105,天气描述,窗外正在下雨，空气很清新,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+
+# 不同停顿时长测试用例
+SC106,极短停顿,我今天,100,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC107,短停顿,明天早上,300,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC108,中等停顿,周末计划,700,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC109,长停顿,这个问题,1500,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC110,极长停顿,关于未来,3000,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+
+# 不同停顿位置测试用例
+SC111,句首停顿,今天的会议很重要,500,句首,false,,normal,,normal,,normal,true,true,false,silence+active,P1,WAV,16000,1,16
+SC112,句中停顿,我们需要更多的时间,500,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC113,句尾停顿,请大家注意安全,500,句尾,false,,normal,,normal,,normal,false,true,false,active+silence,P1,WAV,16000,1,16
+SC114,句首句中停顿,项目,500,句首,true,medium,normal,,normal,,normal,true,true,true,silence+active+silence+active,P1,WAV,16000,1,16
+SC115,句中句尾停顿,时间管理,500,句中,true,medium,normal,,normal,,normal,false,true,true,active+silence+active+silence,P1,WAV,16000,1,16
+
+# 不同语速测试用例
+SC116,极慢速,阅读是获取知识的重要途径,,normal,false,,slowest,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC117,慢速,健康饮食对身体很重要,,normal,false,,slow,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC118,正常语速,运动可以增强免疫力,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC119,快速,时间就是金钱，效率很重要,,normal,false,,fast,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC120,极快速,科技发展日新月异，我们要不断学习,,normal,false,,fastest,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+
+# 不同音调测试用例
+SC121,极低音调,夜晚的星空真美,,normal,false,,normal,x-low,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC122,低音调,历史是一面镜子,,normal,false,,normal,low,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC123,正常音调,艺术能够陶冶情操,,normal,false,,normal,medium,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC124,高音调,春天来了，百花盛开,,normal,false,,normal,high,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC125,极高音调,节日的氛围真热闹,,normal,false,,normal,x-high,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+
+# 不同音量测试用例
+SC126,极小音量,图书馆里要保持安静,,normal,false,,normal,,x-soft,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC127,小音量,请轻声说话，不要打扰别人,,normal,false,,normal,,soft,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC128,正常音量,我们来讨论一下这个问题,,normal,false,,normal,,medium,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC129,大音量,比赛开始了，大家加油,,normal,false,,normal,,loud,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC130,极大音量,着火了，快撤离,,normal,false,,normal,,x-loud,,normal,false,true,false,active,P1,WAV,16000,1,16
+
+# 不同语气风格测试用例
+SC131,开心语气,我终于完成了这个项目！,,normal,false,,normal,,normal,,cheerful,false,true,false,active,P0,WAV,16000,1,16
+SC132,悲伤语气,我失去了一个重要的朋友,,normal,false,,normal,,normal,,sad,false,true,false,active,P0,WAV,16000,1,16
+SC133,生气语气,为什么总是迟到？,,normal,false,,normal,,normal,,angry,false,true,false,active,P0,WAV,16000,1,16
+SC134,温柔语气,你做得很好，继续加油,,normal,false,,normal,,normal,,gentle,false,true,false,active,P0,WAV,16000,1,16
+SC135,严肃语气,这件事非常重要，不能马虎,,normal,false,,normal,,normal,,serious,false,true,false,active,P0,WAV,16000,1,16
+SC136,兴奋语气,我们赢了！太棒了！,,normal,false,,normal,,normal,,excited,false,true,false,active,P0,WAV,16000,1,16
+SC137,客服语气,您好，有什么可以帮您的吗？,,normal,false,,normal,,normal,,customerService,false,true,false,active,P0,WAV,16000,1,16
+
+# 不同呼吸强度测试用例
+SC138,无呼吸声,音乐能够舒缓情绪,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC139,低强度呼吸声,旅行可以开阔视野,500,句中,true,low,,normal,,normal,,normal,false,true,true,active+silence+active,P1,WAV,16000,1,16
+SC140,中强度呼吸声,摄影可以记录美好瞬间,500,句中,true,medium,,normal,,normal,,normal,false,true,true,active+silence+active,P1,WAV,16000,1,16
+SC141,高强度呼吸声,跑步有助于身体健康,500,句中,true,high,,normal,,normal,,normal,false,true,true,active+silence+active,P1,WAV,16000,1,16
+
+# 不同语言测试用例
+SC142,英语日常问候,How are you doing today?,,normal,false,,normal,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC143,英语工作交流,Let's discuss the project plan,,normal,false,,normal,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC144,日语日常问候,お元気ですか？,,normal,false,,normal,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC145,日语工作交流,プロジェクトの進捗を報告します,,normal,false,,normal,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC146,韩语日常问候,안녕하세요,,normal,false,,normal,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+
+# 强调词测试用例
+SC147,单强调词产品,这个**手机**的性能非常好,,normal,false,,normal,,normal,手机,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC148,单强调词服务,这家**餐厅**的服务很周到,,normal,false,,normal,,normal,餐厅,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC149,双强调词科技,**人工智能**正在改变**世界**,,normal,false,,normal,,normal,人工智能,世界,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC150,三强调词教育,**教育**是**未来**的**基石**,,normal,false,,normal,,normal,教育,未来,基石,,normal,false,true,false,active,P1,WAV,16000,1,16
+
+# 复合参数测试用例
+SC151,快速高音调,这真是令人惊喜的消息！,,normal,false,,fast,high,,excited,false,true,false,active,P1,WAV,16000,1,16
+SC152,慢速低音调,人生就像一场漫长的旅程,,normal,false,,slow,low,,gentle,false,true,false,active,P1,WAV,16000,1,16
+SC153,快速大音量,比赛就要开始了，准备好！,,normal,false,,fast,,loud,excited,false,true,false,active,P1,WAV,16000,1,16
+SC154,慢速小音量,夜晚很安静，适合思考,,normal,false,,slow,,soft,gentle,false,true,false,active,P1,WAV,16000,1,16
+SC155,高音调高音量,庆祝我们的成功！,,normal,false,,normal,high,loud,excited,false,true,false,active,P1,WAV,16000,1,16
+SC156,低音调低音量,请保持冷静，不要慌张,,normal,false,,normal,low,soft,gentle,false,true,false,active,P1,WAV,16000,1,16
+SC157,快速高音调高音量,这是一个历史性的时刻！,,normal,false,,fast,high,loud,excited,false,true,false,active,P1,WAV,16000,1,16
+SC158,慢速低音调低音量,时间会治愈一切伤痛,,normal,false,,slow,low,soft,sad,false,true,false,active,P1,WAV,16000,1,16
+
+# 边界场景测试用例
+SC159,极短文本,好,,normal,false,,normal,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC160,极长文本,在这个快速发展的时代，我们面临着许多机遇和挑战，需要不断学习和进步，才能适应社会的变化，实现自己的人生价值，创造美好的未来,,normal,false,,normal,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC161,纯数字,9876543210,,normal,false,,normal,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC162,纯标点,，。！？；：……—,,normal,false,,normal,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC163,数字文本混合,2026年是充满希望的一年,,normal,false,,normal,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC164,中英文混合,Hello，欢迎来到中国,,normal,false,,normal,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC165,特殊字符,今天的心情非常好😊,,normal,false,,normal,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+
+# 异常场景测试用例
+SC166,空文本,,normal,false,,normal,,normal,,normal,false,false,false,silence,P2,WAV,16000,1,16
+SC167,仅空格文本,   ,,normal,false,,normal,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC168,重复文本,测试测试测试,,normal,false,,normal,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC169,乱序文本,试测据数序乱,,normal,false,,normal,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC170,无意义文本,阿巴阿巴阿巴,,normal,false,,normal,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16

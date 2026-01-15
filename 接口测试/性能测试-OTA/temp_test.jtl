@@ -1,0 +1,59 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1768480060643,49,完整OTA升级流程,500,"Number of samples in transaction : 1, number of failing samples : 1",单设备测试线程组 1-1,,false,"Test failed: code expected to equal /
+
+****** received  : [[[5]]]00
+
+****** comparison: [[[2]]]00
+
+/",270,191,1,1,null,0,712,29
+1768480061340,49,登录接口,500,Internal Server Error,单设备测试线程组 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[5]]]00
+
+****** comparison: [[[2]]]00
+
+/",270,191,1,1,http://121.43.112.101:30100/api/v1/user/login,47,0,29
+1768480061421,20,文件上传接口,401,Unauthorized,单设备测试线程组 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",240,725,1,1,http://121.43.112.101:30100/api/v1/file/upload,20,0,0
+1768480061458,16,创建升级包接口,401,Unauthorized,单设备测试线程组 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",257,225,1,1,http://121.43.112.101:30100/api/v1/ota/package,16,0,0
+1768480061487,15,测试升级接口,404,Not Found,单设备测试线程组 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",246,198,1,1,http://121.43.112.101:30100/api/v1/ota/test,15,0,0
+1768480378248,176,完整OTA升级流程,200,"Number of samples in transaction : 1, number of failing samples : 0",单设备测试线程组 1-1,,true,,681,269,1,1,null,0,691,25
+1768480378928,176,登录接口,200,OK,单设备测试线程组 1-1,text,true,,681,269,1,1,http://121.43.112.101:30100/api/v1/user/login,174,0,25
+1768480379140,16,文件上传接口,401,Unauthorized,单设备测试线程组 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",240,1059,1,1,http://121.43.112.101:30100/api/v1/file/upload,16,0,0
+1768480379169,18,创建升级包接口,401,Unauthorized,单设备测试线程组 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",253,706,1,1,http://121.43.112.101:30100/api/v1/ota/package,18,0,0
+1768480379202,22,测试升级接口,404,Not Found,单设备测试线程组 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",246,245,1,1,http://121.43.112.101:30100/api/v1/ota/test,22,0,0

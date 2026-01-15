@@ -1,0 +1,804 @@
+{
+  "version": "v7.0",
+  "description": "多行业AI手动生成话术 - 覆盖餐饮、医疗、教育、零售、金融、旅游、房产、交通、物流、客服等10个行业",
+  "modified_date": "2026-01-13 19:57:06",
+  "total_modifications": 112,
+  "industries_covered": [
+    "餐饮",
+    "医疗",
+    "教育",
+    "零售",
+    "金融",
+    "旅游",
+    "房产",
+    "交通",
+    "物流",
+    "客服"
+  ],
+  "modifications": [
+    {
+      "scenario_id": "# ========== 基础测试（P0）- 20条 ==========",
+      "scenario_name": null,
+      "old_text": null,
+      "new_text": "这个测试场景 # ========== 基础测试（P0）- 20条 ========== 的话术",
+      "reason": "AI手动生成：None场景的通用行业话术"
+    },
+    {
+      "scenario_id": "# 正向测试：黄金路径",
+      "scenario_name": null,
+      "old_text": null,
+      "new_text": "这个测试场景 # 正向测试：黄金路径 的话术",
+      "reason": "AI手动生成：None场景的通用行业话术"
+    },
+    {
+      "scenario_id": "SC001",
+      "scenario_name": "正常无停顿",
+      "old_text": "这个项目方案设计得挺合理的",
+      "new_text": "这家餐厅的菜品味道很不错",
+      "reason": "AI手动生成：正常无停顿场景的餐饮行业话术"
+    },
+    {
+      "scenario_id": "SC002",
+      "scenario_name": "正常短句",
+      "old_text": "嘿，最近怎么样？",
+      "new_text": "您好，欢迎光临！",
+      "reason": "AI手动生成：正常短句场景的零售行业话术"
+    },
+    {
+      "scenario_id": "SC003",
+      "scenario_name": "正常长句",
+      "old_text": "这个项目进展得挺顺利的，咱们一起梳理一下下一步的计划吧。",
+      "new_text": "这个治疗方案需要持续观察一段时间，我们会定期跟进您的病情。",
+      "reason": "AI手动生成：正常长句场景的医疗行业话术"
+    },
+    {
+      "scenario_id": "SC004",
+      "scenario_name": "正常问句",
+      "old_text": "你看了昨天的会议记录吗？",
+      "new_text": "您预约的航班是明天上午十点吗？",
+      "reason": "AI手动生成：正常问句场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "SC005",
+      "scenario_name": "正常感叹句",
+      "old_text": "哇，这个效果太棒了！",
+      "new_text": "哇，这个户型设计真不错！",
+      "reason": "AI手动生成：正常感叹句场景的房产行业话术"
+    },
+    {
+      "scenario_id": "# 反向测试：必填字段缺失",
+      "scenario_name": null,
+      "old_text": null,
+      "new_text": "这个测试场景 # 反向测试：必填字段缺失 的话术",
+      "reason": "AI手动生成：None场景的通用行业话术"
+    },
+    {
+      "scenario_id": "SC006",
+      "scenario_name": "空文本",
+      "old_text": "这个需求分析得很透彻",
+      "new_text": "这个理财产品收益比较稳定",
+      "reason": "AI手动生成：空文本场景的金融行业话术"
+    },
+    {
+      "scenario_id": "SC007",
+      "scenario_name": "纯标点",
+      "old_text": "你好啊，有什么事吗？",
+      "new_text": "老师，这道题我不太理解",
+      "reason": "AI手动生成：纯标点场景的教育行业话术"
+    },
+    {
+      "scenario_id": "SC008",
+      "scenario_name": "数字文本",
+      "old_text": "这个代码逻辑有点问题，咱们一起看看怎么优化一下。",
+      "new_text": "这个路口的交通信号灯需要调整一下",
+      "reason": "AI手动生成：数字文本场景的交通行业话术"
+    },
+    {
+      "scenario_id": "SC009",
+      "scenario_name": "英文文本",
+      "old_text": "咱们什么时候可以开始测试？",
+      "new_text": "您的快递大概什么时候能送到？",
+      "reason": "AI手动生成：英文文本场景的物流行业话术"
+    },
+    {
+      "scenario_id": "SC010",
+      "scenario_name": "混合文本",
+      "old_text": "哦，原来如此！",
+      "new_text": "哦，原来是这样！",
+      "reason": "AI手动生成：混合文本场景的客服行业话术"
+    },
+    {
+      "scenario_id": "# 边界测试：停顿时长",
+      "scenario_name": null,
+      "old_text": null,
+      "new_text": "这个测试场景 # 边界测试：停顿时长 的话术",
+      "reason": "AI手动生成：None场景的通用行业话术"
+    },
+    {
+      "scenario_id": "SC011",
+      "scenario_name": "极短停顿",
+      "old_text": "嗯...这个需求文档写得挺清楚的。",
+      "new_text": "嗯...这个菜单设计得挺清楚的。",
+      "reason": "AI手动生成：极短停顿场景的餐饮行业话术"
+    },
+    {
+      "scenario_id": "SC012",
+      "scenario_name": "短停顿",
+      "old_text": "那个...这个代码逻辑有点问题。",
+      "new_text": "那个...这个药品说明书有点问题。",
+      "reason": "AI手动生成：短停顿场景的医疗行业话术"
+    },
+    {
+      "scenario_id": "SC013",
+      "scenario_name": "中等停顿",
+      "old_text": "嗯...这个测试用例覆盖得挺全面。",
+      "new_text": "嗯...这个教学大纲挺全面的。",
+      "reason": "AI手动生成：中等停顿场景的教育行业话术"
+    },
+    {
+      "scenario_id": "SC014",
+      "scenario_name": "长停顿",
+      "old_text": "那个...这个接口文档需要更新一下。",
+      "new_text": "那个...这个商品标签需要更新一下。",
+      "reason": "AI手动生成：长停顿场景的零售行业话术"
+    },
+    {
+      "scenario_id": "SC015",
+      "scenario_name": "极长停顿",
+      "old_text": "嗯...那个...这个数据库设计挺合理的。",
+      "new_text": "嗯...那个...这个投资组合挺合理的。",
+      "reason": "AI手动生成：极长停顿场景的金融行业话术"
+    },
+    {
+      "scenario_id": "# ========== 停顿测试（P0）- 15条 ==========",
+      "scenario_name": null,
+      "old_text": null,
+      "new_text": "这个测试场景 # ========== 停顿测试（P0）- 15条 ========== 的话术",
+      "reason": "AI手动生成：None场景的通用行业话术"
+    },
+    {
+      "scenario_id": "SC016",
+      "scenario_name": "句首停顿短",
+      "old_text": "嗯...今天的会议开得挺顺利。",
+      "new_text": "嗯...今天的旅游团行程安排得挺顺利。",
+      "reason": "AI手动生成：句首停顿短场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "SC017",
+      "scenario_name": "句首停顿中",
+      "old_text": "那个...这个Bug修复得挺快。",
+      "new_text": "那个...这个房屋维修得挺快。",
+      "reason": "AI手动生成：句首停顿中场景的房产行业话术"
+    },
+    {
+      "scenario_id": "SC018",
+      "scenario_name": "句首停顿长",
+      "old_text": "嗯...那个...这个版本发布很成功。",
+      "new_text": "嗯...那个...这个航班起飞很准时。",
+      "reason": "AI手动生成：句首停顿长场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "SC019",
+      "scenario_name": "句中停顿短",
+      "old_text": "这个需求...嗯...有点复杂。",
+      "new_text": "这个路口...嗯...有点拥堵。",
+      "reason": "AI手动生成：句中停顿短场景的交通行业话术"
+    },
+    {
+      "scenario_id": "SC020",
+      "scenario_name": "句中停顿中",
+      "old_text": "这个代码...那个...写得挺规范。",
+      "new_text": "这个快递...那个...送得挺快。",
+      "reason": "AI手动生成：句中停顿中场景的物流行业话术"
+    },
+    {
+      "scenario_id": "SC021",
+      "scenario_name": "句中停顿长",
+      "old_text": "这个测试...嗯...那个...做得挺仔细。",
+      "new_text": "这个订单...嗯...那个...处理得挺仔细。",
+      "reason": "AI手动生成：句中停顿长场景的零售行业话术"
+    },
+    {
+      "scenario_id": "SC022",
+      "scenario_name": "句尾停顿短",
+      "old_text": "这个功能上线了...嗯。",
+      "new_text": "这个课程上线了...嗯。",
+      "reason": "AI手动生成：句尾停顿短场景的教育行业话术"
+    },
+    {
+      "scenario_id": "SC023",
+      "scenario_name": "句尾停顿中",
+      "old_text": "这个任务完成了...那个...。",
+      "new_text": "这个手术完成了...那个...。",
+      "reason": "AI手动生成：句尾停顿中场景的医疗行业话术"
+    },
+    {
+      "scenario_id": "SC024",
+      "scenario_name": "句尾停顿长",
+      "old_text": "这个项目验收通过了...嗯...那个...。",
+      "new_text": "这个贷款审批通过了...嗯...那个...。",
+      "reason": "AI手动生成：句尾停顿长场景的金融行业话术"
+    },
+    {
+      "scenario_id": "SC025",
+      "scenario_name": "多句首停顿",
+      "old_text": "嗯...这个需求挺重要，咱们一起讨论讨论。",
+      "new_text": "嗯...这个景点挺重要，咱们一起看看。",
+      "reason": "AI手动生成：多句首停顿场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "SC026",
+      "scenario_name": "多句中停顿",
+      "old_text": "这个代码写得很规范",
+      "new_text": "这个房间装修得很漂亮",
+      "reason": "AI手动生成：多句中停顿场景的房产行业话术"
+    },
+    {
+      "scenario_id": "SC027",
+      "scenario_name": "多句尾停顿",
+      "old_text": "好久不见，最近忙什么呢？",
+      "new_text": "好久不见，最近身体怎么样？",
+      "reason": "AI手动生成：多句尾停顿场景的医疗行业话术"
+    },
+    {
+      "scenario_id": "SC028",
+      "scenario_name": "零停顿",
+      "old_text": "这个测试用例需要补充一些边界场景，咱们一起想想。",
+      "new_text": "这个教学计划需要补充一些实践环节，咱们一起想想。",
+      "reason": "AI手动生成：零停顿场景的教育行业话术"
+    },
+    {
+      "scenario_id": "SC029",
+      "scenario_name": "边界停顿最小",
+      "old_text": "这个bug是什么原因引起的？",
+      "new_text": "这个交通事故是什么原因引起的？",
+      "reason": "AI手动生成：边界停顿最小场景的交通行业话术"
+    },
+    {
+      "scenario_id": "SC030",
+      "scenario_name": "边界停顿最大",
+      "old_text": "天哪，这么快就完成了！",
+      "new_text": "天哪，这么快就到目的地了！",
+      "reason": "AI手动生成：边界停顿最大场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "# ========== 杂音测试（P0）- 15条 ==========",
+      "scenario_name": null,
+      "old_text": null,
+      "new_text": "这个测试场景 # ========== 杂音测试（P0）- 15条 ========== 的话术",
+      "reason": "AI手动生成：None场景的通用行业话术"
+    },
+    {
+      "scenario_id": "SC031",
+      "scenario_name": "弱杂音无停顿",
+      "old_text": "这个文档写得很详细",
+      "new_text": "这个菜品写得很详细",
+      "reason": "AI手动生成：弱杂音无停顿场景的餐饮行业话术"
+    },
+    {
+      "scenario_id": "SC032",
+      "scenario_name": "中杂音无停顿",
+      "old_text": "喂，能听到我说话吗？",
+      "new_text": "喂，能听到我说话吗？",
+      "reason": "AI手动生成：中杂音无停顿场景的客服行业话术"
+    },
+    {
+      "scenario_id": "SC033",
+      "scenario_name": "强杂音无停顿",
+      "old_text": "这个文档需要更新一下，咱们一起整理整理。",
+      "new_text": "这个病历需要更新一下，咱们一起整理整理。",
+      "reason": "AI手动生成：强杂音无停顿场景的医疗行业话术"
+    },
+    {
+      "scenario_id": "SC034",
+      "scenario_name": "弱杂音句首停顿",
+      "old_text": "咱们需要多久才能上线？",
+      "new_text": "咱们需要多久才能入住？",
+      "reason": "AI手动生成：弱杂音句首停顿场景的房产行业话术"
+    },
+    {
+      "scenario_id": "SC035",
+      "scenario_name": "中杂音句首停顿",
+      "old_text": "哇塞，这个想法真不错！",
+      "new_text": "哇塞，这个景点真不错！",
+      "reason": "AI手动生成：中杂音句首停顿场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "SC036",
+      "scenario_name": "强杂音句首停顿",
+      "old_text": "这个功能实现得很稳定",
+      "new_text": "这个账户余额显示得很准确",
+      "reason": "AI手动生成：强杂音句首停顿场景的金融行业话术"
+    },
+    {
+      "scenario_id": "SC037",
+      "scenario_name": "弱杂音句中停顿",
+      "old_text": "哎，你在吗？",
+      "new_text": "哎，你在吗？",
+      "reason": "AI手动生成：弱杂音句中停顿场景的客服行业话术"
+    },
+    {
+      "scenario_id": "SC038",
+      "scenario_name": "中杂音句中停顿",
+      "old_text": "这个功能上线后反馈挺好的，咱们考虑一下后续的优化。",
+      "new_text": "这个商品上架后销量挺好的，咱们考虑一下后续的促销。",
+      "reason": "AI手动生成：中杂音句中停顿场景的零售行业话术"
+    },
+    {
+      "scenario_id": "SC039",
+      "scenario_name": "强杂音句中停顿",
+      "old_text": "咱们需要多少资源来完成这个项目？",
+      "new_text": "咱们需要多少预算来完成这个项目？",
+      "reason": "AI手动生成：强杂音句中停顿场景的金融行业话术"
+    },
+    {
+      "scenario_id": "SC040",
+      "scenario_name": "弱杂音句尾停顿",
+      "old_text": "哎呀，这个问题解决了！",
+      "new_text": "哎呀，这个路况问题解决了！",
+      "reason": "AI手动生成：弱杂音句尾停顿场景的交通行业话术"
+    },
+    {
+      "scenario_id": "SC041",
+      "scenario_name": "中杂音句尾停顿",
+      "old_text": "这个界面设计得很美观",
+      "new_text": "这个餐厅装修得很美观",
+      "reason": "AI手动生成：中杂音句尾停顿场景的餐饮行业话术"
+    },
+    {
+      "scenario_id": "SC042",
+      "scenario_name": "强杂音句尾停顿",
+      "old_text": "嗨，早上好！",
+      "new_text": "嗨，早上好！",
+      "reason": "AI手动生成：强杂音句尾停顿场景的客服行业话术"
+    },
+    {
+      "scenario_id": "SC043",
+      "scenario_name": "无杂音句首停顿",
+      "old_text": "这个界面布局可以再调整一下，提升用户体验。",
+      "new_text": "这个房间布局可以再调整一下，提升居住体验。",
+      "reason": "AI手动生成：无杂音句首停顿场景的房产行业话术"
+    },
+    {
+      "scenario_id": "SC044",
+      "scenario_name": "无杂音句中停顿",
+      "old_text": "这个测试结果符合预期吗？",
+      "new_text": "这个考试成绩符合预期吗？",
+      "reason": "AI手动生成：无杂音句中停顿场景的教育行业话术"
+    },
+    {
+      "scenario_id": "SC045",
+      "scenario_name": "无杂音句尾停顿",
+      "old_text": "太棒了，终于上线了！",
+      "new_text": "太棒了，终于拿到驾照了！",
+      "reason": "AI手动生成：无杂音句尾停顿场景的交通行业话术"
+    },
+    {
+      "scenario_id": "# ========== 语气风格测试（P1）- 20条 ==========",
+      "scenario_name": null,
+      "old_text": null,
+      "new_text": "这个测试场景 # ========== 语气风格测试（P1）- 20条 ========== 的话术",
+      "reason": "AI手动生成：None场景的通用行业话术"
+    },
+    {
+      "scenario_id": "SC046",
+      "scenario_name": "正常语气",
+      "old_text": "这个体验做得很流畅",
+      "new_text": "这个购物体验做得很流畅",
+      "reason": "AI手动生成：正常语气场景的零售行业话术"
+    },
+    {
+      "scenario_id": "SC047",
+      "scenario_name": "开心语气",
+      "old_text": "嗯，我知道了。",
+      "new_text": "嗯，我知道了。",
+      "reason": "AI手动生成：开心语气场景的客服行业话术"
+    },
+    {
+      "scenario_id": "SC048",
+      "scenario_name": "严肃语气",
+      "old_text": "这个性能指标还可以再优化，咱们一起分析分析。",
+      "new_text": "这个基金收益还可以再提升，咱们一起分析分析。",
+      "reason": "AI手动生成：严肃语气场景的金融行业话术"
+    },
+    {
+      "scenario_id": "SC049",
+      "scenario_name": "悲伤语气",
+      "old_text": "太好了，测试通过了！",
+      "new_text": "太好了，手术成功了！",
+      "reason": "AI手动生成：悲伤语气场景的医疗行业话术"
+    },
+    {
+      "scenario_id": "SC050",
+      "scenario_name": "兴奋语气",
+      "old_text": "这个性能优化得很到位",
+      "new_text": "这个菜品口味很到位",
+      "reason": "AI手动生成：兴奋语气场景的餐饮行业话术"
+    },
+    {
+      "scenario_id": "SC051",
+      "scenario_name": "愤怒语气",
+      "old_text": "好的，没问题。",
+      "new_text": "好的，没问题。",
+      "reason": "AI手动生成：愤怒语气场景的客服行业话术"
+    },
+    {
+      "scenario_id": "SC052",
+      "scenario_name": "温柔语气",
+      "old_text": "这个架构可以再改进一下，提高系统的可扩展性。",
+      "new_text": "这个城市交通可以再改进一下，提高通行效率。",
+      "reason": "AI手动生成：温柔语气场景的交通行业话术"
+    },
+    {
+      "scenario_id": "SC053",
+      "scenario_name": "客服语气",
+      "old_text": "哇，这个性能提升明显！",
+      "new_text": "哇，这个景点风景真美！",
+      "reason": "AI手动生成：客服语气场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "SC054",
+      "scenario_name": "开心停顿",
+      "old_text": "这个架构设计得很清晰",
+      "new_text": "这个小区环境设计得很清晰",
+      "reason": "AI手动生成：开心停顿场景的房产行业话术"
+    },
+    {
+      "scenario_id": "SC055",
+      "scenario_name": "悲伤停顿",
+      "old_text": "行，那就这样吧。",
+      "new_text": "行，那就这样吧。",
+      "reason": "AI手动生成：悲伤停顿场景的客服行业话术"
+    },
+    {
+      "scenario_id": "SC056",
+      "scenario_name": "愤怒停顿",
+      "old_text": "这个流程可以再简化一下，提高工作效率。",
+      "new_text": "这个点餐流程可以再简化一下，提高用餐效率。",
+      "reason": "AI手动生成：愤怒停顿场景的餐饮行业话术"
+    },
+    {
+      "scenario_id": "SC057",
+      "scenario_name": "兴奋停顿",
+      "old_text": "哎呀，这个设计真好看！",
+      "new_text": "哎呀，这个装修真好看！",
+      "reason": "AI手动生成：兴奋停顿场景的房产行业话术"
+    },
+    {
+      "scenario_id": "SC058",
+      "scenario_name": "温柔停顿",
+      "old_text": "嗯...这个功能实现得挺稳定的。",
+      "new_text": "嗯...这个课程安排得挺合理。",
+      "reason": "AI手动生成：温柔停顿场景的教育行业话术"
+    },
+    {
+      "scenario_id": "SC059",
+      "scenario_name": "严肃停顿",
+      "old_text": "那个...这个需求有点复杂。",
+      "new_text": "那个...这个治疗方案有点复杂。",
+      "reason": "AI手动生成：严肃停顿场景的医疗行业话术"
+    },
+    {
+      "scenario_id": "SC060",
+      "scenario_name": "客服停顿",
+      "old_text": "嗯...这个设计考虑得挺周全。",
+      "new_text": "嗯...这个商品包装考虑得挺周全。",
+      "reason": "AI手动生成：客服停顿场景的零售行业话术"
+    },
+    {
+      "scenario_id": "SC061",
+      "scenario_name": "开心杂音",
+      "old_text": "太棒了，用户反馈很好！",
+      "new_text": "太棒了，客户反馈很好！",
+      "reason": "AI手动生成：开心杂音场景的零售行业话术"
+    },
+    {
+      "scenario_id": "SC062",
+      "scenario_name": "悲伤杂音",
+      "old_text": "那个...这个设计有点不足。",
+      "new_text": "那个...这个景点设施有点不足。",
+      "reason": "AI手动生成：悲伤杂音场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "SC063",
+      "scenario_name": "愤怒杂音",
+      "old_text": "嗯...这个文档写得挺详细。",
+      "new_text": "嗯...这个病历写得挺详细。",
+      "reason": "AI手动生成：愤怒杂音场景的医疗行业话术"
+    },
+    {
+      "scenario_id": "SC064",
+      "scenario_name": "兴奋杂音",
+      "old_text": "那个...这个测试有点遗漏。",
+      "new_text": "那个...这个教学计划有点遗漏。",
+      "reason": "AI手动生成：兴奋杂音场景的教育行业话术"
+    },
+    {
+      "scenario_id": "SC065",
+      "scenario_name": "温柔杂音",
+      "old_text": "嗯...那个...这个算法实现挺高效的。",
+      "new_text": "嗯...那个...这个投资回报挺高效的。",
+      "reason": "AI手动生成：温柔杂音场景的金融行业话术"
+    },
+    {
+      "scenario_id": "# ========== 语速音调音量测试（P1）- 15条 ==========",
+      "scenario_name": null,
+      "old_text": null,
+      "new_text": "这个测试场景 # ========== 语速音调音量测试（P1）- 15条 ========== 的话术",
+      "reason": "AI手动生成：None场景的通用行业话术"
+    },
+    {
+      "scenario_id": "SC066",
+      "scenario_name": "极慢速",
+      "old_text": "嗯...今天的测试跑得挺顺利。",
+      "new_text": "嗯...今天的航班飞得挺顺利。",
+      "reason": "AI手动生成：极慢速场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "SC067",
+      "scenario_name": "慢速",
+      "old_text": "那个...这个文档有点简略。",
+      "new_text": "那个...这个菜品有点简略。",
+      "reason": "AI手动生成：慢速场景的餐饮行业话术"
+    },
+    {
+      "scenario_id": "SC068",
+      "scenario_name": "正常语速",
+      "old_text": "嗯...这个功能设计得挺合理。",
+      "new_text": "嗯...这个房间设计得挺合理。",
+      "reason": "AI手动生成：正常语速场景的房产行业话术"
+    },
+    {
+      "scenario_id": "SC069",
+      "scenario_name": "快速",
+      "old_text": "那个...这个功能需要调整一下。",
+      "new_text": "那个...这个商品库存需要调整一下。",
+      "reason": "AI手动生成：快速场景的零售行业话术"
+    },
+    {
+      "scenario_id": "SC070",
+      "scenario_name": "极快速",
+      "old_text": "嗯...那个...这个安全机制挺完善的。",
+      "new_text": "嗯...那个...这个保险理赔挺完善的。",
+      "reason": "AI手动生成：极快速场景的金融行业话术"
+    },
+    {
+      "scenario_id": "SC071",
+      "scenario_name": "极低音调",
+      "old_text": "嗯...今天的代码写得挺顺利。",
+      "new_text": "嗯...今天的手术做得挺顺利。",
+      "reason": "AI手动生成：极低音调场景的医疗行业话术"
+    },
+    {
+      "scenario_id": "SC072",
+      "scenario_name": "低音调",
+      "old_text": "那个...这个界面需要改进一下。",
+      "new_text": "那个...这个房屋需要改进一下。",
+      "reason": "AI手动生成：低音调场景的房产行业话术"
+    },
+    {
+      "scenario_id": "SC073",
+      "scenario_name": "正常音调",
+      "old_text": "嗯...这个界面布局得挺美观。",
+      "new_text": "嗯...这个餐厅装修得挺美观。",
+      "reason": "AI手动生成：正常音调场景的餐饮行业话术"
+    },
+    {
+      "scenario_id": "SC074",
+      "scenario_name": "高音调",
+      "old_text": "那个...这个体验需要优化一下。",
+      "new_text": "那个...这个购物体验需要优化一下。",
+      "reason": "AI手动生成：高音调场景的零售行业话术"
+    },
+    {
+      "scenario_id": "SC075",
+      "scenario_name": "极高音调",
+      "old_text": "嗯...那个...这个性能优化挺有效的。",
+      "new_text": "嗯...那个...这个银行服务挺有效的。",
+      "reason": "AI手动生成：极高音调场景的金融行业话术"
+    },
+    {
+      "scenario_id": "SC076",
+      "scenario_name": "极小音量",
+      "old_text": "嗯...今天的文档写得挺顺利。",
+      "new_text": "嗯...今天的课程讲得挺顺利。",
+      "reason": "AI手动生成：极小音量场景的教育行业话术"
+    },
+    {
+      "scenario_id": "SC077",
+      "scenario_name": "小音量",
+      "old_text": "那个...这个性能需要提升一下。",
+      "new_text": "那个...这个景点交通需要提升一下。",
+      "reason": "AI手动生成：小音量场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "SC078",
+      "scenario_name": "正常音量",
+      "old_text": "嗯...这个体验做得挺流畅。",
+      "new_text": "嗯...这个物流配送做得挺流畅。",
+      "reason": "AI手动生成：正常音量场景的物流行业话术"
+    },
+    {
+      "scenario_id": "SC079",
+      "scenario_name": "大音量",
+      "old_text": "那个...这个架构需要重构一下。",
+      "new_text": "那个...这个城市规划需要重构一下。",
+      "reason": "AI手动生成：大音量场景的房产行业话术"
+    },
+    {
+      "scenario_id": "SC080",
+      "scenario_name": "极大音量",
+      "old_text": "嗯...那个...这个功能设计挺创新的。",
+      "new_text": "嗯...那个...这个酒店服务挺创新的。",
+      "reason": "AI手动生成：极大音量场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "# ========== 强调词测试（P2）- 5条 ==========",
+      "scenario_name": null,
+      "old_text": null,
+      "new_text": "这个测试场景 # ========== 强调词测试（P2）- 5条 ========== 的话术",
+      "reason": "AI手动生成：None场景的通用行业话术"
+    },
+    {
+      "scenario_id": "SC081",
+      "scenario_name": "单强调词",
+      "old_text": "嗯...今天的部署做得挺顺利。",
+      "new_text": "嗯...今天的快递送得挺顺利。",
+      "reason": "AI手动生成：单强调词场景的物流行业话术"
+    },
+    {
+      "scenario_id": "SC082",
+      "scenario_name": "双强调词",
+      "old_text": "那个...这个功能开发得挺快。",
+      "new_text": "那个...这个课程开发得挺快。",
+      "reason": "AI手动生成：双强调词场景的教育行业话术"
+    },
+    {
+      "scenario_id": "SC083",
+      "scenario_name": "多强调词",
+      "old_text": "嗯...这个性能优化得挺到位。",
+      "new_text": "嗯...这个菜品口味挺到位。",
+      "reason": "AI手动生成：多强调词场景的餐饮行业话术"
+    },
+    {
+      "scenario_id": "SC084",
+      "scenario_name": "强调词停顿",
+      "old_text": "那个...这个界面设计得挺快。",
+      "new_text": "那个...这个房屋销售得挺快。",
+      "reason": "AI手动生成：强调词停顿场景的房产行业话术"
+    },
+    {
+      "scenario_id": "SC085",
+      "scenario_name": "强调词杂音",
+      "old_text": "嗯...那个...这个界面设计挺人性化的。",
+      "new_text": "嗯...那个...这个景区管理挺人性化的。",
+      "reason": "AI手动生成：强调词杂音场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "# ========== 边界测试（P2）- 5条 ==========",
+      "scenario_name": null,
+      "old_text": null,
+      "new_text": "这个测试场景 # ========== 边界测试（P2）- 5条 ========== 的话术",
+      "reason": "AI手动生成：None场景的通用行业话术"
+    },
+    {
+      "scenario_id": "SC086",
+      "scenario_name": "极短文本",
+      "old_text": "嗯...这个功能开发得挺顺利。",
+      "new_text": "嗯...今天的交通管制挺顺利。",
+      "reason": "AI手动生成：极短文本场景的交通行业话术"
+    },
+    {
+      "scenario_id": "SC087",
+      "scenario_name": "长文本",
+      "old_text": "那个...这个体验优化得挺快。",
+      "new_text": "那个...这个航班优化得挺快。",
+      "reason": "AI手动生成：长文本场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "SC088",
+      "scenario_name": "特殊字符",
+      "old_text": "嗯...这个架构设计得挺清晰。",
+      "new_text": "嗯...这个银行系统挺清晰。",
+      "reason": "AI手动生成：特殊字符场景的金融行业话术"
+    },
+    {
+      "scenario_id": "SC089",
+      "scenario_name": "重复文本",
+      "old_text": "那个...这个性能测试得挺快。",
+      "new_text": "那个...这个快递时效挺快。",
+      "reason": "AI手动生成：重复文本场景的物流行业话术"
+    },
+    {
+      "scenario_id": "SC090",
+      "scenario_name": "混合语言",
+      "old_text": "嗯...那个...这个体验流程挺顺畅的。",
+      "new_text": "嗯...那个...这个酒店预订流程挺顺畅的。",
+      "reason": "AI手动生成：混合语言场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "# ========== 组合测试（P2）- 5条 ==========",
+      "scenario_name": null,
+      "old_text": null,
+      "new_text": "这个测试场景 # ========== 组合测试（P2）- 5条 ========== 的话术",
+      "reason": "AI手动生成：None场景的通用行业话术"
+    },
+    {
+      "scenario_id": "SC091",
+      "scenario_name": "开心快速大声",
+      "old_text": "嗯...这个界面设计得挺顺利。",
+      "new_text": "嗯...这个餐厅服务得挺顺利。",
+      "reason": "AI手动生成：开心快速大声场景的餐饮行业话术"
+    },
+    {
+      "scenario_id": "SC092",
+      "scenario_name": "悲伤慢速小声",
+      "old_text": "那个...这个架构设计得挺快。",
+      "new_text": "那个...这个房产交易得挺快。",
+      "reason": "AI手动生成：悲伤慢速小声场景的房产行业话术"
+    },
+    {
+      "scenario_id": "SC093",
+      "scenario_name": "愤怒停顿杂音",
+      "old_text": "嗯...这个体验优化得挺顺利。",
+      "new_text": "嗯...这个医疗检查得挺顺利。",
+      "reason": "AI手动生成：愤怒停顿杂音场景的医疗行业话术"
+    },
+    {
+      "scenario_id": "SC094",
+      "scenario_name": "温柔强调停顿",
+      "old_text": "那个...这个版本发布很成功。",
+      "new_text": "那个...这个教育培训很成功。",
+      "reason": "AI手动生成：温柔强调停顿场景的教育行业话术"
+    },
+    {
+      "scenario_id": "SC095",
+      "scenario_name": "严肃快速强调",
+      "old_text": "嗯...那个...这个测试用例挺全面的。",
+      "new_text": "嗯...那个...这个零售促销很全面。",
+      "reason": "AI手动生成：严肃快速强调场景的零售行业话术"
+    },
+    {
+      "scenario_id": "# ========== 情感表达测试（P2）- 5条 ==========",
+      "scenario_name": null,
+      "old_text": null,
+      "new_text": "这个测试场景 # ========== 情感表达测试（P2）- 5条 ========== 的话术",
+      "reason": "AI手动生成：None场景的通用行业话术"
+    },
+    {
+      "scenario_id": "SC096",
+      "scenario_name": "开心长句",
+      "old_text": "嗯...这个性能测试得挺顺利。",
+      "new_text": "嗯...这个金融投资得挺顺利。",
+      "reason": "AI手动生成：开心长句场景的金融行业话术"
+    },
+    {
+      "scenario_id": "SC097",
+      "scenario_name": "悲伤长句",
+      "old_text": "那个...这个项目上线很成功。",
+      "new_text": "那个...这个旅游体验很成功。",
+      "reason": "AI手动生成：悲伤长句场景的旅游行业话术"
+    },
+    {
+      "scenario_id": "SC098",
+      "scenario_name": "愤怒长句",
+      "old_text": "嗯...这个架构设计得挺顺利。",
+      "new_text": "嗯...这个物流配送挺顺利。",
+      "reason": "AI手动生成：愤怒长句场景的物流行业话术"
+    },
+    {
+      "scenario_id": "SC099",
+      "scenario_name": "温柔长句",
+      "old_text": "那个...这个功能上线很成功。",
+      "new_text": "那个...这个交通管理很成功。",
+      "reason": "AI手动生成：温柔长句场景的交通行业话术"
+    },
+    {
+      "scenario_id": "SC100",
+      "scenario_name": "严肃长句",
+      "old_text": "嗯...那个...这个文档内容挺丰富的。",
+      "new_text": "嗯...那个...这个客服服务挺丰富的。",
+      "reason": "AI手动生成：严肃长句场景的客服行业话术"
+    }
+  ]
+}

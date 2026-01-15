@@ -6,7 +6,7 @@
       "type": "shell",
       "command": "python",
       "args": [
-        "${workspaceFolder}/python/utils/merge_rules.py"
+        "${workspaceFolder}/.trae/rules/script/merge_rules.py"
       ],
       "options": {
         "cwd": "${workspaceFolder}/.trae/rules"

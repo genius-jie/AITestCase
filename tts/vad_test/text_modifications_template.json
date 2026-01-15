@@ -1,0 +1,601 @@
+{
+  "version": "v3.0",
+  "description": "AI批量生成话术 - 话术完全多样化",
+  "modified_date": "2026-01-13",
+  "modifications": [
+    {
+      "scenario_id": "SC001",
+      "old_text": "哎，这个项目方案设计得真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC002",
+      "old_text": "喂，你好啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC003",
+      "old_text": "这个项目方案真不错，要不咱们一起讨论一下？顺便完善一下细节呗",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC004",
+      "old_text": "哎，你看这份报告了没？",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC005",
+      "old_text": "哇，这个方案太棒了！",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC007",
+      "old_text": "！？。，",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC008",
+      "old_text": "12345",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC009",
+      "old_text": "Hello World",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC010",
+      "old_text": "你好Hello123",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC011",
+      "old_text": "嗯...这个需求文档写得挺清楚的",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC012",
+      "old_text": "那个...这个代码逻辑有点问题",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC013",
+      "old_text": "嗯...这个测试用例覆盖得挺全面",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC014",
+      "old_text": "那个...这个接口文档需要更新一下",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC015",
+      "old_text": "嗯...那个...这个数据库设计挺合理的",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC016",
+      "old_text": "嗯...今天的会议开得挺顺利",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC017",
+      "old_text": "那个...这个Bug修复得挺快",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC018",
+      "old_text": "嗯...那个...这个版本发布很成功",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC019",
+      "old_text": "这个需求...嗯...有点复杂",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC020",
+      "old_text": "这个代码...那个...写得挺规范",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC021",
+      "old_text": "这个测试...嗯...那个...做得挺仔细",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC022",
+      "old_text": "这个功能上线了...嗯",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC023",
+      "old_text": "这个任务完成了...那个...",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC024",
+      "old_text": "这个项目验收通过了...嗯...那个...",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC025",
+      "old_text": "嗯...这个需求挺重要，咱们一起讨论讨论",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC026",
+      "old_text": "这个方案...嗯...挺不错，咱们一起讨论讨论",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC027",
+      "old_text": "这个计划真不错，咱们一起讨论讨论...嗯",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC028",
+      "old_text": "这个想法真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC029",
+      "old_text": "嗯...这个建议挺有价值的",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC030",
+      "old_text": "嗯...那个...这个解决方案很完美",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC031",
+      "old_text": "哎，这个产品设计得真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC032",
+      "old_text": "哎，这个用户体验做得真好",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC033",
+      "old_text": "哎，这个界面设计很漂亮",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC034",
+      "old_text": "嗯...哎，这个交互设计很流畅",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC035",
+      "old_text": "嗯...哎，这个功能实现很稳定",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC036",
+      "old_text": "嗯...哎，这个性能优化很有效",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC037",
+      "old_text": "哎，这个架构...嗯...设计得很合理",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC038",
+      "old_text": "哎，这个算法...嗯...实现得很高效",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC039",
+      "old_text": "哎，这个安全机制...嗯...做得很到位",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC040",
+      "old_text": "哎，这个测试覆盖率...嗯...挺高的",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC041",
+      "old_text": "哎，这个文档质量...嗯...很好",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC042",
+      "old_text": "哎，这个代码注释...嗯...很详细",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC043",
+      "old_text": "嗯...这个需求分析得很透彻",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC044",
+      "old_text": "这个设计...嗯...考虑得很周全",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC045",
+      "old_text": "这个实现...嗯...做得很规范",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC046",
+      "old_text": "今天天气真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC047",
+      "old_text": "哈哈，今天真是太开心了！",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC048",
+      "old_text": "这个通知很重要，请知悉。",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC049",
+      "old_text": "唉，今天真倒霉...",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC050",
+      "old_text": "哇塞！今天太激动了！",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC051",
+      "old_text": "我靠，今天真气人！",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC052",
+      "old_text": "这个礼物真好呢",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC053",
+      "old_text": "您好，请问有什么可以帮您？",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC054",
+      "old_text": "哇！太棒了！终于放假了！",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC055",
+      "old_text": "唉...我太伤心了，错过了这次机会...",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC056",
+      "old_text": "我靠...怎么这都不明白啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC057",
+      "old_text": "哇！太激动了！我中奖了！",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC058",
+      "old_text": "别担心...一切都会好的",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC059",
+      "old_text": "请注意...这个消息很重要",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC060",
+      "old_text": "您好...请问有什么可以帮您？",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC061",
+      "old_text": "哇！太棒了！终于买到票了！",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC062",
+      "old_text": "唉...我太伤心了，考试没考好...",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC063",
+      "old_text": "我靠...怎么这都不会啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC064",
+      "old_text": "哇！太激动了！考试通过了！",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC065",
+      "old_text": "别担心...考试一切都会好的",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC066",
+      "old_text": "这...个...电...影...真...不...错...",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC067",
+      "old_text": "这个...游戏...真好玩",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC068",
+      "old_text": "这首歌真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC069",
+      "old_text": "这本书真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC070",
+      "old_text": "这个节目真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC071",
+      "old_text": "这个餐厅真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC072",
+      "old_text": "这个酒店真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC073",
+      "old_text": "这个景点真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC074",
+      "old_text": "这个商场真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC075",
+      "old_text": "这个公园真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC076",
+      "old_text": "这个咖啡店真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC077",
+      "old_text": "这个图书馆真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC078",
+      "old_text": "这个健身房真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC079",
+      "old_text": "这个游泳池真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC080",
+      "old_text": "这个电影院真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC081",
+      "old_text": "这个老师真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC082",
+      "old_text": "这个课程真不错，咱们一起学习学习",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC083",
+      "old_text": "这个学校真不错，咱们一起参观参观，顺便了解一下环境",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC084",
+      "old_text": "这个专业真不错，咱们一起了解了解",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC085",
+      "old_text": "哎，这个图书馆设计得真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC086",
+      "old_text": "嗯",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC087",
+      "old_text": "这个项目方案真不错，咱们一起讨论讨论，顺便完善一下细节，然后准备实施计划，最后汇报给领导，真是充实的一天啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC088",
+      "old_text": "这个@#$%真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC089",
+      "old_text": "这个项目方案真不错啊，这个项目方案真不错啊，这个项目方案真不错啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC090",
+      "old_text": "这个项目方案真不错，Hello World，这世界真美好",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC091",
+      "old_text": "哇！太棒了！终于买到演唱会门票了！",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC092",
+      "old_text": "唉...我太伤心了，错过了这次旅行...",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC093",
+      "old_text": "我靠...怎么这都不明白啊，真是气死我了",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC094",
+      "old_text": "别担心...面试一切都会好的",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC095",
+      "old_text": "请注意...这个通知很重要",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC096",
+      "old_text": "这个课程真不错，咱们一起学习学习，顺便复习一下重点，真是太开心了！",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC097",
+      "old_text": "唉...我很难过，错过了这次机会，感觉一切都完了，不知道该怎么办...",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC098",
+      "old_text": "我靠...怎么这都不明白啊，真是气死我了，你们到底有没有认真听啊",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC099",
+      "old_text": "别担心...考试一切都会好的，我会一直支持你，不管发生什么...",
+      "new_text": "",
+      "reason": ""
+    },
+    {
+      "scenario_id": "SC100",
+      "old_text": "请注意...这个考试很重要，关系到我们的未来，必须认真对待",
+      "new_text": "",
+      "reason": ""
+    }
+  ]
+}

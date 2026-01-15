@@ -1,0 +1,122 @@
+[
+  {
+    "timestamp": "2026-01-13T16:52:09.612442",
+    "version": "v1.0",
+    "description": "基础测试text字段优化 - 增加口语化和场景化表达",
+    "success_count": 0,
+    "skip_count": 5,
+    "fail_count": 0,
+    "total_count": 95,
+    "backup_file": "e:\\AI测试用例\\语音生成\\vad_test\\vad_test_data_noise_comparison_backup_20260113_165209.csv"
+  },
+  {
+    "timestamp": "2026-01-13T16:54:30.723808",
+    "version": "v1.0",
+    "description": "基础测试text字段优化 - 增加口语化和场景化表达",
+    "success_count": 95,
+    "skip_count": 0,
+    "fail_count": 0,
+    "total_count": 95,
+    "backup_file": "e:\\AI测试用例\\语音生成\\vad_test\\vad_test_data_noise_comparison_backup_20260113_165430.csv"
+  },
+  {
+    "timestamp": "2026-01-13T17:22:41.942948",
+    "version": "v2.0",
+    "description": "全面text字段优化 - 多场景、多话题、多维度覆盖",
+    "success_count": 5,
+    "skip_count": 95,
+    "fail_count": 0,
+    "total_count": 100,
+    "backup_file": "e:\\AI测试用例\\语音生成\\vad_test\\vad_test_data_noise_comparison_backup_20260113_172241.csv"
+  },
+  {
+    "timestamp": "2026-01-13T17:24:45.642348",
+    "version": "v3.0",
+    "description": "全面text字段优化 - 基于实际CSV内容的多样化场景更新",
+    "success_count": 93,
+    "skip_count": 0,
+    "fail_count": 0,
+    "total_count": 93,
+    "backup_file": "e:\\AI测试用例\\语音生成\\vad_test\\vad_test_data_noise_comparison_backup_20260113_172445.csv"
+  },
+  {
+    "timestamp": "2026-01-13T17:40:38.304796",
+    "version": "v4.0",
+    "description": "全面text字段去重优化 - 为100个场景设计独特的对话文本，覆盖工作、生活、学习、娱乐、情感等多个维度",
+    "success_count": 91,
+    "skip_count": 0,
+    "fail_count": 0,
+    "total_count": 91,
+    "backup_file": "e:\\AI测试用例\\语音生成\\vad_test\\vad_test_data_noise_comparison_backup_20260113_174038.csv"
+  },
+  {
+    "timestamp": "2026-01-13T17:43:04.466289",
+    "version": "v1.0",
+    "description": "基础测试text字段优化 - 增加口语化和场景化表达",
+    "success_count": 0,
+    "skip_count": 95,
+    "fail_count": 0,
+    "total_count": 95,
+    "backup_file": "e:\\AI测试用例\\语音生成\\vad_test\\vad_test_data_noise_comparison_backup_20260113_174304.csv"
+  },
+  {
+    "timestamp": "2026-01-13T17:43:27.098959",
+    "version": "v1.0",
+    "description": "基础测试text字段优化 - 增加口语化和场景化表达",
+    "success_count": 0,
+    "skip_count": 95,
+    "fail_count": 0,
+    "total_count": 95,
+    "backup_file": "e:\\AI测试用例\\语音生成\\vad_test\\vad_test_data_noise_comparison_backup_20260113_174327.csv"
+  },
+  {
+    "timestamp": "2026-01-13T17:55:02.351703",
+    "version": "v1.0",
+    "description": "基础测试text字段优化 - 增加口语化和场景化表达",
+    "success_count": 0,
+    "skip_count": 95,
+    "fail_count": 0,
+    "total_count": 95,
+    "backup_file": "e:\\AI测试用例\\语音生成\\vad_test\\vad_test_data_noise_comparison_backup_20260113_175502.csv"
+  },
+  {
+    "timestamp": "2026-01-13T18:15:19.774853",
+    "version": "v3.0",
+    "description": "AI批量生成话术 - 话术完全多样化",
+    "success_count": 99,
+    "skip_count": 0,
+    "fail_count": 0,
+    "total_count": 99,
+    "backup_file": "vad_test_data_noise_comparison_backup_20260113_181519.csv"
+  },
+  {
+    "timestamp": "2026-01-13T19:17:24.298139",
+    "version": "v6.0",
+    "description": "AI手动生成话术 - 话术完全多样化",
+    "success_count": 100,
+    "skip_count": 0,
+    "fail_count": 0,
+    "total_count": 112,
+    "backup_file": "vad_test_data_noise_comparison_backup_20260113_191724.csv"
+  },
+  {
+    "timestamp": "2026-01-13T19:51:18.017918",
+    "version": "v6.0",
+    "description": "AI手动生成话术 - 话术完全多样化",
+    "success_count": 100,
+    "skip_count": 0,
+    "fail_count": 0,
+    "total_count": 112,
+    "backup_file": "vad_test_data_noise_comparison_backup_20260113_195117.csv"
+  },
+  {
+    "timestamp": "2026-01-13T19:57:43.942483",
+    "version": "v7.0",
+    "description": "多行业AI手动生成话术 - 覆盖餐饮、医疗、教育、零售、金融、旅游、房产、交通、物流、客服等10个行业",
+    "success_count": 100,
+    "skip_count": 0,
+    "fail_count": 0,
+    "total_count": 112,
+    "backup_file": "vad_test_data_noise_comparison_backup_20260113_195743.csv"
+  }
+]

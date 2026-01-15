@@ -1,0 +1,577 @@
+{
+  "version": "v1.0",
+  "description": "基础测试text字段优化 - 增加口语化和场景化表达",
+  "modified_date": "2026-01-13",
+  "modifications": [
+    {
+      "scenario_id": "SC001",
+      "old_text": "今天天气真好",
+      "new_text": "哎，今天这天气可真不错啊",
+      "reason": "增加口语化表达，更贴近真实用户语音输入"
+    },
+    {
+      "scenario_id": "SC002",
+      "old_text": "你好",
+      "new_text": "喂，你好啊",
+      "reason": "增加口语化前缀，更自然"
+    },
+    {
+      "scenario_id": "SC003",
+      "old_text": "今天天气真好，我们出去散步吧，顺便去公园看看花",
+      "new_text": "今天这天气真不错，要不咱们出去溜达溜达？顺便去公园赏赏花呗",
+      "reason": "增加口语化表达，更贴近真实用户语音输入"
+    },
+    {
+      "scenario_id": "SC004",
+      "old_text": "你吃饭了吗？",
+      "new_text": "哎，你吃饭了没？",
+      "reason": "增加口语化表达，更自然"
+    },
+    {
+      "scenario_id": "SC005",
+      "old_text": "太棒了！",
+      "new_text": "哇，太棒了！",
+      "reason": "增加感叹词，更自然"
+    },
+    {
+      "scenario_id": "SC011",
+      "old_text": "今天天气真好",
+      "new_text": "嗯...今天这天气可真不错啊",
+      "reason": "增加停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC012",
+      "old_text": "今天天气真好",
+      "new_text": "那个...今天天气真不错",
+      "reason": "增加停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC013",
+      "old_text": "今天天气真好",
+      "new_text": "嗯...今天这天气确实不错",
+      "reason": "增加停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC014",
+      "old_text": "今天天气真好",
+      "new_text": "那个...今天这天气真不错啊",
+      "reason": "增加停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC015",
+      "old_text": "今天天气真好",
+      "new_text": "嗯...那个...今天这天气可真不错啊",
+      "reason": "增加停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC016",
+      "old_text": "今天天气真好",
+      "new_text": "嗯...今天这天气可真不错啊",
+      "reason": "增加句首停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC017",
+      "old_text": "今天天气真好",
+      "new_text": "那个...今天天气真不错",
+      "reason": "增加句首停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC018",
+      "old_text": "今天天气真好",
+      "new_text": "嗯...那个...今天这天气确实不错",
+      "reason": "增加句首停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC019",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气...嗯...可真不错啊",
+      "reason": "增加句中停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC020",
+      "old_text": "今天天气真好",
+      "new_text": "今天天气...那个...真不错",
+      "reason": "增加句中停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC021",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气...嗯...那个...确实不错",
+      "reason": "增加句中停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC022",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气可真不错啊...嗯",
+      "reason": "增加句尾停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC023",
+      "old_text": "今天天气真好",
+      "new_text": "今天天气真不错...那个...",
+      "reason": "增加句尾停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC024",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气确实不错...嗯...那个...",
+      "reason": "增加句尾停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC025",
+      "old_text": "今天天气真好，我们出去散步",
+      "new_text": "嗯...今天这天气真不错，咱们出去溜达溜达",
+      "reason": "增加多句首停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC026",
+      "old_text": "今天天气真好，我们出去散步",
+      "new_text": "今天这天气...嗯...真不错，咱们出去溜达溜达",
+      "reason": "增加多句中停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC027",
+      "old_text": "今天天气真好，我们出去散步",
+      "new_text": "今天这天气真不错，咱们出去溜达溜达...嗯",
+      "reason": "增加多句尾停顿感的口语化表达"
+    },
+    {
+      "scenario_id": "SC028",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "零停顿，保持流畅的口语化表达"
+    },
+    {
+      "scenario_id": "SC029",
+      "old_text": "今天天气真好",
+      "new_text": "嗯...今天这天气真不错啊",
+      "reason": "边界最小停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC030",
+      "old_text": "今天天气真好",
+      "new_text": "嗯...那个...今天这天气可真不错啊",
+      "reason": "边界最大停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC031",
+      "old_text": "今天天气真好",
+      "new_text": "哎，今天这天气可真不错啊",
+      "reason": "弱杂音场景，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC032",
+      "old_text": "今天天气真好",
+      "new_text": "哎，今天这天气可真不错啊",
+      "reason": "中杂音场景，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC033",
+      "old_text": "今天天气真好",
+      "new_text": "哎，今天这天气可真不错啊",
+      "reason": "强杂音场景，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC034",
+      "old_text": "今天天气真好",
+      "new_text": "嗯...哎，今天这天气可真不错啊",
+      "reason": "弱杂音句首停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC035",
+      "old_text": "今天天气真好",
+      "new_text": "嗯...哎，今天这天气可真不错啊",
+      "reason": "中杂音句首停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC036",
+      "old_text": "今天天气真好",
+      "new_text": "嗯...哎，今天这天气可真不错啊",
+      "reason": "强杂音句首停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC037",
+      "old_text": "今天天气真好",
+      "new_text": "哎，今天这天气...嗯...可真不错啊",
+      "reason": "弱杂音句中停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC038",
+      "old_text": "今天天气真好",
+      "new_text": "哎，今天这天气...嗯...可真不错啊",
+      "reason": "中杂音句中停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC039",
+      "old_text": "今天天气真好",
+      "new_text": "哎，今天这天气...嗯...可真不错啊",
+      "reason": "强杂音句中停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC040",
+      "old_text": "今天天气真好",
+      "new_text": "哎，今天这天气可真不错啊...嗯",
+      "reason": "弱杂音句尾停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC041",
+      "old_text": "今天天气真好",
+      "new_text": "哎，今天这天气可真不错啊...嗯",
+      "reason": "中杂音句尾停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC042",
+      "old_text": "今天天气真好",
+      "new_text": "哎，今天这天气可真不错啊...嗯",
+      "reason": "强杂音句尾停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC043",
+      "old_text": "今天天气真好",
+      "new_text": "嗯...今天这天气可真不错啊",
+      "reason": "无杂音句首停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC044",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气...嗯...可真不错啊",
+      "reason": "无杂音句中停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC045",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气可真不错啊...嗯",
+      "reason": "无杂音句尾停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC046",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "正常语气，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC047",
+      "old_text": "今天天气真好",
+      "new_text": "哈哈，今天这天气真是太棒了！",
+      "reason": "开心语气，增加情感表达"
+    },
+    {
+      "scenario_id": "SC048",
+      "old_text": "今天天气真好",
+      "new_text": "今天天气不错，请知悉。",
+      "reason": "严肃语气，增加正式感"
+    },
+    {
+      "scenario_id": "SC049",
+      "old_text": "今天天气真好",
+      "new_text": "唉，今天天气真好...",
+      "reason": "悲伤语气，增加情感表达"
+    },
+    {
+      "scenario_id": "SC050",
+      "old_text": "今天天气真好",
+      "new_text": "哇塞！今天天气太棒了！",
+      "reason": "兴奋语气，增加情感表达"
+    },
+    {
+      "scenario_id": "SC051",
+      "old_text": "今天天气真好",
+      "new_text": "我靠，今天天气真好！",
+      "reason": "愤怒语气，增加情感表达"
+    },
+    {
+      "scenario_id": "SC052",
+      "old_text": "今天天气真好",
+      "new_text": "今天天气真好呢",
+      "reason": "温柔语气，增加柔和感"
+    },
+    {
+      "scenario_id": "SC053",
+      "old_text": "今天天气真好",
+      "new_text": "您好，今天天气确实不错。",
+      "reason": "客服语气，增加礼貌感"
+    },
+    {
+      "scenario_id": "SC054",
+      "old_text": "太棒了！我们成功了！",
+      "new_text": "哇！太棒了！我们终于成功了！",
+      "reason": "开心停顿，增加情感表达"
+    },
+    {
+      "scenario_id": "SC055",
+      "old_text": "我很难过，失去了机会",
+      "new_text": "唉...我很难过，失去了这次机会...",
+      "reason": "悲伤停顿，增加情感表达"
+    },
+    {
+      "scenario_id": "SC056",
+      "old_text": "我草，怎么这都不懂",
+      "new_text": "我靠...怎么这都不懂啊",
+      "reason": "愤怒停顿，增加情感表达"
+    },
+    {
+      "scenario_id": "SC057",
+      "old_text": "太激动了！我们赢了！",
+      "new_text": "哇！太激动了！我们赢了！",
+      "reason": "兴奋停顿，增加情感表达"
+    },
+    {
+      "scenario_id": "SC058",
+      "old_text": "别担心，一切都会好的",
+      "new_text": "别担心...一切都会好的",
+      "reason": "温柔停顿，增加情感表达"
+    },
+    {
+      "scenario_id": "SC059",
+      "old_text": "请注意，这很重要",
+      "new_text": "请注意...这很重要",
+      "reason": "严肃停顿，增加正式感"
+    },
+    {
+      "scenario_id": "SC060",
+      "old_text": "您好，请问有什么可以帮您？",
+      "new_text": "您好...请问有什么可以帮您？",
+      "reason": "客服停顿，增加礼貌感"
+    },
+    {
+      "scenario_id": "SC061",
+      "old_text": "太棒了！我们成功了！",
+      "new_text": "哇！太棒了！我们终于成功了！",
+      "reason": "开心杂音，增加情感表达"
+    },
+    {
+      "scenario_id": "SC062",
+      "old_text": "我很难过，失去了机会",
+      "new_text": "唉...我很难过，失去了这次机会...",
+      "reason": "悲伤杂音，增加情感表达"
+    },
+    {
+      "scenario_id": "SC063",
+      "old_text": "我草，怎么这都不懂",
+      "new_text": "我靠...怎么这都不懂啊",
+      "reason": "愤怒杂音，增加情感表达"
+    },
+    {
+      "scenario_id": "SC064",
+      "old_text": "太激动了！我们赢了！",
+      "new_text": "哇！太激动了！我们赢了！",
+      "reason": "兴奋杂音，增加情感表达"
+    },
+    {
+      "scenario_id": "SC065",
+      "old_text": "别担心，一切都会好的",
+      "new_text": "别担心...一切都会好的",
+      "reason": "温柔杂音，增加情感表达"
+    },
+    {
+      "scenario_id": "SC066",
+      "old_text": "今天天气真好",
+      "new_text": "今...天...天...气...真...好...",
+      "reason": "极慢速，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC067",
+      "old_text": "今天天气真好",
+      "new_text": "今天...天气...真好",
+      "reason": "慢速，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC068",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "正常语速，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC069",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "快速，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC070",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "极快速，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC071",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "极低音调，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC072",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "低音调，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC073",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "正常音调，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC074",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "高音调，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC075",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "极高音调，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC076",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "极小音量，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC077",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "小音量，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC078",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "正常音量，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC079",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "大音量，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC080",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "极大音量，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC081",
+      "old_text": "今天天气真好",
+      "new_text": "今天这天气真不错啊",
+      "reason": "单强调词，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC082",
+      "old_text": "今天天气真好，我们出去散步",
+      "new_text": "今天这天气真不错，咱们出去溜达溜达",
+      "reason": "双强调词，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC083",
+      "old_text": "今天天气真好，我们出去散步，顺便去公园看看花",
+      "new_text": "今天这天气真不错，咱们出去溜达溜达，顺便去公园赏赏花",
+      "reason": "多强调词，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC084",
+      "old_text": "今天天气真好，我们出去散步",
+      "new_text": "今天这天气真不错，咱们出去溜达溜达",
+      "reason": "强调词停顿，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC085",
+      "old_text": "今天天气真好",
+      "new_text": "哎，今天这天气可真不错啊",
+      "reason": "强调词杂音，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC086",
+      "old_text": "好",
+      "new_text": "嗯",
+      "reason": "极短文本，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC087",
+      "old_text": "今天天气真好，我们出去散步，顺便去公园看看花，然后去餐厅吃饭，最后回家休息，真是充实的一天",
+      "new_text": "今天这天气真不错，咱们出去溜达溜达，顺便去公园赏赏花，然后去餐厅吃个饭，最后回家休息，真是充实的一天啊",
+      "reason": "长文本，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC088",
+      "old_text": "今天天气真好@#$%",
+      "new_text": "今天这天气真不错啊",
+      "reason": "特殊字符，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC089",
+      "old_text": "今天天气真好今天天气真好今天天气真好",
+      "new_text": "今天这天气真不错啊，今天这天气真不错啊，今天这天气真不错啊",
+      "reason": "重复文本，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC090",
+      "old_text": "今天天气真好Hello世界",
+      "new_text": "今天这天气真不错，Hello World，这世界真美好",
+      "reason": "混合语言，增加口语化表达"
+    },
+    {
+      "scenario_id": "SC091",
+      "old_text": "太棒了！我们成功了！",
+      "new_text": "哇！太棒了！我们终于成功了！",
+      "reason": "开心快速大声，增加情感表达"
+    },
+    {
+      "scenario_id": "SC092",
+      "old_text": "我很难过，失去了机会",
+      "new_text": "唉...我很难过，失去了这次机会...",
+      "reason": "悲伤慢速小声，增加情感表达"
+    },
+    {
+      "scenario_id": "SC093",
+      "old_text": "我草，怎么这都不懂",
+      "new_text": "我靠...怎么这都不懂啊",
+      "reason": "愤怒停顿杂音，增加情感表达"
+    },
+    {
+      "scenario_id": "SC094",
+      "old_text": "别担心，一切都会好的",
+      "new_text": "别担心...一切都会好的",
+      "reason": "温柔强调停顿，增加情感表达"
+    },
+    {
+      "scenario_id": "SC095",
+      "old_text": "请注意，这很重要",
+      "new_text": "请注意...这很重要",
+      "reason": "严肃快速强调，增加正式感"
+    },
+    {
+      "scenario_id": "SC096",
+      "old_text": "今天天气真好，我们出去散步，顺便去公园看看花，真是太开心了！",
+      "new_text": "今天这天气真不错，咱们出去溜达溜达，顺便去公园赏赏花，真是太开心了！",
+      "reason": "开心长句，增加情感表达"
+    },
+    {
+      "scenario_id": "SC097",
+      "old_text": "我很难过，失去了机会，感觉一切都完了，不知道该怎么办",
+      "new_text": "唉...我很难过，失去了这次机会，感觉一切都完了，不知道该怎么办...",
+      "reason": "悲伤长句，增加情感表达"
+    },
+    {
+      "scenario_id": "SC098",
+      "old_text": "我草，怎么这都不懂，真是气死我了，你们到底有没有认真听",
+      "new_text": "我靠...怎么这都不懂啊，真是气死我了，你们到底有没有认真听啊",
+      "reason": "愤怒长句，增加情感表达"
+    },
+    {
+      "scenario_id": "SC099",
+      "old_text": "别担心，一切都会好的，我会一直陪着你，不管发生什么",
+      "new_text": "别担心...一切都会好的，我会一直陪着你，不管发生什么...",
+      "reason": "温柔长句，增加情感表达"
+    },
+    {
+      "scenario_id": "SC100",
+      "old_text": "请注意，这很重要，关系到我们的未来，必须认真对待",
+      "new_text": "请注意...这很重要，关系到我们的未来，必须认真对待",
+      "reason": "严肃长句，增加正式感"
+    }
+  ]
+}

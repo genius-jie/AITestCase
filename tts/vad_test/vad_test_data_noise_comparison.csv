@@ -1,0 +1,113 @@
+scenario_id,scenario_name,text,break_time_ms,pause_position,add_post_process_breath,breath_strength,prosody_rate,prosody_pitch,prosody_volume,emphasis_words,style,expected_silence,expected_speech,expected_post_process_breath,vad_expected_result,priority,audio_format,sample_rate,channels,bit_depth
+# ========== 基础测试（P0）- 20条 ==========
+# 正向测试：黄金路径
+SC001,正常无停顿,这家餐厅的菜品味道很不错,,,false,,,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC002,正常短句,您好，欢迎光临！,,,false,,,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC003,正常长句,这个治疗方案需要持续观察一段时间，我们会定期跟进您的病情。,,,false,,,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC004,正常问句,您预约的航班是明天上午十点吗？,,,false,,,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC005,正常感叹句,哇，这个户型设计真不错！,,,false,,,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+# 反向测试：必填字段缺失
+SC006,空文本,这个理财产品收益比较稳定,,,,false,,,,normal,,normal,false,false,false,silence,P0,WAV,16000,1
+SC007,纯标点,老师，这道题我不太理解,,,false,,,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC008,数字文本,这个路口的交通信号灯需要调整一下,,,false,,,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC009,英文文本,您的快递大概什么时候能送到？,,,false,,,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC010,混合文本,哦，原来是这样！,,,false,,,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+# 边界测试：停顿时长
+SC011,极短停顿,嗯...这个菜单设计得挺清楚的。,100,句中,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC012,短停顿,那个...这个药品说明书有点问题。,300,句中,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC013,中等停顿,嗯...这个教学大纲挺全面的。,800,句中,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC014,长停顿,那个...这个商品标签需要更新一下。,2000,句中,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC015,极长停顿,嗯...那个...这个投资组合挺合理的。,4000,句中,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+# ========== 停顿测试（P0）- 15条 ==========
+SC016,句首停顿短,嗯...今天的旅游团行程安排得挺顺利。,300,句首,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC017,句首停顿中,那个...这个房屋维修得挺快。,800,句首,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC018,句首停顿长,嗯...那个...这个航班起飞很准时。,2000,句首,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC019,句中停顿短,这个路口...嗯...有点拥堵。,300,句中,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC020,句中停顿中,这个快递...那个...送得挺快。,800,句中,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC021,句中停顿长,这个订单...嗯...那个...处理得挺仔细。,2000,句中,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC022,句尾停顿短,这个课程上线了...嗯。,300,句尾,false,,,,normal,,normal,true,true,false,active+silence,P0,WAV,16000,1,16
+SC023,句尾停顿中,这个手术完成了...那个...。,800,句尾,false,,,,normal,,normal,true,true,false,active+silence,P0,WAV,16000,1,16
+SC024,句尾停顿长,这个贷款审批通过了...嗯...那个...。,2000,句尾,false,,,,normal,,normal,true,true,false,active+silence,P0,WAV,16000,1,16
+SC025,多句首停顿,嗯...这个景点挺重要，咱们一起看看。,500,句首,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC026,多句中停顿,这个房间装修得很漂亮,500,句中,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC027,多句尾停顿,好久不见，最近身体怎么样？,500,句尾,false,,,,normal,,normal,true,true,false,active+silence,P0,WAV,16000,1,16
+SC028,零停顿,这个教学计划需要补充一些实践环节，咱们一起想想。,0,句中,false,,,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC029,边界停顿最小,这个交通事故是什么原因引起的？,100,句中,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC030,边界停顿最大,天哪，这么快就到目的地了！,5000,句中,false,,,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+# ========== 杂音测试（P0）- 15条 ==========
+SC031,弱杂音无停顿,这个菜品写得很详细,,,true,low,normal,,normal,,normal,false,true,true,active+post_process_breath,P0,WAV,16000,1,16
+SC032,中杂音无停顿,喂，能听到我说话吗？,,,true,medium,normal,,normal,,normal,false,true,true,active+post_process_breath,P0,WAV,16000,1,16
+SC033,强杂音无停顿,这个病历需要更新一下，咱们一起整理整理。,,,true,high,normal,,normal,,normal,false,true,true,active+post_process_breath,P0,WAV,16000,1,16
+SC034,弱杂音句首停顿,咱们需要多久才能入住？,500,句首,true,low,normal,,normal,,normal,true,true,true,silence+active+post_process_breath,P0,WAV,16000,1,16
+SC035,中杂音句首停顿,哇塞，这个景点真不错！,500,句首,true,medium,normal,,normal,,normal,true,true,true,silence+active+post_process_breath,P0,WAV,16000,1,16
+SC036,强杂音句首停顿,这个账户余额显示得很准确,500,句首,true,high,normal,,normal,,normal,true,true,true,silence+active+post_process_breath,P0,WAV,16000,1,16
+SC037,弱杂音句中停顿,哎，你在吗？,500,句中,true,low,normal,,normal,,normal,true,true,true,active+silence+active+post_process_breath,P0,WAV,16000,1,16
+SC038,中杂音句中停顿,这个商品上架后销量挺好的，咱们考虑一下后续的促销。,500,句中,true,medium,normal,,normal,,normal,true,true,true,active+silence+active+post_process_breath,P0,WAV,16000,1,16
+SC039,强杂音句中停顿,咱们需要多少预算来完成这个项目？,500,句中,true,high,normal,,normal,,normal,true,true,true,active+silence+active+post_process_breath,P0,WAV,16000,1,16
+SC040,弱杂音句尾停顿,哎呀，这个路况问题解决了！,500,句尾,true,low,normal,,normal,,normal,true,true,true,silence+active+post_process_breath,P0,WAV,16000,1,16
+SC041,中杂音句尾停顿,这个餐厅装修得很美观,500,句尾,true,medium,normal,,normal,,normal,true,true,true,silence+active+post_process_breath,P0,WAV,16000,1,16
+SC042,强杂音句尾停顿,嗨，早上好！,500,句尾,true,high,normal,,normal,,normal,true,true,true,silence+active+post_process_breath,P0,WAV,16000,1,16
+SC043,无杂音句首停顿,这个房间布局可以再调整一下，提升居住体验。,500,句首,false,,normal,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC044,无杂音句中停顿,这个考试成绩符合预期吗？,500,句中,false,,normal,,normal,,normal,true,true,false,active+silence+active,P0,WAV,16000,1,16
+SC045,无杂音句尾停顿,太棒了，终于拿到驾照了！,500,句尾,false,,normal,,normal,,normal,true,true,false,active+silence,P0,WAV,16000,1,16
+# ========== 语气风格测试（P1）- 20条 ==========
+SC046,正常语气,这个购物体验做得很流畅,,,false,,,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC047,开心语气,嗯，我知道了。,,,false,,,,normal,,cheerful,false,true,false,active,P1,WAV,16000,1,16
+SC048,严肃语气,这个基金收益还可以再提升，咱们一起分析分析。,,,false,,,,normal,,serious,false,true,false,active,P1,WAV,16000,1,16
+SC049,悲伤语气,太好了，手术成功了！,,,false,,,,normal,,sad,false,true,false,active,P1,WAV,16000,1,16
+SC050,兴奋语气,这个菜品口味很到位,,,false,,,,normal,,excited,false,true,false,active,P1,WAV,16000,1,16
+SC051,愤怒语气,好的，没问题。,,,false,,,,normal,,angry,false,true,false,active,P1,WAV,16000,1,16
+SC052,温柔语气,这个城市交通可以再改进一下，提高通行效率。,,,false,,,,normal,,gentle,false,true,false,active,P1,WAV,16000,1,16
+SC053,客服语气,哇，这个景点风景真美！,,,false,,,,normal,,customerService,false,true,false,active,P1,WAV,16000,1,16
+SC054,开心停顿,这个小区环境设计得很清晰,500,句中,false,,,,normal,,cheerful,true,true,false,active+silence+active,P1,WAV,16000,1,16
+SC055,悲伤停顿,行，那就这样吧。,500,句中,false,,,,normal,,sad,true,true,false,active+silence+active,P1,WAV,16000,1,16
+SC056,愤怒停顿,这个点餐流程可以再简化一下，提高用餐效率。,800,句中,false,,,,normal,,angry,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC057,兴奋停顿,哎呀，这个装修真好看！,500,句中,false,,,,normal,,excited,true,true,false,active+silence+active,P1,WAV,16000,1,16
+SC058,温柔停顿,嗯...这个课程安排得挺合理。,500,句中,false,,,,normal,,gentle,true,true,false,active+silence+active,P1,WAV,16000,1,16
+SC059,严肃停顿,那个...这个治疗方案有点复杂。,500,句中,false,,,,normal,,serious,true,true,false,active+silence+active,P1,WAV,16000,1,16
+SC060,客服停顿,嗯...这个商品包装考虑得挺周全。,500,句中,false,,,,normal,,customerService,true,true,false,active+silence+active,P1,WAV,16000,1,16
+SC061,开心杂音,太棒了，客户反馈很好！,,,true,medium,normal,,normal,,cheerful,false,true,true,active+post_process_breath,P1,WAV,16000,1,16
+SC062,悲伤杂音,那个...这个景点设施有点不足。,,,true,medium,normal,,normal,,sad,false,true,true,active+post_process_breath,P1,WAV,16000,1,16
+SC063,愤怒杂音,嗯...这个病历写得挺详细。,,,true,medium,normal,,normal,,angry,false,true,true,active+post_process_breath,P1,WAV,16000,1,16
+SC064,兴奋杂音,那个...这个教学计划有点遗漏。,,,true,medium,normal,,normal,,excited,false,true,true,active+post_process_breath,P1,WAV,16000,1,16
+SC065,温柔杂音,嗯...那个...这个投资回报挺高效的。,,,true,medium,normal,,normal,,gentle,false,true,true,active+post_process_breath,P1,WAV,16000,1,16
+# ========== 语速音调音量测试（P1）- 15条 ==========
+SC066,极慢速,嗯...今天的航班飞得挺顺利。,,,false,,,,slow,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC067,慢速,那个...这个菜品有点简略。,,,false,,,,slow,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC068,正常语速,嗯...这个房间设计得挺合理。,,,false,,,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC069,快速,那个...这个商品库存需要调整一下。,,,false,,,,fast,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC070,极快速,嗯...那个...这个保险理赔挺完善的。,,,false,,,,fast,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC071,极低音调,嗯...今天的手术做得挺顺利。,,,false,,,,normal,x-low,normal,false,true,false,active,P1,WAV,16000,1,16
+SC072,低音调,那个...这个房屋需要改进一下。,,,false,,,,normal,low,normal,false,true,false,active,P1,WAV,16000,1,16
+SC073,正常音调,嗯...这个餐厅装修得挺美观。,,,false,,,,normal,medium,normal,false,true,false,active,P1,WAV,16000,1,16
+SC074,高音调,那个...这个购物体验需要优化一下。,,,false,,,,normal,high,normal,false,true,false,active,P1,WAV,16000,1,16
+SC075,极高音调,嗯...那个...这个银行服务挺有效的。,,,false,,,,normal,x-high,normal,false,true,false,active,P1,WAV,16000,1,16
+SC076,极小音量,嗯...今天的课程讲得挺顺利。,,,false,,,,normal,,silent,false,true,false,active,P1,WAV,16000,1,16
+SC077,小音量,那个...这个景点交通需要提升一下。,,,false,,,,normal,,soft,false,true,false,active,P1,WAV,16000,1,16
+SC078,正常音量,嗯...这个物流配送做得挺流畅。,,,false,,,,normal,,medium,false,true,false,active,P1,WAV,16000,1,16
+SC079,大音量,那个...这个城市规划需要重构一下。,,,false,,,,normal,,loud,false,true,false,active,P1,WAV,16000,1,16
+SC080,极大音量,嗯...那个...这个酒店服务挺创新的。,,,false,,,,normal,,x-loud,false,true,false,active,P1,WAV,16000,1,16
+# ========== 强调词测试（P2）- 5条 ==========
+SC081,单强调词,嗯...今天的快递送得挺顺利。,,,false,,,,normal,,normal,天气,normal,false,true,false,active,P2,WAV,16000
+SC082,双强调词,那个...这个课程开发得挺快。,,,false,,,,normal,,normal,天气|散步,normal,false,true,false,active,P2,WAV,16000
+SC083,多强调词,嗯...这个菜品口味挺到位。,,,false,,,,normal,,normal,天气|散步|公园,normal,false,true,false,active,P2,WAV,16000
+SC084,强调词停顿,那个...这个房屋销售得挺快。,500,句中,false,,,,normal,,normal,天气,normal,true,true,false,active+silence+active,P2,WAV,16000
+SC085,强调词杂音,嗯...那个...这个景区管理挺人性化的。,,,true,medium,normal,,normal,天气,normal,false,true,true,active+post_process_breath,P2,WAV,16000,1,16
+# ========== 边界测试（P2）- 5条 ==========
+SC086,极短文本,嗯...今天的交通管制挺顺利。,,,false,,,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC087,长文本,那个...这个航班优化得挺快。,,,false,,,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC088,特殊字符,嗯...这个银行系统挺清晰。,,,false,,,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC089,重复文本,那个...这个快递时效挺快。,,,false,,,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+SC090,混合语言,嗯...那个...这个酒店预订流程挺顺畅的。,,,false,,,,normal,,normal,false,true,false,active,P2,WAV,16000,1,16
+# ========== 组合测试（P2）- 5条 ==========
+SC091,开心快速大声,嗯...这个餐厅服务得挺顺利。,,,false,,,,fast,,loud,,excited,false,true,false,active,P2,WAV,16000
+SC092,悲伤慢速小声,那个...这个房产交易得挺快。,,,false,,,,slow,,soft,,sad,false,true,false,active,P2,WAV,16000
+SC093,愤怒停顿杂音,嗯...这个医疗检查得挺顺利。,800,句中,true,high,normal,,loud,,angry,true,true,true,active+silence+active+post_process_breath,P2,WAV,16000,1,16
+SC094,温柔强调停顿,那个...这个教育培训很成功。,500,句中,false,,,,normal,,medium,担心,gentle,true,true,false,active+silence+active,P2,WAV,16000
+SC095,严肃快速强调,嗯...那个...这个零售促销很全面。,,,false,,,,fast,,medium,重要,serious,false,true,false,active,P2,WAV,16000
+# ========== 情感表达测试（P2）- 5条 ==========
+SC096,开心长句,嗯...这个金融投资得挺顺利。,,,false,,,,normal,,medium,,cheerful,false,true,false,active,P2,WAV,16000
+SC097,悲伤长句,那个...这个旅游体验很成功。,,,false,,,,normal,,soft,,sad,false,true,false,active,P2,WAV,16000
+SC098,愤怒长句,嗯...这个物流配送挺顺利。,,,false,,,,normal,,loud,,angry,false,true,false,active,P2,WAV,16000
+SC099,温柔长句,那个...这个交通管理很成功。,,,false,,,,normal,,soft,,gentle,false,true,false,active,P2,WAV,16000
+SC100,严肃长句,嗯...那个...这个客服服务挺丰富的。,,,false,,,,normal,,medium,,serious,false,true,false,active,P2,WAV,16000

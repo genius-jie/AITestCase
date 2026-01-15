@@ -1,0 +1,30 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime
+1768478972675,78,完整OTA升级流程,500,"Number of samples in transaction : 4, number of failing samples : 4",单设备测试线程组 1-1,,false,,996,1659,1,1,null,0,34
+1768478972687,31,登录接口,500,Internal Server Error,单设备测试线程组 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[5]]]00
+
+****** comparison: [[[2]]]00
+
+/",270,283,1,1,http://121.43.112.101:30100/api/v1/user/login,31,0
+1768478972726,18,文件上传接口,401,Unauthorized,单设备测试线程组 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",240,689,1,1,http://121.43.112.101:30100/api/v1/file/upload,18,0
+1768478972751,14,创建升级包接口,401,Unauthorized,单设备测试线程组 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[401]]]
+
+****** comparison: [[[200]]]
+
+/",240,406,1,1,http://121.43.112.101:30100/api/v1/ota/package,14,0
+1768478972772,15,测试升级接口,404,Not Found,单设备测试线程组 1-1,text,false,"Test failed: code expected to equal /
+
+****** received  : [[[404]]]
+
+****** comparison: [[[200]]]
+
+/",246,281,1,1,http://121.43.112.101:30100/api/v1/ota/test,15,0

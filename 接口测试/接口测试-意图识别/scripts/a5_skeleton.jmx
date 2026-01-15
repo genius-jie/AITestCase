@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="接口自动化测试计划 - 参数设计优化版">
+      <stringProp name="TestPlan.comments">A5阶段脚本骨架 - 参数设计优化版 - 遵循最小化CSV依赖原则</stringProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="base_url" elementType="Argument">
+            <stringProp name="Argument.name">base_url</stringProp>
+            <stringProp name="Argument.value">121.43.112.101</stringProp>
+            <stringProp name="Argument.desc">服务器地址</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="port" elementType="Argument">
+            <stringProp name="Argument.name">port</stringProp>
+            <stringProp name="Argument.value">30100</stringProp>
+            <stringProp name="Argument.desc">服务器端口</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="protocol" elementType="Argument">
+            <stringProp name="Argument.name">protocol</stringProp>
+            <stringProp name="Argument.value">http</stringProp>
+            <stringProp name="Argument.desc">协议</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="upload_file_path" elementType="Argument">
+            <stringProp name="Argument.name">upload_file_path</stringProp>
+            <stringProp name="Argument.value">E:\AI测试用例\接口测试\data\upgrade.pdf</stringProp>
+            <stringProp name="Argument.desc">上传文件路径</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="接口测试线程组">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP请求默认值">
+          <intProp name="HTTPSampler.connect_timeout">30000</intProp>
+          <intProp name="HTTPSampler.response_timeout">30000</intProp>
+          <stringProp name="HTTPSampler.domain">${base_url}</stringProp>
+          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.implementation"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV数据源 - 控制参数">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">e:\AI测试用例\接口测试\data\test_data_minimal.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">username,password,captcha_id,captcha_code,scenario_type,expected_result</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="动态参数生成器">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="script">import java.util.Random
+
+// 安全地获取CSV变量
+def scenario_type = vars.get(&quot;scenario_type&quot;) ?: &quot;normal&quot;
+def expected_result = vars.get(&quot;expected_result&quot;) ?: &quot;success&quot;
+def username = vars.get(&quot;username&quot;) ?: &quot;default_user&quot;
+def password = vars.get(&quot;password&quot;) ?: &quot;default_pass&quot;
+def captcha_id = vars.get(&quot;captcha_id&quot;) ?: &quot;1&quot;
+def captcha_code = vars.get(&quot;captcha_code&quot;) ?: &quot;1234&quot;
+def upload_file_path = vars.get(&quot;upload_file_path&quot;) ?: &quot;e:\\\\AI测试用例\\\\接口测试\\\\data\\\\default.pdf&quot;
+
+// 生成动态设备类型（基于时间戳）
+def deviceTypes = [&apos;kikigo&apos;]
+def random = new Random()
+def deviceType = deviceTypes[random.nextInt(deviceTypes.size())]
+
+// 生成动态版本号（使用时间戳确保唯一性）
+def timestamp = System.currentTimeMillis()
+def version = &quot;2.3.&quot; + String.format(&quot;%04d&quot;, (timestamp % 10000))
+
+// 生成动态备注（基于场景类型）
+def remark = scenario_type + &quot;_测试_&quot; + timestamp
+
+// 生成动态SN（随机字符串）
+def chars = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot;
+def sn = &quot;&quot;
+for (int i = 0; i &lt; 10; i++) {
+    sn += chars.charAt(random.nextInt(chars.length()))
+}
+
+// 生成动态文件路径（如果需要测试不存在的文件）
+def filePath = upload_file_path
+if (&quot;file_upload_fail&quot;.equals(scenario_type)) {
+    filePath = &quot;e:\\\\AI测试用例\\\\接口测试\\\\data\\\\nonexistent_&quot; + timestamp + &quot;.pdf&quot;
+}
+
+// 设置变量
+vars.put(&quot;device_type&quot;, deviceType)
+vars.put(&quot;version&quot;, version)
+vars.put(&quot;remark&quot;, remark)
+vars.put(&quot;sn&quot;, sn)
+vars.put(&quot;file_path&quot;, filePath)
+
+// 特定场景的参数设置
+if (&quot;version_conflict&quot;.equals(scenario_type)) {
+    // 为版本冲突测试使用固定的版本号
+    vars.put(&quot;version&quot;, &quot;2.3.4.011&quot;)
+}
+
+// 使用vars.get()获取变量值进行日志记录，避免Groovy插值问题
+def final_device_type = vars.get(&quot;device_type&quot;)
+def final_version = vars.get(&quot;version&quot;)
+def final_sn = vars.get(&quot;sn&quot;)
+def final_file_path = vars.get(&quot;file_path&quot;)
+
+log.info(&quot;动态参数生成完成: device_type=&quot; + final_device_type + &quot;, version=&quot; + final_version + &quot;, sn=&quot; + final_sn + &quot;, file_path=&quot; + final_file_path + &quot;, scenario_type=&quot; + scenario_type)</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="登录接口">
+          <stringProp name="HTTPSampler.path">/api/v1/user/login</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;username&quot;:&quot;${username}&quot;,&quot;password&quot;:&quot;${password}&quot;,&quot;captcha_id&quot;:&quot;${captcha_id}&quot;,&quot;captcha_code&quot;:&quot;${captcha_code}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="请求头管理器">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="提取access_token">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def response = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(response)
+
+if (json.code == 0 &amp;&amp; json.data) {
+    vars.put(&quot;access_token&quot;, json.data.access_token)
+    log.info(&quot;成功提取 access_token: &quot; + json.data.access_token)
+} else {
+    log.error(&quot;登录失败，无法提取 access_token&quot;)
+    vars.put(&quot;access_token&quot;, &quot;NOT_FOUND&quot;)
+}</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="登录接口断言">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def response = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(response)
+
+// 根据场景类型判断预期结果
+def isLoginSuccess = !&quot;login_fail&quot;.equals(vars.get(&quot;scenario_type&quot;))
+
+if (prev.getResponseCode() != &quot;200&quot;) {
+    if (isLoginSuccess) {
+        AssertionResult.setFailure(true)
+        AssertionResult.setFailureMessage(&quot;HTTP状态码错误，期望200，实际&quot; + prev.getResponseCode())
+    } else {
+        // 登录失败场景，HTTP状态码不是200是可以接受的
+        log.info(&quot;登录失败场景，HTTP状态码非200，符合预期&quot;)
+    }
+} else if (json.code != 0) {
+    if (isLoginSuccess) {
+        AssertionResult.setFailure(true)
+        AssertionResult.setFailureMessage(&quot;业务状态码错误，期望0，实际&quot; + json.code + &quot;，消息：&quot; + json.message)
+    } else {
+        log.info(&quot;登录失败场景，业务状态码非0，符合预期&quot;)
+    }
+} else if (!json.data || !json.data.access_token) {
+    if (isLoginSuccess) {
+        AssertionResult.setFailure(true)
+        AssertionResult.setFailureMessage(&quot;响应数据不完整，缺少 access_token&quot;)
+    } else {
+        log.info(&quot;登录失败场景，缺少 access_token，符合预期&quot;)
+    }
+}</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+        </hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="请求头管理器">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Authorization</stringProp>
+              <stringProp name="Header.value">${access_token}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="文件上传接口">
+          <stringProp name="HTTPSampler.path">/api/v1/file/upload</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="${file_path}" elementType="HTTPFileArg">
+                <boolProp name="HTTPFileArg.exists">true</boolProp>
+                <boolProp name="HTTPFileArg.path_is_valid">true</boolProp>
+                <stringProp name="File.path">${file_path}</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+                <stringProp name="File.mimetype">application/octet-stream</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="提取file_id">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def response = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(response)
+
+if (json.code == 0 &amp;&amp; json.data) {
+    vars.put(&quot;file_id&quot;, json.data.id)
+    log.info(&quot;成功提取 file_id: &quot; + json.data.id)
+} else {
+    log.error(&quot;文件上传失败，无法提取 id&quot;)
+    vars.put(&quot;file_id&quot;, &quot;NOT_FOUND&quot;)
+}</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="文件上传接口断言">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def response = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(response)
+
+// 根据场景类型判断预期结果
+def isUploadSuccess = !&quot;file_upload_fail&quot;.equals(vars.get(&quot;scenario_type&quot;))
+
+if (prev.getResponseCode() != &quot;200&quot;) {
+    if (isUploadSuccess) {
+        AssertionResult.setFailure(true)
+        AssertionResult.setFailureMessage(&quot;HTTP状态码错误，期望200，实际&quot; + prev.getResponseCode())
+    } else {
+        // 文件上传失败场景，HTTP状态码不是200是可以接受的
+        log.info(&quot;文件上传失败场景，HTTP状态码非200，符合预期&quot;)
+    }
+} else if (json.code != 0) {
+    if (isUploadSuccess) {
+        AssertionResult.setFailure(true)
+        AssertionResult.setFailureMessage(&quot;业务状态码错误，期望0，实际&quot; + json.code + &quot;，消息：&quot; + json.message)
+    } else {
+        log.info(&quot;文件上传失败场景，业务状态码非0，符合预期&quot;)
+    }
+} else if (!json.data || !json.data.id) {
+    if (isUploadSuccess) {
+        AssertionResult.setFailure(true)
+        AssertionResult.setFailureMessage(&quot;响应数据不完整，缺少 file_id&quot;)
+    } else {
+        log.info(&quot;文件上传失败场景，缺少 file_id，符合预期&quot;)
+    }
+}</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="创建升级包接口">
+          <stringProp name="HTTPSampler.path">/api/v1/ota/package</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;device_type&quot;:&quot;${device_type}&quot;,&quot;file_id&quot;:&quot;${file_id}&quot;,&quot;version&quot;:&quot;${version}&quot;,&quot;remark&quot;:&quot;${remark}&quot;,&quot;packageType&quot;:&quot;release&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="提取package_id" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def response = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(response)
+
+if (json.code == 0 &amp;&amp; json.data) {
+    vars.put(&quot;package_id&quot;, json.data.id)
+    log.info(&quot;成功提取 package_id: &quot; + json.data.id)
+} else {
+    log.error(&quot;创建升级包失败，无法提取 package_id&quot;)
+    vars.put(&quot;package_id&quot;, &quot;NOT_FOUND&quot;)
+}</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="创建升级包接口断言">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def response = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(response)
+
+// 根据场景类型判断预期结果
+def isCreateSuccess = !&quot;create_pkg_fail&quot;.equals(vars.get(&quot;scenario_type&quot;)) &amp;&amp; !&quot;version_conflict&quot;.equals(vars.get(&quot;scenario_type&quot;))
+
+if (prev.getResponseCode() != &quot;200&quot;) {
+    if (isCreateSuccess) {
+        AssertionResult.setFailure(true)
+        AssertionResult.setFailureMessage(&quot;HTTP状态码错误，期望200，实际&quot; + prev.getResponseCode())
+    } else {
+        // 创建升级包失败场景，HTTP状态码不是200是可以接受的
+        log.info(&quot;创建升级包失败场景，HTTP状态码非200，符合预期&quot;)
+    }
+} else if (json.code != 0) {
+    if (isCreateSuccess) {
+        AssertionResult.setFailure(true)
+        AssertionResult.setFailureMessage(&quot;业务状态码错误，期望0，实际&quot; + json.code + &quot;，消息：&quot; + json.message)
+    } else {
+        log.info(&quot;创建升级包失败场景，业务状态码非0，符合预期&quot;)
+    }
+} else if (!json.data || !json.data.id) {
+    if (isCreateSuccess) {
+        AssertionResult.setFailure(true)
+        AssertionResult.setFailureMessage(&quot;响应数据不完整，缺少 package_id&quot;)
+    } else {
+        log.info(&quot;创建升级包失败场景，缺少 package_id，符合预期&quot;)
+    }
+}</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="测试升级接口">
+          <stringProp name="HTTPSampler.path">/api/v1/ota/task/device/debug/upgrade</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;package_id&quot;:&quot;${package_id}&quot;,&quot;sn&quot;:&quot;${sn}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="测试升级接口断言" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def response = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(response)
+
+// 根据场景类型判断预期结果
+def isUpgradeSuccess = !&quot;test_upgrade_fail&quot;.equals(vars.get(&quot;scenario_type&quot;))
+
+if (prev.getResponseCode() != &quot;200&quot;) {
+    if (isUpgradeSuccess) {
+        AssertionResult.setFailure(true)
+        AssertionResult.setFailureMessage(&quot;HTTP状态码错误，期望200，实际&quot; + prev.getResponseCode())
+    } else {
+        // 测试升级失败场景，HTTP状态码不是200是可以接受的
+        log.info(&quot;测试升级失败场景，HTTP状态码非200，符合预期&quot;)
+    }
+} else if (json.code != 0) {
+    if (isUpgradeSuccess) {
+        AssertionResult.setFailure(true)
+        AssertionResult.setFailureMessage(&quot;业务状态码错误，期望0，实际&quot; + json.code + &quot;，消息：&quot; + json.message)
+    } else {
+        log.info(&quot;测试升级失败场景，业务状态码非0，符合预期&quot;)
+    }
+}</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="查看结果树">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

@@ -1,0 +1,225 @@
+meta:
+  project: 语音生成自动化测试
+  agent: tts
+  execution_mode: solo
+  workflow: 6A
+  version: 1.0.0
+  created_at: 2026-01-14
+  description: >
+    基于6A工作流的TTS Agent Solo执行配置。
+    根目录默认模板由AI自动补全阶段三件套（workflow / role / mistakes）
+    每个阶段将由AI自动补全阶段三件套（workflow / role / mistakes）
+    并生成阶段产出文档。
+  notes: >
+    - 阶段三件套继承根目录默认模板
+    - 各阶段输出需可直接被后续阶段复用
+    - workflow / role / mistakes 可增强但不得破坏结构
+
+global_input:
+  - documents/语音生成需求文档.md
+
+global_rules:
+  - 严格遵循各阶段workflow.md的阶段定义与目标
+  - 不跳过任何阶段
+  - 阶段输出需可被后续阶段直接复用
+  - 允许对workflow / role / mistakes做"增强式修改"，但不得破坏结构
+  - 根目录三件套为默认模板，阶段可继承并覆盖
+
+stages:
+
+  # =========================
+  # INIT - 根目录三件套生成
+  # =========================
+  - id: INIT
+    name: Initialize - 根目录三件套生成
+    agent: tts
+
+    input:
+      - ../../project_design/*.md
+      - documents/语音生成需求文档.md
+      - ../../workflows/6a_test_flow.md
+
+    objectives:
+      - 参考project_design目录下的设计方法和提示词
+      - 生成准确的根目录role.prompt.md，包含清晰的角色定位、目标与约束、核心能力和行为准则
+      - 生成准确的根目录workflow.md，包含详细执行流程、阶段 skeleton、继承机制示例
+      - 生成准确的根目录mistakes.md，包含标准错题本结构及常见推测示例错误记录
+      - 确保根目录三件套符合Agent设计指南的规范
+
+    output:
+      workflow: workflow.md
+      role: role.prompt.md
+      mistakes: mistakes.md
+
+  # =========================
+  # A1 Analyze
+  # =========================
+  - id: A1
+    name: Analyze - 需求分析与规则提取
+    agent: tts
+
+    input:
+      - role.prompt.md
+      - workflow.md
+      - mistakes.md
+      - stages/A1/workflow.md
+      - stages/A1/role.prompt.md
+      - stages/A1/mistakes.md
+      - documents/语音生成需求文档.md
+
+    objectives:
+      - 基于原始需求/设计/接口文档，提取可测试业务规则
+      - 明确语音生成测试目标、约束条件与关键指标
+      - 补全A1阶段workflow的执行细节
+      - 强化A1 role.prompt中的职责、能力与输出要求
+      - 在mistakes.md中沉淀本阶段易错点
+
+    output:
+      workflow: stages/A1/workflow.md
+      role: stages/A1/role.prompt.md
+      mistakes: stages/A1/mistakes.md
+      result: stages/A1/output.md
+
+  # =========================
+  # A2 Architect
+  # =========================
+  - id: A2
+    name: Architect - 测试架构与流程设计
+    agent: tts
+
+    input:
+      - role.prompt.md
+      - workflow.md
+      - mistakes.md
+      - stages/A1/output.md
+      - stages/A2/workflow.md
+      - stages/A2/role.prompt.md
+      - stages/A2/mistakes.md
+
+    objectives:
+      - 基于A1输出设计整体语音生成测试架构
+      - 明确TTS在测试体系中的角色与边界
+      - 设计数据流、执行流、结果流
+      - 补全并优化A2阶段三件套文档
+
+    output:
+      workflow: stages/A2/workflow.md
+      role: stages/A2/role.prompt.md
+      mistakes: stages/A2/mistakes.md
+      result: stages/A2/output.md
+
+  # =========================
+  # A3 Assemble
+  # =========================
+  - id: A3
+    name: Assemble - 任务拆分与资产整合
+    agent: tts
+
+    input:
+      - role.prompt.md
+      - workflow.md
+      - mistakes.md
+      - stages/A2/output.md
+      - stages/A3/workflow.md
+      - stages/A3/role.prompt.md
+      - stages/A3/mistakes.md
+
+    objectives:
+      - 将测试架构拆解为可执行测试任务
+      - 形成标准化测试资产清单
+      - 明确哪些资产进入可复用库
+      - 补全A3阶段三件套文档
+
+    output:
+      workflow: stages/A3/workflow.md
+      role: stages/A3/role.prompt.md
+      mistakes: stages/A3/mistakes.md
+      result: stages/A3/output.md
+
+  # =========================
+  # A4 Automate
+  # =========================
+  - id: A4
+    name: Automate - 数据构造与工具适配
+    agent: tts
+
+    input:
+      - role.prompt.md
+      - workflow.md
+      - mistakes.md
+      - stages/A3/output.md
+      - stages/A4/workflow.md
+      - stages/A4/role.prompt.md
+      - stages/A4/mistakes.md
+
+    objectives:
+      - 构造语音生成测试数据（正常/边界/异常）
+      - 生成TTS参数化与配置说明
+      - 明确脚本与数据的映射关系
+      - 补全A4阶段三件套文档
+
+    output:
+      workflow: stages/A4/workflow.md
+      role: stages/A4/role.prompt.md
+      mistakes: stages/A4/mistakes.md
+      result: stages/A4/output.md
+      datasets: output/测试数据集.csv
+
+  # =========================
+  # A5 Apply
+  # =========================
+  - id: A5
+    name: Apply - 测试执行与问题分析
+    agent: tts
+
+    input:
+      - role.prompt.md
+      - workflow.md
+      - mistakes.md
+      - stages/A4/output.md
+      - stages/A5/workflow.md
+      - stages/A5/role.prompt.md
+      - stages/A5/mistakes.md
+
+    objectives:
+      - 执行语音生成测试或生成可执行脚本
+      - 分析执行结果与异常
+      - 输出问题根因分析
+      - 补全A5阶段三件套文档
+
+    output:
+      workflow: stages/A5/workflow.md
+      role: stages/A5/role.prompt.md
+      mistakes: stages/A5/mistakes.md
+      result: stages/A5/output.md
+      logs: output/测试执行日志.md
+
+  # =========================
+  # A6 Assess
+  # =========================
+  - id: A6
+    name: Assess - 评估总结与体系迭代
+    agent: tts
+
+    input:
+      - role.prompt.md
+      - workflow.md
+      - mistakes.md
+      - stages/A5/output.md
+      - stages/A6/workflow.md
+      - stages/A6/role.prompt.md
+      - stages/A6/mistakes.md
+
+    objectives:
+      - 汇总全流程测试结果
+      - 生成多维度评估报告
+      - 输出语音生成性能瓶颈与优化建议
+      - 反向优化workflow与agent设计
+      - 补全A6阶段三件套文档
+
+    output:
+      workflow: stages/A6/workflow.md
+      role: stages/A6/role.prompt.md
+      mistakes: stages/A6/mistakes.md
+      result: stages/A6/output.md
+      final_report: output/多维度评估报告.md

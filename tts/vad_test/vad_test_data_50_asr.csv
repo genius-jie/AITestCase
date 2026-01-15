@@ -1,0 +1,79 @@
+scenario_id,scenario_name,text,break_time_ms,pause_position,add_post_process_breath,breath_strength,prosody_rate,prosody_pitch,prosody_volume,emphasis_words,style,expected_silence,expected_speech,expected_post_process_breath,vad_expected_result,priority,audio_format,sample_rate,channels,bit_depth
+# 新增50条符合ASR特性的测试用例 - 2026-01-14
+
+# 正常场景测试用例（包含ASR特性）
+SC171,日常问候_语气词,哎，早上好啊，今天感觉怎么样？,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC172,工作交流_情绪,哇！这个项目进展得真快啊,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC173,学习场景_停顿,这道题的解法...其实挺巧妙的,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC174,生活分享_口语化,昨天我去了一家超棒的餐厅哎,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC175,天气描述_语气词,哎你看，外面下雨了呢,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+
+# 不同停顿时长测试用例（包含ASR特性）
+SC176,极短停顿_语气词,嗯，我今天,100,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC177,短停顿_情绪,啊！明天早上,300,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC178,中等停顿_停顿,周末计划...我们去爬山吧,700,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC179,长停顿_口语化,这个问题...其实很简单啦,1500,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC180,极长停顿_语气词,哦，关于未来,3000,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+
+# 不同停顿位置测试用例（包含ASR特性）
+SC181,句首停顿_语气词,哎，今天的会议很重要,500,句首,false,,normal,,normal,,normal,true,true,false,silence+active,P1,WAV,16000,1,16
+SC182,句中停顿_情绪,我们...需要更多的时间,500,句中,false,,normal,,normal,,normal,false,true,false,active+silence+active,P1,WAV,16000,1,16
+SC183,句尾停顿_口语化,请大家注意安全哦,500,句尾,false,,normal,,normal,,normal,false,true,false,active+silence,P1,WAV,16000,1,16
+SC184,句首句中停顿_停顿,嗯...项目,500,句首,true,medium,normal,,normal,,normal,true,true,true,silence+active+silence+active,P1,WAV,16000,1,16
+SC185,句中句尾停顿_情绪,时间管理...真的很重要啊,500,句中,true,medium,normal,,normal,,normal,false,true,true,active+silence+active+silence,P1,WAV,16000,1,16
+
+# 不同语速测试用例（包含ASR特性）
+SC186,极慢速_语气词,阅读...是获取知识的重要途径,,normal,false,,slowest,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC187,慢速_口语化,健康饮食...对身体真的很重要,,normal,false,,slow,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC188,正常语速_情绪,哇！运动真的可以增强免疫力,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC189,快速_语气词,哎，时间就是金钱啊，效率很重要,,normal,false,,fast,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC190,极快速_口语化,科技发展日新月异...我们要不断学习,,normal,false,,fastest,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+
+# 不同音调测试用例（包含ASR特性）
+SC191,极低音调_停顿,夜晚的星空...真美,,normal,false,,normal,x-low,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC192,低音调_语气词,哦，历史真的是一面镜子,,normal,false,,normal,low,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC193,正常音调_情绪,哇！艺术真的能够陶冶情操,,normal,false,,normal,medium,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC194,高音调_口语化,哎呀！春天来了，百花盛开,,normal,false,,normal,high,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC195,极高音调_语气词,哇！节日的氛围真的好热闹,,normal,false,,normal,x-high,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+
+# 不同音量测试用例（包含ASR特性）
+SC196,极小音量_语气词,嘘...图书馆里要保持安静,,normal,false,,normal,,x-soft,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC197,小音量_口语化,哎，请轻声说话，不要打扰别人,,normal,false,,normal,,soft,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC198,正常音量_情绪,哇！我们来讨论一下这个问题吧,,normal,false,,normal,,medium,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC199,大音量_语气词,喂！比赛开始了，大家加油,,normal,false,,normal,,loud,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC200,极大音量_情绪,啊！着火了，快撤离,,normal,false,,normal,,x-loud,,normal,false,true,false,active,P1,WAV,16000,1,16
+
+# 不同语气风格测试用例（包含ASR特性）
+SC201,开心语气_口语化,哈哈！我终于完成了这个项目,,normal,false,,normal,,normal,,cheerful,false,true,false,active,P0,WAV,16000,1,16
+SC202,悲伤语气_停顿,唉...我失去了一个重要的朋友,,normal,false,,normal,,normal,,sad,false,true,false,active,P0,WAV,16000,1,16
+SC203,生气语气_语气词,喂！为什么总是迟到,,normal,false,,normal,,normal,,angry,false,true,false,active,P0,WAV,16000,1,16
+SC204,温柔语气_口语化,哎呀，你做得很好，继续加油,,normal,false,,normal,,normal,,gentle,false,true,false,active,P0,WAV,16000,1,16
+SC205,严肃语气_停顿,请注意...这件事非常重要，不能马虎,,normal,false,,normal,,normal,,serious,false,true,false,active,P0,WAV,16000,1,16
+SC206,兴奋语气_情绪,哇！太棒了！我们赢了,,normal,false,,normal,,normal,,excited,false,true,false,active,P0,WAV,16000,1,16
+SC207,客服语气_语气词,您好，有什么可以帮您的吗,,normal,false,,normal,,normal,,customerService,false,true,false,active,P0,WAV,16000,1,16
+
+# 不同呼吸强度测试用例（包含ASR特性）
+SC208,无呼吸声_口语化,音乐真的能够舒缓情绪,,normal,false,,normal,,normal,,normal,false,true,false,active,P0,WAV,16000,1,16
+SC209,低强度呼吸声_语气词,哎，旅行可以开阔视野,500,句中,true,low,,normal,,normal,,normal,false,true,true,active+silence+active,P1,WAV,16000,1,16
+SC210,中强度呼吸声_停顿,摄影...可以记录美好瞬间,500,句中,true,medium,,normal,,normal,,normal,false,true,true,active+silence+active,P1,WAV,16000,1,16
+SC211,高强度呼吸声_情绪,哇！跑步真的有助于身体健康,500,句中,true,high,,normal,,normal,,normal,false,true,true,active+silence+active,P1,WAV,16000,1,16
+
+# 不同语言测试用例（包含ASR特性）
+SC212,英语日常问候_语气词,Hey, how are you doing today?,,normal,false,,normal,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC213,英语工作交流_口语化,Let's discuss the project plan, okay?,,normal,false,,normal,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC214,日语日常问候_语气词,こんにちは！元気ですか？,,normal,false,,normal,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC215,日语工作交流_停顿,プロジェクトの進捗を...報告します,,normal,false,,normal,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC216,韩语日常问候_语气词,안녕하세요！어떻게 지내세요？,,normal,false,,normal,,normal,,normal,false,true,false,active,P1,WAV,16000,1,16
+
+# 强调词测试用例（包含ASR特性）
+SC217,单强调词产品_语气词,哎，这个**手机**的性能真的非常好,,normal,false,,normal,,normal,手机,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC218,单强调词服务_口语化,这家**餐厅**的服务真的很周到,,normal,false,,normal,,normal,餐厅,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC219,双强调词科技_情绪,哇！**人工智能**正在改变**世界**,,normal,false,,normal,,normal,人工智能,世界,,normal,false,true,false,active,P1,WAV,16000,1,16
+SC220,三强调词教育_停顿,**教育**是...**未来**的**基石**,,normal,false,,normal,,normal,教育,未来,基石,,normal,false,true,false,active,P1,WAV,16000,1,16
+
+# 复合参数测试用例（包含ASR特性）
+SC221,快速高音调_情绪,哇！这真是令人惊喜的消息！,,normal,false,,fast,high,,excited,false,true,false,active,P1,WAV,16000,1,16
+SC222,慢速低音调_停顿,人生...就像一场漫长的旅程,,normal,false,,slow,low,,gentle,false,true,false,active,P1,WAV,16000,1,16
+SC223,快速大音量_语气词,喂！比赛就要开始了，准备好,,normal,false,,fast,,loud,excited,false,true,false,active,P1,WAV,16000,1,16
+SC224,慢速小音量_口语化,哎，夜晚很安静，适合思考,,normal,false,,slow,,soft,gentle,false,true,false,active,P1,WAV,16000,1,16
+SC225,高音调高音量_情绪,哇！庆祝我们的成功！,,normal,false,,normal,high,loud,excited,false,true,false,active,P1,WAV,16000,1,16
